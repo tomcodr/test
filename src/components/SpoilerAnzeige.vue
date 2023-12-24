@@ -1,5 +1,5 @@
 <template>
-  <div class="spoiler-status">{{ spoilerStatus }}</div>
+  <div class="spoiler-status">{{ spoilerStatus !== null ? spoilerStatus : 'N/A' }}</div>
 </template>
 
 <script>
@@ -30,9 +30,13 @@ export default {
           this.spoilerStatus = spoilerValue === 0.0 ? "CLOSED" : "OPEN";
         } else {
           console.error("Ungültiger Wert für Spoiler:", data.messwerte[0]?.spoilerr);
+          // Setze spoilerStatus auf null, um "N/A" anzuzeigen
+          this.spoilerStatus = null;
         }
       } catch (error) {
         console.error("Fehler beim Laden der Spoiler-Daten:", error);
+        // Setze spoilerStatus auf null, um "N/A" anzuzeigen
+        this.spoilerStatus = null;
       }
     },
   },

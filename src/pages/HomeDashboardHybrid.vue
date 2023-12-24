@@ -18,7 +18,7 @@
       <div class="bremse">
           <div class="element-background" @click=" onBremseContainerClick"></div>
           <b class="bremse-value"><BremseAnzeige/></b>
-          <div class="element-titel">Bremsen</div>
+          <div class="element-titel">Bremsdruck</div>
       </div>
       
       <div class="speed">

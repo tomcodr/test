@@ -1,6 +1,5 @@
 <template>
-  <b class="airflowspeed-value" v-if="airflowspeedValue !== null">{{ airflowspeedValue }}</b>
-  <!-- b v-else>Keine Daten verfügbar</b -->
+  <b class="airflowspeed-value">{{ airflowspeedValue !== null ? airflowspeedValue : 'N/A' }}</b>
 </template>
 
 <script>
@@ -27,15 +26,23 @@ export default {
               this.airflowspeedValue = airflowspeedValue;
             } else {
               console.error("Ungültiger oder fehlender numerischer Wert für airflowspeed:", airflowspeed);
+              // Setze airflowspeedValue auf null, um "N/A" anzuzeigen
+              this.airflowspeedValue = null;
             }
           } else {
             console.error("Ungültiger oder fehlender Wert für airflowspeed:", airflowspeed);
+            // Setze airflowspeedValue auf null, um "N/A" anzuzeigen
+            this.airflowspeedValue = null;
           }
         } else {
           console.error("Ungültige oder leere Daten für Luftstromgeschwindigkeitsdaten:", data.messwerte);
+          // Setze airflowspeedValue auf null, um "N/A" anzuzeigen
+          this.airflowspeedValue = null;
         }
       } catch (error) {
         console.error("Fehler beim Laden der Luftstromgeschwindigkeitsdaten:", error);
+        // Setze airflowspeedValue auf null, um "N/A" anzuzeigen
+        this.airflowspeedValue = null;
       }
     },
   },
