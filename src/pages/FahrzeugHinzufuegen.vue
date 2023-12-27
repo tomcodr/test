@@ -1,12 +1,26 @@
 <template>
 
-  <div class="fahrzeug-hinzufuegen">
+  <div class="page">
     
     <div class="page-hintergrund">
       <div class="verdunklung-hintergrund-effekt" />
-      <img class="af-it-logo" alt="" src="/png-afit-logo@2x.png" />
+      <img class="png-af-it-logo-icon"  src="/png-afit-logo@2x.png" />
       <div class="af-it-logo-effekt" />
     </div>
+    
+    <textarea
+      v-model="fahrgestellnummerValue"
+      class="fahrgestellnummer-input"
+      placeholder="Fahrgestellnummer eingeben"
+      rows="1"
+      @input="onFahrgestellnummerInput"
+      @blur="onFahrgestellnummerBlur"
+      :style="{ borderColor: fahrgestellnummerError ? 'red' : '' }"
+    ></textarea>
+    <span class="error-message" v-if="fahrgestellnummerError">{{ fahrgestellnummerError }}</span>
+
+    <img class="fahrzeugnummer-linie" alt="" src="/leistung-linie.svg" :style="{ transform: fahrgestellnummerLineTransform }" />
+
     
     <img
       class="registrieren-pfeil"
@@ -15,11 +29,8 @@
       @click="onRegisterPfeilIconClick"
     
     />
-    <img class="leistung-linie-icon" alt="" src="/leistung-linie.svg" />
-    <div class="leistung">Leistung</div>
     
-    <img class="zulassung-linie-icon" alt="" src="/leistung-linie.svg" />
-    <div class="zulassung">Zulassung</div>
+    
     <img
       class="art-linie-icon"
       alt=""
@@ -27,14 +38,10 @@
       :onClick="openArt"
     />
     /* AUF LISTEN ÖFFNEN SCHAUEN WIR BEIM EINFÜGEN DER FUNKTIONALITÄT HINZU */
-    <div class="art" :onClick="openArt1">Art</div>
+    <div class="art" :onClick="openArt1">Erstzulassung</div>
     <img class="farbe-linie-icon" alt="" src="/leistung-linie.svg" />
     <div class="farbe">Farbe</div>
-    <img
-      class="fahrgestellnummer-linie-icon"
-      alt=""
-      src="/fahrgestellnummer-linie.svg"
-    />
+   
     /* LINIEN GEHEN GLAUB NICHT WEIL LOCOFY DIE BILDER NICHT IN DIE DATEI EINGEFÜGT HAT, BITTE ÜBERPRÜFEN */
     <div class="fahrgestellnummer">Fahrgestellnummer</div>
     <img class="modell-linie-icon" alt="" src="/leistung-linie.svg" />
@@ -46,7 +53,6 @@
   </div>
   <div v-if="isArtOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[artLinieRef]"
       :onOutsideClick="closeArt"
@@ -56,7 +62,6 @@
   </div>
   <div v-if="isArt1Open">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[artTextRef]"
       :onOutsideClick="closeArt1"
@@ -66,7 +71,6 @@
   </div>
   <div v-if="isMarkenOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[markeTextRef]"
       :onOutsideClick="closeMarken"
@@ -84,7 +88,13 @@
   export default defineComponent({
     name: "FahrzeugHinzufuegen",
     data() {
-      return { isArtOpen: false, isArt1Open: false, isMarkenOpen: false };
+      return {
+        isArtOpen: false,
+        isArt1Open: false,
+        isMarkenOpen: false,
+        fahrgestellnummerValue: "",
+        fahrgestellnummerError: "", // Fehlermeldung für die Fahrgestellnummer
+      };
     },
     components: { Art, PortalPopup, Marken },
     methods: {
@@ -109,51 +119,44 @@
       closeMarken() {
         this.isMarkenOpen = false;
       },
+      onFahrgestellnummerInput() {
+        // Hier kannst du weitere Logik für die Eingabe implementieren
+        this.fahrgestellnummerError = ""; // Setze die Fehlermeldung zurück
+      },
+      onFahrgestellnummerBlur() {
+        // Hier kannst du weitere Logik für das Verlassen des Felds implementieren
+        this.validateFahrgestellnummer();
+      },
+      validateFahrgestellnummer() {
+        // Hier kannst du die Logik für die Überprüfung der Fahrgestellnummer implementieren
+        const isValid = this.fahrgestellnummerValue.length === 17; // Beispiel: Überprüfung auf eine bestimmte Länge
+        
+        if (!isValid) {
+          this.fahrgestellnummerError = "Fehlerhafte Fahrgestellnummer"; // Fehlermeldung anpassen
+        } else {
+          this.fahrgestellnummerError = ""; // Setze die Fehlermeldung zurück
+        }
+      },
     },
   });
 </script>
 <style scoped>
-  .verdunklung-hintergrund-effekt {
-    position: absolute;
-    top: 0px;
-    left: 1440px;
-    background-color: var(--color-gray-100);
-    width: 1440px;
-    height: 867px;
-    transform: rotate(180deg);
-    transform-origin: 0 0;
-  }
-  .af-it-logo {
-    position: absolute;
-    top: 165.7px;
-    left: 436px;
-    width: 569px;
-    height: 535.6px;
-    object-fit: cover;
-  }
-  .af-it-logo-effekt {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: var(--color-darkslategray-200);
-    backdrop-filter: blur(200px);
-    width: 1440px;
-    height: 867px;
-  }
-  .page-hintergrund {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 1440px;
-    height: 867px;
-  }
+
   .registrieren-pfeil {
     position: absolute;
-    top: 656.6px;
+    top: 560px;
     left: 1141px;
     width: 25px;
     height: 14.7px;
     cursor: pointer;
+  }
+  .fahrzeugnummer-linie {
+    position: absolute;
+    top: 460px;
+    left: 565px;
+    width: 400px;
+    height: 0.5px;
+    transform: scaleX(3);
   }
   .leistung-linie-icon {
     position: absolute;
@@ -170,8 +173,8 @@
   }
   .zulassung-linie-icon {
     position: absolute;
-    top: 663.8px;
-    left: 385.8px;
+    top: 350px;
+    left: 660px;
     width: 285px;
     height: 0.5px;
   }
@@ -192,7 +195,7 @@
   .art {
     position: absolute;
     top: 532px;
-    left: 761px;
+    left: 661px;
     font-weight: 300;
     cursor: pointer;
   }
@@ -263,15 +266,24 @@
     width: 1064px;
     height: 67px;
   }
-  .fahrzeug-hinzufuegen {
-    position: relative;
-    background-color: var(--color-darkslategray-100);
-    width: 100%;
-    height: 866px;
-    overflow: hidden;
-    text-align: left;
-    font-size: var(--font-size-6xl);
-    color: var(--color-white);
-    font-family: var(--font-sansation-light);
+ 
+  .fahrgestellnummer-input {
+  position: absolute;
+  top: 435px;
+  left: 660px;
+  width: 200px; /* Breite anpassen, wie es für deine Anwendung sinnvoll ist */
+  font-weight: 300;
+  background-color: transparent; /* Transparenter Hintergrund */
+  border: none; /* Keine Umrandung */
+  color: #fff; /* Textfarbe auf Weiß setzen */
+  padding: 5px; /* Innenabstand für bessere Lesbarkeit */
+  resize: none; /* Verhindert die Größenänderung */
+}
+.error-message {
+    position: absolute;
+    top: 440px;
+    left: 900px;
+    color: red;
+    font-size: 18px;
   }
 </style>

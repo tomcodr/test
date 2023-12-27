@@ -1,8 +1,9 @@
 <template>
-  <div class="home-dashboard-elektrisch">
+  <div class="page">
+
     <div class="page-hintergrund">
       <div class="verdunklung-hintergrund-effekt" />
-      <img class="png-af-it-logo" alt="" src="/png-afit-logo@2x.png" />
+      <img class="af-it-logo" alt="" src="/png-afit-logo@2x.png" />
       <div class="af-it-logo-effekt" />
     </div>
     
@@ -111,7 +112,6 @@
   
   <div v-if="isSideBoardMenuOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[menuIconRef]"
       :onOutsideClick="closeSideBoardMenu"
@@ -122,7 +122,6 @@
   
   <div v-if="isMesswerteDropdownElektrischOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[messwerteTextboxContainerRef]"
       :onOutsideClick="closeMesswerteDropdownElektrisch"
@@ -187,35 +186,7 @@
   });
 </script>
 <style scoped>
-  .verdunklung-hintergrund-effekt {
-    position: absolute;
-    left: 1440px;
-    background-color: var(--color-gray-100);
-    width: 1440px;
-    height: 867px;
-    transform: rotate(180deg);
-    transform-origin: 0 0;
-  }
-  .png-af-it-logo {
-    position: absolute;
-    top: 165.7px;
-    left: 436px;
-    width: 569px;
-    height: 535.6px;
-    object-fit: cover;
-  }
-  .af-it-logo-effekt {
-    position: absolute;
-    background-color: var(--color-darkslategray-200);
-    backdrop-filter: blur(200px);
-    width: 1440px;
-    height: 867px;
-  }
-  .page-hintergrund {
-    position: absolute;
-    width: 1440px;
-    height: 867px;
-  }
+  
   .element-background {
   width: 187.3px;
   height: 122.6px;
@@ -422,17 +393,7 @@
     width: 1064px;
     height: 67px;
   }
-  .home-dashboard-elektrisch {
-    position: relative;
-    background-color: var(--color-darkslategray-100);
-    width: 100%;
-    height: 867px;
-    overflow: hidden;
-    text-align: left;
-    font-size: var(--font-size-2xl);
-    color: var(--color-white);
-    font-family: var(--font-poppins);
-  }
+
 
   .spoiler-text{
     position: absolute;

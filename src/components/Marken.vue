@@ -3,17 +3,11 @@
     
     <div class="marken-text">
       <p class="bmw">BMW</p>
-      <p class="bmw">MERCEDES</p>
+      <p class="bmw">MERCEDES-BENZ</p>
       <p class="bmw">AUDI</p>
       <p class="bmw">PORSCHE</p>
-      <p class="bmw">TESLA</p>
-      <p class="bmw">LAMBORGHINI</p>
-      <p class="bmw">DACIA</p>
-      <p class="bmw">FIAT</p>
       <p class="bmw">FORD</p>
-      <p class="bmw">KIA</p>
-      <p class="bmw">NISSAN</p>
-      <p class="bmw">SKODA</p>
+      <p class="bmw">VOLKSWAGEN</p>
     </div>
   
   </div>
@@ -41,8 +35,8 @@
   .marken {
     position: relative;
     background-color: var(--color-gray-100);
-    width: 271px;
-    height: 400px;
+    width: 230px;
+    height: 200px;
     overflow: hidden;
     max-width: 100%;
     max-height: 100%;

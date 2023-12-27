@@ -44,7 +44,6 @@
   </div>
   <div v-if="isLanguageOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[pNGDEFlaggeIconRef]"
       :onOutsideClick="closeLanguage"

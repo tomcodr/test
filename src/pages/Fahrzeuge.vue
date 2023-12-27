@@ -70,7 +70,6 @@
   
   <div v-if="isSideBoardMenuOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[menuIconRef]"
       :onOutsideClick="closeSideBoardMenu"
@@ -80,7 +79,6 @@
   </div>
   <div v-if="isMesswerteDropdownOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[messwerteTextboxContainerRef]"
       :onOutsideClick="closeMesswerteDropdown"
@@ -90,7 +88,6 @@
   </div>
   <div v-if="isMesswerteDropdown1Open">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[navigationIconRef]"
       :onOutsideClick="closeMesswerteDropdown1"

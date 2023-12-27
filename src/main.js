@@ -24,6 +24,7 @@ import Temperaturen from "./pages/Temperaturen.vue";
 import Trips from "./pages/Trips.vue";
 import Bremsen from "./pages/Bremsen.vue";
 import Motor from "./pages/Motor.vue";
+import Hoehe from "./pages/Hoehe.vue";
 
 
 import "./global.css";
@@ -139,7 +140,12 @@ const routes = [
     name: "Motor",
     component: Motor,
   },
-  
+  {
+    path: "/hoehe",
+    name: "Hoehe",
+    component: Hoehe,
+  },
+
 ];
 
 const router = createRouter({

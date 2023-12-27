@@ -1,6 +1,7 @@
 <template>
   <div class="home-dashboard-hybrid">
-    <div class="page-hintergrund-hybrid">
+    
+    <div class="page-hintergrund">
       <div class="verdunklung-hintergrund-effekt" />
       <img class="png-af-it-logo-icon"  src="/png-afit-logo@2x.png" />
       <div class="af-it-logo-effekt" />
@@ -51,10 +52,10 @@
     <div class="spoiler-text">Spoiler</div>
     <div class="hupe-text">Hupe</div>
     <div class="hupe-aktiv"><HupeAnzeige/></div>
-    <div class="abs-aktiv">ACTIVE</div>
+    <div class="abs-aktiv"><ABS/></div>
     <div class="abs-text">ABS</div>
     <div class="bremse-text">Bremse</div>
-    <div class="bremse-aktiv">ACTIVE</div>
+    <div class="bremse-aktiv"><BremseJaNein/></div>
   
 
 
@@ -125,7 +126,6 @@
   </div>
   <div v-if="isSideBoardMenuOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[menuIconRef]"
       :onOutsideClick="closeSideBoardMenu"
@@ -135,7 +135,6 @@
   </div>
   <div v-if="isMesswerteDropdownOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[messwerteTextboxContainerRef]"
       :onOutsideClick="closeMesswerteDropdown"
@@ -145,7 +144,6 @@
   </div>
   <div v-if="isMesswerteDropdown1Open">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[navigationIconRef]"
       :onOutsideClick="closeMesswerteDropdown1"
@@ -175,6 +173,8 @@
   import WasserTemperaturAnzeige from "../components/WasserTemperaturAnzeige.vue"
   import SpoilerAnzeige from "../components/SpoilerAnzeige.vue"
   import HupeAnzeige from "../components/HupeAnzeige.vue"
+  import ABS from "../components/ABS.vue"
+  import BremseJaNein from "../components/BremseJaNein.vue"
   
 
 
@@ -189,7 +189,7 @@
         isMesswerteDropdown1Open: false,
       };
     },
-    components: { SideBoardMenu, PortalPopup, MesswerteDropdown, GangAnzeige, DrehzahlAnzeige, TankAnzeige, GeschwindigkeitAnzeige, OelTemperaturAnzeige, BremseAnzeige, WasserTemperaturAnzeige, SpoilerAnzeige, HupeAnzeige},
+    components: { SideBoardMenu, PortalPopup, MesswerteDropdown, GangAnzeige, DrehzahlAnzeige, TankAnzeige, GeschwindigkeitAnzeige, OelTemperaturAnzeige, BremseAnzeige, WasserTemperaturAnzeige, SpoilerAnzeige, HupeAnzeige,ABS, BremseJaNein},
     methods: {
       onGangContainerClick() {
         this.$router.push("/gang");
@@ -278,40 +278,7 @@
 
 
 <style scoped>
-  .verdunklung-hintergrund-effekt {
-    position: absolute;
-    top: 0px;
-    left: 1440px;
-    background-color: var(--color-gray-100);
-    width: 1440px;
-    height: 810px;
-    transform: rotate(180deg);
-    transform-origin: 0 0;
-  }
-  .png-af-it-logo-icon {
-    position: absolute;
-    top: 165.7px;
-    left: 436px;
-    width: 569px;
-    height: 535.6px;
-    object-fit: cover;
-  }
-  .af-it-logo-effekt {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: var(--color-darkslategray-200);
-    backdrop-filter: blur(200px);
-    width: 1500px;
-    height: 810px;
-  }
-  .page-hintergrund-hybrid {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 1400px;
-    height: 810px;
-  }
+ 
 
   .element-titel {
     position: absolute;
@@ -728,7 +695,7 @@
     background-color: var(--color-darkslategray-100);
     width: 100%;
     height: 810px;
-    overflow: hidden;
+    overflow: auto;
     text-align: left;
     font-size: var(--font-size-2xl);
     color: var(--color-white);

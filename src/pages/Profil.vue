@@ -4,7 +4,7 @@
     
     <div class="page-hintergrund">
       <div class="verdunklung-hintergrund-effekt" />
-      <img class="af-it-logo" alt="" src="/png-afit-logo@2x.png" />
+      <img class="png-af-it-logo-icon"  src="/png-afit-logo@2x.png" />
       <div class="af-it-logo-effekt" />
     </div>
     
@@ -59,7 +59,6 @@
   
   <div v-if="isSideBoardMenuOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[menuIconRef]"
       :onOutsideClick="closeSideBoardMenu"
@@ -69,7 +68,6 @@
   </div>
   <div v-if="isMesswerteDropdownOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[messwerteTextboxContainerRef]"
       :onOutsideClick="closeMesswerteDropdown"
@@ -79,7 +77,6 @@
   </div>
   <div v-if="isMesswerteDropdown1Open">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[navigationIconRef]"
       :onOutsideClick="closeMesswerteDropdown1"
@@ -133,40 +130,7 @@
   });
 </script>
 <style scoped>
-  .verdunklung-hintergrund-effekt {
-    position: absolute;
-    top: 0px;
-    left: 1440px;
-    background-color: var(--color-gray-100);
-    width: 1440px;
-    height: 867px;
-    transform: rotate(180deg);
-    transform-origin: 0 0;
-  }
-  .af-it-logo {
-    position: absolute;
-    top: 165.7px;
-    left: 436px;
-    width: 569px;
-    height: 535.6px;
-    object-fit: cover;
-  }
-  .af-it-logo-effekt {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: var(--color-darkslategray-200);
-    backdrop-filter: blur(200px);
-    width: 1440px;
-    height: 867px;
-  }
-  .page-hintergrund {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 1440px;
-    height: 867px;
-  }
+
   .userStadt {
     position: absolute;
     top: 605px;

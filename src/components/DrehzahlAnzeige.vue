@@ -22,8 +22,7 @@ export default {
 
           if (rpm !== undefined && rpm !== null) {
             const roundedRpm = Math.round(rpm);
-            const rpmValue = `${roundedRpm} `;
-            this.rpmValue = rpmValue;
+            this.rpmValue = roundedRpm.toString();
           } else {
             console.error("Ungültiger oder fehlender Wert für rpm:", rpm);
             // Setze rpmValue auf null, um "N/A" anzuzeigen
@@ -42,6 +41,12 @@ export default {
     },
   },
   mounted() {
+    // Setze die Aktualisierung alle 5 Sekunden (5000 Millisekunden)
+    setInterval(() => {
+      this.fetchrpmValue();
+    }, 5000);
+
+    // Führe fetchData einmal bei der Initialisierung aus
     this.fetchrpmValue();
   },
 };

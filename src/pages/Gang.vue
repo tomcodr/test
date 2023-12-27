@@ -1,11 +1,13 @@
 <template>
-  <div class="gang">
-    
+  <div class="page">
+
     <div class="page-hintergrund">
       <div class="verdunklung-hintergrund-effekt" />
-      <img class="png-af-it-logo" alt="" src="/png-afit-logo@2x.png" />
-      <div class="af-it-logo" />
+      <img class="png-af-it-logo-icon"  src="/png-afit-logo@2x.png" />
+      <div class="af-it-logo-effekt" />
     </div>
+
+    <container class = "chart-gang"><ChartGang/></container>
    
     <div class="gear-text">GEAR</div>
     <div class="gear-value"><GangAnzeige/></div>
@@ -52,7 +54,6 @@
   
   <div v-if="isSideBoardMenuOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[menuIconRef]"
       :onOutsideClick="closeSideBoardMenu"
@@ -62,7 +63,6 @@
   </div>
   <div v-if="isMesswerteDropdownOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[messwerteTextboxContainerRef]"
       :onOutsideClick="closeMesswerteDropdown"
@@ -72,7 +72,6 @@
   </div>
   <div v-if="isMesswerteDropdown1Open">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[navigationIconRef]"
       :onOutsideClick="closeMesswerteDropdown1"
@@ -87,6 +86,8 @@
   import PortalPopup from "../components/PortalPopup.vue";
   import MesswerteDropdown from "../components/MesswerteDropdown.vue";
   import GangAnzeige from "../components/GangAnzeige.vue";
+  import ChartGang from "../components/ChartGang.vue";
+
 
   export default defineComponent({
     name: "Gang",
@@ -97,7 +98,7 @@
         isMesswerteDropdown1Open: false,
       };
     },
-    components: { SideBoardMenu, PortalPopup, MesswerteDropdown, GangAnzeige },
+    components: { SideBoardMenu, PortalPopup, MesswerteDropdown, GangAnzeige, ChartGang },
     methods: {
       openSideBoardMenu() {
         this.isSideBoardMenuOpen = true;
@@ -127,50 +128,16 @@
   });
 </script>
 <style scoped>
-  .verdunklung-hintergrund-effekt {
-    position: absolute;
-    top: 0px;
-    left: 1440px;
-    background-color: var(--color-gray-100);
-    width: 1440px;
-    height: 867px;
-    transform: rotate(180deg);
-    transform-origin: 0 0;
-  }
-  .png-af-it-logo {
-    position: absolute;
-    top: 165.7px;
-    left: 436px;
-    width: 569px;
-    height: 535.6px;
-    object-fit: cover;
-  }
-  .af-it-logo{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: var(--color-darkslategray-200);
-    backdrop-filter: blur(200px);
-    width: 1440px;
-    height: 867px;
-  }
-  .page-hintergrund {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 1440px;
-    height: 867px;
-  }
   .gear-text {
     position: absolute;
     top: 461px;
-    left: 764px;
+    left: 464px;
     font-weight: 300;
   }
   .gear-value {
     position: absolute;
     top: 461px;
-    left: 674px;
+    left: 374px;
     font-size: var(--font-size-131xl);
     font-weight: 300;
   }
@@ -245,15 +212,13 @@
     font-size: var(--font-size-2xl);
     font-family: var(--font-poppins);
   }
-  .gang{
-    position: relative;
-    background-color: var(--color-darkslategray-100);
-    width: 100%;
-    height: 867px;
-    overflow: hidden;
-    text-align: left;
-    font-size: var(--font-size-11xl);
-    color: var(--color-white);
-    font-family: var(--font-sansation-light);
+ 
+
+  .chart-gang {
+    position: absolute;
+    top: 410px;
+    left: 550px;
+    max-width: 100%; 
+    max-height: 100%;
   }
 </style>

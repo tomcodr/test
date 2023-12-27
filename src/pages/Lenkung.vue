@@ -1,14 +1,15 @@
 <template>
-  <div class="lenkung">
+  <div class="page">
     
     <div class="page-hintergrund">
       <div class="verdunklung-hintergrund-effekt" />
-      <img class="af-it-logo" alt="" src="/png-afit-logo@2x.png" />
+      <img class="png-af-it-logo-icon"  src="/png-afit-logo@2x.png" />
       <div class="af-it-logo-effekt" />
     </div>
+
+    <container class = "chart-lenkung"><ChartLenkung/></container>
     
-    <div class="lenkung-value">50</div>
-    <div class="grad-zeichen">°</div>
+    <div class="lenkung-value"><LenkungAnzeige/></div>
     <img
       class="png-auto"
       alt=""
@@ -52,7 +53,6 @@
   
   <div v-if="isSideBoardMenuOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[menuIconRef]"
       :onOutsideClick="closeSideBoardMenu"
@@ -62,7 +62,6 @@
   </div>
   <div v-if="isMesswerteDropdownOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[messwerteTextboxContainerRef]"
       :onOutsideClick="closeMesswerteDropdown"
@@ -72,7 +71,6 @@
   </div>
   <div v-if="isMesswerteDropdown1Open">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[navigationIconRef]"
       :onOutsideClick="closeMesswerteDropdown1"
@@ -86,6 +84,10 @@
   import SideBoardMenu from "../components/SideBoardMenu.vue";
   import PortalPopup from "../components/PortalPopup.vue";
   import MesswerteDropdown from "../components/MesswerteDropdown.vue";
+  import LenkungAnzeige from "../components/LenkungAnzeige.vue";
+  import ChartLenkung from "../components/ChartLenkung.vue";
+
+
 
   export default defineComponent({
     name: "Lenkung",
@@ -96,7 +98,7 @@
         isMesswerteDropdown1Open: false,
       };
     },
-    components: { SideBoardMenu, PortalPopup, MesswerteDropdown },
+    components: { SideBoardMenu, PortalPopup, MesswerteDropdown, LenkungAnzeige, ChartLenkung },
     methods: {
       openSideBoardMenu() {
         this.isSideBoardMenuOpen = true;
@@ -126,50 +128,15 @@
   });
 </script>
 <style scoped>
-  .verdunklung-hintergrund-effekt {
-    position: absolute;
-    top: 0px;
-    left: 1440px;
-    background-color: var(--color-gray-100);
-    width: 1440px;
-    height: 867px;
-    transform: rotate(180deg);
-    transform-origin: 0 0;
-  }
-  .af-it-logo{
-    position: absolute;
-    top: 165.7px;
-    left: 436px;
-    width: 569px;
-    height: 535.6px;
-    object-fit: cover;
-  }
- .af-it-logo-effekt {
-    position: absolute;
-    background-color: var(--color-darkslategray-200);
-    backdrop-filter: blur(200px);
-    width: 1440px;
-    height: 867px;
-  }
-  .page-hintergrund{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 1440px;
-    height: 867px;
-  }
+
   .lenkung-value {
     position: absolute;
     top: 450px;
-    left: 594px;
+    left: 250px;
+    font-size: 150px;
     font-weight: 300;
   }
-  .grad-zeichen {
-    position: absolute;
-    top: 450px;
-    left: 789px;
-    font-weight: 300;
-  }
+ 
   .png-auto {
     position: absolute;
     top: 103px;
@@ -241,15 +208,11 @@
     font-size: var(--font-size-2xl);
     font-family: var(--font-poppins);
   }
-  .lenkung {
-    position: relative;
-    background-color: var(--color-darkslategray-100);
-    width: 100%;
-    height: 867px;
-    overflow: hidden;
-    text-align: left;
-    font-size: var(--font-size-131xl);
-    color: var(--color-white);
-    font-family: var(--font-sansation-light);
+  .chart-lenkung {
+    position: absolute;
+    top: 410px;
+    left: 550px;
+    max-width: 100%; 
+    max-height: 100%;
   }
 </style>

@@ -4,14 +4,14 @@
     
     <div class="page-hintergrund">
       <div class="verdunklung-hintergrund-effekt" />
-      <img class="af-it-logo" alt="" src="/png-afit-logo@2x.png" />
+      <img class="png-af-it-logo-icon"  src="/png-afit-logo@2x.png" />
       <div class="af-it-logo-effekt" />
     </div>
     
-    <div class="tankstand-value">77</div>
+    <div class="tankstand-value"><TankAnzeige/></div>
     <div class="tankstand-prozent">%</div>
     <img class="tank-leiste-hintergrund" alt="" src="/tank-hintergrund.svg" />
-    <img class="tank-aktuell-leiste" alt="" src="/tank-aktuell.svg" />
+    <img class="tank-aktuell-leiste" alt="" src="/tankbalken-aktuell.svg" />
     
     <img
       class="auto-dashboard"
@@ -54,7 +54,6 @@
   
   <div v-if="isSideBoardMenuOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[menuIconRef]"
       :onOutsideClick="closeSideBoardMenu"
@@ -64,7 +63,6 @@
   </div>
   <div v-if="isMesswerteDropdownOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[messwerteTextboxContainerRef]"
       :onOutsideClick="closeMesswerteDropdown"
@@ -74,7 +72,6 @@
   </div>
   <div v-if="isMesswerteDropdown1Open">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[navigationIconRef]"
       :onOutsideClick="closeMesswerteDropdown1"
@@ -88,6 +85,7 @@
   import SideBoardMenu from "../components/SideBoardMenu.vue";
   import PortalPopup from "../components/PortalPopup.vue";
   import MesswerteDropdown from "../components/MesswerteDropdown.vue";
+  import TankAnzeige from "../components/TankAnzeige.vue";
 
   export default defineComponent({
     name: "Tank",
@@ -98,7 +96,7 @@
         isMesswerteDropdown1Open: false,
       };
     },
-    components: { SideBoardMenu, PortalPopup, MesswerteDropdown },
+    components: { SideBoardMenu, PortalPopup, MesswerteDropdown, TankAnzeige },
     methods: {
       openSideBoardMenu() {
         this.isSideBoardMenuOpen = true;
@@ -128,40 +126,6 @@
   });
 </script>
 <style scoped>
-  .verdunklung-hintergrund-effekt {
-    position: absolute;
-    top: 0px;
-    left: 1440px;
-    background-color: var(--color-gray-100);
-    width: 1440px;
-    height: 867px;
-    transform: rotate(180deg);
-    transform-origin: 0 0;
-  }
-  .af-it-logo {
-    position: absolute;
-    top: 165.7px;
-    left: 436px;
-    width: 569px;
-    height: 535.6px;
-    object-fit: cover;
-  }
-  .af-it-logo-effekt {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: var(--color-darkslategray-200);
-    backdrop-filter: blur(200px);
-    width: 1440px;
-    height: 867px;
-  }
-  .page-hintergrund {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 1440px;
-    height: 867px;
-  }
   .tankstand-value {
     position: absolute;
     top: 426px;
@@ -188,7 +152,7 @@
     top: 654px;
     left: 128px;
     border-radius: var(--br-37xl);
-    width: 843px;
+    width: 1185px;
     height: 103px;
   }
   .auto-dashboard {

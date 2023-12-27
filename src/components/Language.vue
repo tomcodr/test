@@ -1,6 +1,5 @@
 <template>
   <div class="language">
-    
     <div class="background-green" />
     <div class="text-espanol">
       <p class="espanol">Español</p>
@@ -14,15 +13,22 @@
       class="x-schliefunktion-sprachen-icon"
       alt=""
       src="/x-schliefunktion-sprachen.svg"
+      @click="schließeLanguage"
     />
   </div>
 </template>
-<script>
-  import { defineComponent } from "vue";
 
-  export default defineComponent({
-    name: "Language",
-  });
+<script>
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "Language",
+  methods: {
+    schließeLanguage() {
+      this.$emit("close");
+    },
+  },
+});
 </script>
 <style scoped>
   .background-green {
@@ -95,7 +101,9 @@
     overflow: hidden;
   }
   .language {
-    position: relative;
+    position: absolute;
+    top: 520px;
+    right: 150px;
     width: 349px;
     height: 249px;
     max-width: 100%;

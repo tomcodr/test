@@ -1,12 +1,15 @@
 <template>
-  <div class="bremsen">
+  
+  <div class="page">
     
     <div class="page-hintergrund">
       <div class="verdunklung-hintergrund-effekt" />
-      <img class="af-it-logo" alt="" src="/png-afit-logo@2x.png" />
+      <img class="png-af-it-logo-icon"  src="/png-afit-logo@2x.png" />
       <div class="af-it-logo-effekt" />
     </div>
     
+
+    <container class = "chart-bremstemperaturen"><ChartBremstemperaturen/></container>
     <div class="auto-titel">Porsche 911</div>
     
     <img
@@ -20,10 +23,10 @@
     <img class="dreieck-vr-icon" alt="" src="/dreieck-hr.svg" />
     <img class="dreieck-vl-icon" alt="" src="/dreieck-hl.svg" />
     
-    <div class="reifen-hr-value">5°C</div>
-    <div class="reifen-hl-value">10°C</div>
-    <div class="reifen-vr-value">89°C</div>
-    <div class="reifen-vl-value">90°C</div>
+    <div class="reifen-hr-value"><RRTempBremse/></div>
+    <div class="reifen-hl-value"><RLTempBremse/></div>
+    <div class="reifen-vr-value"><FRTempBremse/></div>
+    <div class="reifen-vl-value"><FLTempBremse/></div>
     
     <div class="bremsen-header">
       
@@ -59,7 +62,6 @@
   </div>
   <div v-if="isSideBoardMenuOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[menuIconRef]"
       :onOutsideClick="closeSideBoardMenu"
@@ -69,7 +71,6 @@
   </div>
   <div v-if="isMesswerteDropdownOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[messwerteTextboxContainerRef]"
       :onOutsideClick="closeMesswerteDropdown"
@@ -79,7 +80,6 @@
   </div>
   <div v-if="isMesswerteDropdown1Open">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[navigationIconRef]"
       :onOutsideClick="closeMesswerteDropdown1"
@@ -93,6 +93,11 @@
   import SideBoardMenu from "../components/SideBoardMenu.vue";
   import PortalPopup from "../components/PortalPopup.vue";
   import MesswerteDropdown from "../components/MesswerteDropdown.vue";
+  import FLTempBremse from "../components/FLTempBremse.vue";
+  import RLTempBremse from "../components/RLTempBremse.vue";
+  import FRTempBremse from "../components/FRTempBremse.vue";
+  import RRTempBremse from "../components/RRTempBremse.vue";
+  import ChartBremstemperaturen from "../components/ChartBremstemperaturen.vue";
 
   export default defineComponent({
     name: "Bremsen",
@@ -103,7 +108,7 @@
         isMesswerteDropdown1Open: false,
       };
     },
-    components: { SideBoardMenu, PortalPopup, MesswerteDropdown },
+    components: { SideBoardMenu, PortalPopup, MesswerteDropdown, FLTempBremse, RLTempBremse, FRTempBremse, RRTempBremse, ChartBremstemperaturen },
     methods: {
       openSideBoardMenu() {
         this.isSideBoardMenuOpen = true;
@@ -133,40 +138,7 @@
   });
 </script>
 <style scoped>
-  .verdunklung-hintergrund-effekt {
-    position: absolute;
-    top: 0px;
-    left: 1440px;
-    background-color: var(--color-gray-100);
-    width: 1440px;
-    height: 867px;
-    transform: rotate(180deg);
-    transform-origin: 0 0;
-  }
-  .af-it-logo {
-    position: absolute;
-    top: 165.7px;
-    left: 436px;
-    width: 569px;
-    height: 535.6px;
-    object-fit: cover;
-  }
-  .af-it-logo-effekt{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: var(--color-darkslategray-200);
-    backdrop-filter: blur(200px);
-    width: 1440px;
-    height: 867px;
-  }
-  .page-hintergrund {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 1440px;
-    height: 867px;
-  }
+
   .auto-titel {
     position: absolute;
     top: 82px;
@@ -178,7 +150,7 @@
   .porsche-von-oben {
     position: absolute;
     top: 209px;
-    left: 503px;
+    left: 203px;
     width: 435px;
     height: 498px;
     object-fit: cover;
@@ -186,7 +158,7 @@
   .dreieck-hr-icon {
     position: absolute;
     top: 558.2px;
-    left: 824.6px;
+    left: 524.6px;
     border-radius: var(--br-xl);
     width: 46.5px;
     height: 15.9px;
@@ -194,7 +166,7 @@
   .dreieck-hl-icon {
     position: absolute;
     top: 556.2px;
-    left: 567.3px;
+    left: 267.3px;
     border-radius: var(--br-xl);
     width: 46.5px;
     height: 15.9px;
@@ -202,7 +174,7 @@
   .dreieck-vr-icon {
     position: absolute;
     top: 313.2px;
-    left: 819.6px;
+    left: 519.6px;
     border-radius: var(--br-xl);
     width: 46.5px;
     height: 15.9px;
@@ -210,7 +182,7 @@
   .dreieck-vl-icon {
     position: absolute;
     top: 311.2px;
-    left: 575.3px;
+    left: 275.3px;
     border-radius: var(--br-xl);
     width: 46.5px;
     height: 15.9px;
@@ -218,7 +190,7 @@
   .reifen-hr-value {
     position: absolute;
     top: 547px;
-    left: 877px;
+    left: 577px;
     font-weight: 300;
     display: inline-block;
     width: 99px;
@@ -227,7 +199,7 @@
   .reifen-hl-value {
     position: absolute;
     top: 543px;
-    left: 468px;
+    left: 168px;
     font-weight: 300;
     display: inline-block;
     width: 99px;
@@ -236,7 +208,7 @@
   .reifen-vr-value {
     position: absolute;
     top: 302px;
-    left: 877px;
+    left: 577px;
     font-weight: 300;
     display: inline-block;
     width: 99px;
@@ -245,9 +217,8 @@
   .reifen-vl-value {
     position: absolute;
     top: 298px;
-    left: 476px;
+    left: 176px;
     font-weight: 300;
-    color: #e70000;
     display: inline-block;
     width: 99px;
     height: 43px;
@@ -307,15 +278,12 @@
     font-size: var(--font-size-2xl);
     font-family: var(--font-poppins);
   }
-  .bremsen {
-    position: relative;
-    background-color: var(--color-darkslategray-100);
-    width: 100%;
-    height: 866px;
-    overflow: hidden;
-    text-align: left;
-    font-size: var(--font-size-21xl);
-    color: var(--color-white);
-    font-family: var(--font-sansation-light);
+  
+  .chart-bremstemperaturen {
+    position: absolute;
+    top: 280px;
+    left: 700px;
+    max-width: 100%; 
+    max-height: 100%;
   }
 </style>

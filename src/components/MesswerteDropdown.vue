@@ -2,20 +2,16 @@
   <div class="messwerte-dropdown">
    
     <div class="trips-text" @click="onTripsTextClick">Trips</div>
-    <div class="rder-text" @click="onRderTextClick">Räder</div>
     <div class="motor-text" @click="onMotorTextClick">Motor</div>
     <div class="lenkung-text" @click="onLenkungTextClick">Lenkung</div>
     <div class="tank-text" @click="onTankTextClick">Tank</div>
     <div class="gang-text" @click="onGangTextClick">Gang</div>
-    <div class="bremsen-text" @click="onBremsenTextClick">Bremsen</div>
-    <div class="geschwindigkeit-text" @click="onGeschwindigkeitTextClick">
-      Geschwindigkeit
-    </div>
-    <div class="oelwasser-text" @click="onOeLWasserTextClick">
-      Öl/Wasser Temperatur
-    </div>
+    <div class="bremsen-text" @click="onBremsenTextClick">Bremstemperaturen</div>
+    <div class="geschwindigkeit-text" @click="onGeschwindigkeitTextClick"> Geschwindigkeit</div>
+    <div class="oelwasser-text" @click="onOeLWasserTextClick"> Öl/Wasser Temperatur </div>
     
     <div class="drehzahl-text" @click="onDrehzahlTextClick">Drehzahl</div>
+    <div class="hoehe-text" @click="onHoeheTextClick">Höhe</div>
   
   </div>
 
@@ -26,6 +22,9 @@
   export default defineComponent({
     name: "MesswerteDropdown",
     methods: {
+      onHoeheTextClick() {
+        this.$router.push("/hoehe");
+      },
       onTripsTextClick() {
         this.$router.push("/trips");
       },
@@ -60,7 +59,7 @@
   });
 </script>
 <style scoped>
-  .trips-text {
+ .hoehe-text {
     position: absolute;
     height: 7%;
     width: 25%;
@@ -69,15 +68,16 @@
     display: inline-block;
     cursor: pointer;
   }
-  .rder-text {
+  .trips-text {
     position: absolute;
     height: 7%;
     width: 25%;
-    top: 80.59%;
+    top: 80.29%;
     left: 7.5%;
     display: inline-block;
     cursor: pointer;
   }
+
   .motor-text {
     position: absolute;
     height: 6.77%;
@@ -173,7 +173,7 @@
     left: 1000px;
     width: 280px;
     height: 443px;
-    overflow: hidden;
+    overflow: auto;
     max-width: 100%;
     max-height: 100%;
     text-align: left;

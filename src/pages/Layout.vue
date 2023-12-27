@@ -1,5 +1,5 @@
 <template>
-  <div class="layout" :class="{ dark: isDark }">
+  <div class="layout">
     <div class="background" />
     <div class="af-it-logo-effekt" />
     <img
@@ -41,7 +41,6 @@
 </div>
   <div v-if="isSideBoardMenuOpen">
     <PortalPopup
-      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[sIDEBOARDOPENERIconRef]"
       :onOutsideClick="closeSideBoardMenu"
@@ -54,7 +53,7 @@
   import { defineComponent } from "vue";
   import SideBoardMenu from "../components/SideBoardMenu.vue";
   import PortalPopup from "../components/PortalPopup.vue";
-  import ToggleSwitch from "../components/ToggleSwitch.vue";
+  
   
 
 
@@ -63,7 +62,7 @@
     data() {
       return { isSideBoardMenuOpen: false };
     },
-    components: { SideBoardMenu, PortalPopup, ToggleSwitch },
+    components: { SideBoardMenu, PortalPopup },
     computed: {
     isDark() {
       return this.$data.isDark;
@@ -86,12 +85,7 @@
   });
 </script>
 <style scoped>
- /* Your existing styles for the layout */
-.layout.dark {
-  /* Add styles for dark mode here */
-  background-color: #1a1a1a; /* Change this to your dark background color */
-  color: #fff; /* Change this to your dark text color */
-}
+
   .af-it-logo-effekt {
     position: absolute;
     top: 0px;
