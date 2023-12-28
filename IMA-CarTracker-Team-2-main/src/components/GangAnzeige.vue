@@ -1,0 +1,43 @@
+<template>
+  <b class="gang-value">{{ gearValue !== null ? gearValue : 'N/A' }}</b>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      gearValue: null,
+    };
+  },
+  methods: {
+    async fetchGearValue() {
+      try {
+        const response = await fetch("https://cartrackerapi.onrender.com/api/v1/fahrzeuge/1/messwerte?type=gear_index");
+        const data = await response.json();
+
+        if (data.messwerte && data.messwerte.length > 0) {
+          const gearValue = data.messwerte[0]?.gear_index;
+          if (gearValue !== undefined && gearValue !== null) {
+            this.gearValue = gearValue;
+          } else {
+            console.error("Ungültiger oder fehlender Wert für gear_index:", gearValue);
+            // Setze gearValue auf null, um "N/A" anzuzeigen
+            this.gearValue = null;
+          }
+        } else {
+          console.error("Leere oder ungültige Daten für gear_index:", data.messwerte);
+          // Setze gearValue auf null, um "N/A" anzuzeigen
+          this.gearValue = null;
+        }
+      } catch (error) {
+        console.error("Fehler beim Laden der Gangdaten:", error);
+        // Setze gearValue auf null, um "N/A" anzuzeigen
+        this.gearValue = null;
+      }
+    },
+  },
+  mounted() {
+    this.fetchGearValue();
+  },
+};
+</script>

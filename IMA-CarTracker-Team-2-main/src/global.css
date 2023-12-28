@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+@font-face {
+  font-family: "Sansation Light";
+  src: url("/public/Sansation Light Light.ttf");
+  font-weight: 300;
+}
+
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-poppins: Poppins;
+  --font-manrope: Manrope;
+  --font-sansation-light: "Sansation Light";
+  --text-caption-caption1-roboto-regular: Roboto;
+
+  /* font sizes */
+  --font-size-2xl: 21px;
+  --font-size-lg: 18px;
+  --font-size-base: 16px;
+  --font-size-xl: 20px;
+  --font-size-3xs: 10px;
+  --font-size-11xl: 30px;
+  --text-caption-caption1-roboto-regular-size: 12px;
+  --font-size-mid: 17px;
+  --font-size-21xl: 40px;
+  --font-size-6xl: 25px;
+  --font-size-mini: 15px;
+  --font-size-131xl: 150px;
+  --text-body-body2-roboto-regular-size: 14px;
+
+  /* Colors */
+  --color-darkslategray-100: #454343;
+  --color-darkslategray-200: rgba(53, 53, 53, 0.6);
+  --color-white: #fff;
+  --color-gray-100: #2a2a2a;
+  --color-gray-200: #0b0b0b;
+  --color-gray-300: rgba(255, 255, 255, 0.5);
+  --color-gray-400: rgba(255, 255, 255, 0);
+  --color-darkolivegreen-100: #426b1f;
+  --color-darkolivegreen-200: #2b3f00;
+  --color-dimgray-100: #666;
+  --color-dimgray-200: #555;
+
+  /* Border radiuses */
+  --br-37xl: 56px;
+  --br-xl: 20px;
+  --br-21xl: 40px;
+  --br-9xs: 4px;
+}

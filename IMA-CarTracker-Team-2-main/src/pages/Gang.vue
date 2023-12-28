@@ -1,21 +1,24 @@
-<template>    
-  <div class="fahrzeuge">
+<template>
+  <div class="gang">
     
     <div class="page-hintergrund">
       <div class="verdunklung-hintergrund-effekt" />
       <img class="png-af-it-logo" alt="" src="/png-afit-logo@2x.png" />
-      <div class="af-it-logo-effekt" />
+      <div class="af-it-logo" />
     </div>
-    
-    <img class="plus-icon" alt="" src="/plus.svg" @click="onPlusClick" />
-    
-    <div class="fahrzeug-hinzufuegen-text">Fahrzeug hinzufügen</div>
    
-<CarouselExample/>
-
-
-
-    <div class="fahrzeuge-header">
+    <div class="gear-text">GEAR</div>
+    <div class="gear-value"><GangAnzeige/></div>
+    <img
+      class="png-auto-dashboard"
+      alt=""
+      src="/png-auto-dashboard@2x.png"
+    />
+    
+    <div class="auto-titel">Porsche 911</div>
+    
+    <div class="gear-header">
+      
       <img
         class="menu-icon"
         alt=""
@@ -28,14 +31,15 @@
         src="/profil-icon.svg"
         @click="onProfilIconClick"
       />
-     <div class="messwerte-textbox" :onClick="openMesswerteDropdown">Messwerte</div>
+      
+      <div class="messwerte-textbox" :onClick="openMesswerteDropdown">Messwerte</div>
+      
       <img
         class="navigation-icon"
         alt=""
         src="/navigation-icon.svg"
         :onClick="openMesswerteDropdown1"
       />
-      <div class="header-titel">Fahrzeuge</div>
       <img
         class="cartracker-logo"
         alt=""
@@ -48,6 +52,7 @@
   
   <div v-if="isSideBoardMenuOpen">
     <PortalPopup
+      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[menuIconRef]"
       :onOutsideClick="closeSideBoardMenu"
@@ -57,6 +62,7 @@
   </div>
   <div v-if="isMesswerteDropdownOpen">
     <PortalPopup
+      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[messwerteTextboxContainerRef]"
       :onOutsideClick="closeMesswerteDropdown"
@@ -66,6 +72,7 @@
   </div>
   <div v-if="isMesswerteDropdown1Open">
     <PortalPopup
+      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[navigationIconRef]"
       :onOutsideClick="closeMesswerteDropdown1"
@@ -79,10 +86,10 @@
   import SideBoardMenu from "../components/SideBoardMenu.vue";
   import PortalPopup from "../components/PortalPopup.vue";
   import MesswerteDropdown from "../components/MesswerteDropdown.vue";
-  import CarouselExample from "../components/CarouselExample.vue";
+  import GangAnzeige from "../components/GangAnzeige.vue";
 
   export default defineComponent({
-    name: "Fahrzeuge",
+    name: "Gang",
     data() {
       return {
         isSideBoardMenuOpen: false,
@@ -90,20 +97,8 @@
         isMesswerteDropdown1Open: false,
       };
     },
-    components: { SideBoardMenu, PortalPopup, MesswerteDropdown, CarouselExample},
+    components: { SideBoardMenu, PortalPopup, MesswerteDropdown, GangAnzeige },
     methods: {
-      onPlusClick() {
-        this.$router.push("/fahrzeughinzufuegen");
-      },
-      onPNGFahrzeug3ImageClick() {
-        this.$router.push("/");
-      },
-      onPNGFahrzeug2ImageClick() {
-        this.$router.push("/");
-      },
-      onPNGFahrzeug1ImageClick() {
-        this.$router.push("/");
-      },
       openSideBoardMenu() {
         this.isSideBoardMenuOpen = true;
       },
@@ -150,7 +145,7 @@
     height: 535.6px;
     object-fit: cover;
   }
-  .af-it-logo-effekt{
+  .af-it-logo{
     position: absolute;
     top: 0px;
     left: 0px;
@@ -166,21 +161,36 @@
     width: 1440px;
     height: 867px;
   }
-  .plus-icon {
+  .gear-text {
     position: absolute;
-    top: 728.5px;
-    left: 1174px;
-    width: 85.5px;
-    height: 85.5px;
-    overflow: hidden;
-    cursor: pointer;
+    top: 461px;
+    left: 764px;
+    font-weight: 300;
   }
-  .fahrzeug-hinzufuegen-text {
+  .gear-value {
     position: absolute;
-    top: 87.18%;
-    left: 65.76%;
+    top: 461px;
+    left: 674px;
+    font-size: var(--font-size-131xl);
+    font-weight: 300;
   }
-  
+  .png-auto-dashboard {
+    position: absolute;
+    top: 103px;
+    left: 385px;
+    width: 670px;
+    height: 287px;
+    object-fit: cover;
+    opacity: 0.7;
+  }
+  .auto-titel {
+    position: absolute;
+    top: 82px;
+    left: 652px;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    font-family: var(--font-poppins);
+  }
   .menu-icon {
     position: absolute;
     top: 21px;
@@ -217,13 +227,6 @@
     overflow: hidden;
     cursor: pointer;
   }
-  .header-titel {
-    position: absolute;
-    top: 26.87%;
-    left: 46.71%;
-    font-size: var(--font-size-lg);
-    font-weight: 600;
-  }
   .cartracker-logo {
     position: absolute;
     top: 0px;
@@ -233,22 +236,24 @@
     object-fit: cover;
     cursor: pointer;
   }
-  .fahrzeuge-header {
+  .gear-header {
     position: absolute;
     top: 62px;
     left: 174px;
     width: 1064px;
     height: 67px;
+    font-size: var(--font-size-2xl);
+    font-family: var(--font-poppins);
   }
-  .fahrzeuge {
+  .gang{
     position: relative;
     background-color: var(--color-darkslategray-100);
     width: 100%;
-    height: 866px;
+    height: 867px;
     overflow: hidden;
     text-align: left;
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-11xl);
     color: var(--color-white);
-    font-family: var(--font-poppins);
+    font-family: var(--font-sansation-light);
   }
 </style>

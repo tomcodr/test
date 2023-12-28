@@ -1,10 +1,8 @@
 import { createApp } from "vue";
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory, RouterView } from "vue-router"; // Füge RouterView hinzu
 import App from "./App.vue";
 
 import HomeDashboardHybrid from "./pages/HomeDashboardHybrid.vue";
-import HomeDashboardElektrisch from "./pages/HomeDashboardElektrisch.vue";
-import HomeDashboardOtto from "./pages/HomeDashboardOtto.vue";
 import Fahrzeuge from "./pages/Fahrzeuge.vue";
 import Profil from "./pages/Profil.vue";
 import FahrzeugHinzufuegen from "./pages/FahrzeugHinzufuegen.vue";
@@ -27,125 +25,175 @@ import Motor from "./pages/Motor.vue";
 import Hoehe from "./pages/Hoehe.vue";
 
 
+
 import "./global.css";
+import i18n from './i18n';  // Anpassen des Pfads entsprechend deiner Ordnerstruktur
+
+
 
 const routes = [
   {
-    path: "/",
-    name: "HomeDashboardHybrid",
-    component: HomeDashboardHybrid,
-  },
-  {
-    path: "/home-dashboard-elektrisch",
-    name: "HomeDashboardElektrisch",
-    component: HomeDashboardElektrisch,
-  },
-  {
-    path: "/home-dashboard-otto",
-    name: "HomeDashboardOtto",
-    component: HomeDashboardOtto,
-  },
-  {
-    path: "/fahrzeuge",
-    name: "Fahrzeuge",
-    component: Fahrzeuge,
-  },
-  {
-    path: "/profil",
-    name: "Profil",
-    component: Profil,
-  },
-  {
-    path: "/fahrzeughinzufuegen",
-    name: "FahrzeugHinzufuegen",
-    component: FahrzeugHinzufuegen,
-  },
-  {
-    path: "/loggedout",
-    name: "LoggedOut",
-    component: LoggedOut,
-  },
-  {
-    path: "/sideboard-loggedout",
-    name: "SideBoardLoggedOut",
-    component: SideBoardLoggedOut,
-  },
-  {
-    path: "/login",
-    name: "LogIn",
-    component: LogIn,
-  },
-  {
-    path: "/register",
-    name: "Register",
-    component: Register,
-  },
-  {
-    path: "/hilfe-logged-in",
-    name: "HilfeLoggedIn",
-    component: HilfeLoggedIn,
-  },
-  {
-    path: "/hilfe-logged-out",
-    name: "HilfeLoggedOut",
-    component: HilfeLoggedOut,
-  },
-  {
-    path: "/layout",
-    name: "Layout",
-    component: Layout,
-  },
-  {
-    path: "/gang",
-    name: "Gang",
-    component: Gang,
-  },
-  {
-    path: "/lenkung",
-    name: "Lenkung",
-    component: Lenkung,
-  },
-  {
-    path: "/drehzahl",
-    name: "Drehzahl",
-    component: Drehzahl,
-  },
-  {
-    path: "/geschwindigkeit",
-    name: "Geschwindigkeit",
-    component: Geschwindigkeit,
-  },
-  {
-    path: "/tank",
-    name: "Tank",
-    component: Tank,
-  },
-  {
-    path: "/temperaturen",
-    name: "Temperaturen",
-    component: Temperaturen,
-  },
-  {
-    path: "/trips",
-    name: "Trips",
-    component: Trips,
-  },
-  {
-    path: "/bremsen",
-    name: "Bremsen",
-    component: Bremsen,
-  },
-  {
-    path: "/motor",
-    name: "Motor",
-    component: Motor,
-  },
-  {
-    path: "/hoehe",
-    name: "Hoehe",
-    component: Hoehe,
-  },
+    path: "/:lang?",
+    component: RouterView,
+    children: [{
+      path: "",
+      name: "HomeDashboardHybrid",
+      component: HomeDashboardHybrid,
+      meta: {
+        title: "Dashboard"
+      },
+    },
+    {
+      path: "fahrzeuge",
+      name: "Fahrzeuge",
+      component: Fahrzeuge,
+      meta: {
+        title: "Fahrzeuge"
+      },
+    },
+    {
+      path: "profil",
+      name: "Profil",
+      component: Profil,
+      meta: {
+        title: "Benutzerprofil"
+      },
+    },
+    {
+      path: "fahrzeughinzufuegen",
+      name: "FahrzeugHinzufuegen",
+      component: FahrzeugHinzufuegen,
+      meta: {
+        title: "Hinzufügen eines neuen Fahrzeugs"
+      },
+    },
+    {
+      path: "loggedout",
+      name: "LoggedOut",
+      component: LoggedOut,
+      meta: {
+        title: "Ausgeloggt"
+      },
+    },
+    {
+      path: "sideboard-loggedout",
+      name: "SideBoardLoggedOut",
+      component: SideBoardLoggedOut,
+    },
+    {
+      path: "login",
+      name: "LogIn",
+      component: LogIn,
+    },
+    {
+      path: "register",
+      name: "Register",
+      component: Register,
+    },
+    {
+      path: "hilfe-logged-in",
+      name: "HilfeLoggedIn",
+      component: HilfeLoggedIn,
+    },
+    {
+      path: "hilfe-logged-out",
+      name: "HilfeLoggedOut",
+      component: HilfeLoggedOut,
+    },
+    {
+      path: "layout",
+      name: "Layout",
+      component: Layout,
+      meta: {
+        title: "Layout"
+      },
+    },
+    {
+      path: "gang",
+      name: "Gang",
+      component: Gang,
+      meta: {
+        title: "Gang"
+      },
+    },
+    {
+      path: "lenkung",
+      name: "Lenkung",
+      component: Lenkung,
+      meta: {
+        title: "Lenkung"
+      },
+    },
+    {
+      path: "drehzahl",
+      name: "Drehzahl",
+      component: Drehzahl,
+      meta: {
+        title: "Drehzahl"
+      },
+    },
+    {
+      path: "geschwindigkeit",
+      name: "Geschwindigkeit",
+      component: Geschwindigkeit,
+      meta: {
+        title: "Geschwindigkeit"
+      },
+    },
+    {
+      path: "tank",
+      name: "Tank",
+      component: Tank,
+      meta: {
+        title: "Tank"
+      },
+    },
+    {
+      path: "temperaturen",
+      name: "Temperaturen",
+      component: Temperaturen,
+      meta: {
+        title: "Öl und Wassertemperatur"
+      },
+    },
+    {
+      path: "trips",
+      name: "Trips",
+      component: Trips,
+      meta: {
+        title: "Trips"
+      },
+    },
+    {
+      path: "bremsen",
+      name: "Bremsen",
+      component: Bremsen,
+      meta: {
+        title: "Bremstemperaturen"
+      },
+    },
+    {
+      path: "motor",
+      name: "Motor",
+      component: Motor,
+      meta: {
+        title: "Motor"
+      },
+    },
+    {
+      path: "hoehe",
+      name: "Hoehe",
+      component: Hoehe,
+      meta: {
+        title: "Höhe"
+      },
 
+    },
+
+
+
+    ]
+  },
 ];
 
 const router = createRouter({
@@ -153,7 +201,14 @@ const router = createRouter({
   routes,
 });
 
+
+
+
+// Setze die ausgewählte Sprache in der Anwendung
 router.beforeEach((toRoute, fromRoute, next) => {
+  const lang = toRoute.params.lang || 'de'; // Standardmäßig auf Deutsch
+  i18n.global.locale.value = lang;
+
   const documentTitle =
     toRoute?.meta && toRoute?.meta?.title ? toRoute?.meta?.title : "CT_AF-IT";
   window.document.title = documentTitle;
@@ -174,6 +229,8 @@ const addMetaTag = (value) => {
   }
 };
 
-createApp(App).use(router).mount("#app");
+createApp(App).use(i18n).use(router).mount("#app");
 
 export default router;
+
+

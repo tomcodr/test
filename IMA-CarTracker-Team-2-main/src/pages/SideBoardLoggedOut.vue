@@ -1,16 +1,16 @@
 <template>
   
-  <div v-if="zeigeKomponente" class="sideboard-menu">
+  <div class="sideboard-loggedout">
     
     <div class="men-footer">
       <div class="footer-hintergrund" />
       <div class="af-it">
-        <div class="bottom-text">© 2023 AF-IT</div>
+        <div class="hilfe-text">© 2023 AF-IT</div>
       </div>
       <img
-        class="de-flagge"
+        class="png-de-flagge-icon"
         alt=""
-        :src="getFlagPath()"
+        src="/png-de-flagge@2x.png"
         :onClick="openLanguage"
       />
       <img
@@ -19,42 +19,32 @@
         src="/png-cartracker-logo@2x.png"
         @click="onPNGCartrackerLogoImageClick"
       />
-    
     </div>
     
     <div class="logout" @click="onLogOutContainerClick">
       <div class="logout-text">LogOut</div>
     </div>
-    
     <div class="hilfe" @click="onHilfeContainerClick">
       <div class="hilfe-text">Hilfe</div>
     </div>
-    
-    <div class="layout" @click="onLayoutKastenContainerClick">
-      <div class="layout-text">Layout</div>
-    
+    <div class="layout-kasten" @click="onLayoutKastenContainerClick">
+      <div class="hilfe-text">Layout</div>
     </div>
-    
-    <div class="fahrzeuge" @click="onFahrzeugeKastenContainerClick">
-      <div class="fahrzeuge-text">Fahrzeuge</div>
+    <div class="fahrzeuge-kasten" @click="onFahrzeugeKastenContainerClick">
+      <div class="hilfe-text">Fahrzeuge</div>
     </div>
-    
-    <img 
-      class="x-schliefunktion" 
+    <img
+      class="x-schliefunktion-men-icon"
       alt=""
       src="/x-schliefunktion-men.svg"
-      @click="closeSideboardMenu"
     />
-    <div class="menue">
-      <b class="menue-text">Menü</b>
+    <div class="men-kasten">
+      <b class="hilfe-text">Menü</b>
     </div>
-  
   </div>
-  
-
-  
   <div v-if="isLanguageOpen">
     <PortalPopup
+      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[pNGDEFlaggeIconRef]"
       :onOutsideClick="closeLanguage"
@@ -63,26 +53,18 @@
     </PortalPopup>
   </div>
 </template>
-
-
 <script>
   import { defineComponent } from "vue";
-  import Language from "./Language.vue";
-  import PortalPopup from "./PortalPopup.vue";
+  import Language from "../components/Language.vue";
+  import PortalPopup from "../components/PortalPopup.vue";
 
   export default defineComponent({
-    name: "SideBoardMenu",
+    name: "SideBoardLoggedOut",
     data() {
-      return {zeigeKomponente: true, isLanguageOpen: false, currentLocale: "de", };
+      return { isLanguageOpen: false };
     },
     components: { Language, PortalPopup },
     methods: {
-      getFlagPath(){
-        return `/png-${this.currentLocale}-flagge@2x.png`;
-      },
-      closeSideboardMenu() {
-        this.zeigeKomponente = false;
-    },
       openLanguage() {
         this.isLanguageOpen = true;
       },
@@ -108,7 +90,7 @@
   });
 </script>
 <style scoped>
-  .footer-hintergrund{
+  .footer-hintergrund {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -116,19 +98,14 @@
     width: 587px;
     height: 222px;
   }
-  .bottom-text {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-  }
-  .af-it{
+  .af-it {
     position: absolute;
     top: 160px;
     left: 478px;
     width: 120px;
     height: 15px;
   }
-  .de-flagge {
+  .png-de-flagge-icon {
     position: absolute;
     top: 155px;
     left: 44px;
@@ -153,16 +130,8 @@
     width: 598px;
     height: 222px;
     font-size: var(--font-size-3xs);
-    user-select: none;
   }
   .logout-text {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    font-weight: 600;
-  }
-
-  .hilfe-text {
     position: absolute;
     top: 0%;
     left: 0%;
@@ -176,22 +145,12 @@
     height: 32px;
     cursor: pointer;
   }
-  .logout:hover {
-  color: #426b1f; 
-  filter: brightness(0.9);
-}
-
-  .layout-text {
+  .hilfe-text {
     position: absolute;
     top: 0%;
     left: 0%;
-    font-weight: 600;
   }
-  .layout-text:hover {
-  color: #426b1f; 
-  filter: brightness(0.9);
-}
-  .hilfe{
+  .hilfe {
     position: absolute;
     top: 384px;
     left: 201px;
@@ -199,11 +158,7 @@
     height: 32px;
     cursor: pointer;
   }
-  .hilfe:hover {
-  color: #426b1f; 
-  filter: brightness(0.9);
-}
-  .layout {
+  .layout-kasten {
     position: absolute;
     top: 337px;
     left: 201px;
@@ -211,7 +166,7 @@
     height: 32px;
     cursor: pointer;
   }
-  .fahrzeuge {
+  .fahrzeuge-kasten {
     position: absolute;
     top: 292px;
     left: 201px;
@@ -219,58 +174,28 @@
     height: 32px;
     cursor: pointer;
   }
-
-  .fahrzeuge-text {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    font-weight: 600;
-  }
-  .fahrzeuge-text:hover {
-  color: #426b1f; 
-  filter: brightness(0.9);
-}
-  .x-schliefunktion {
+  .x-schliefunktion-men-icon {
     position: absolute;
     top: 53px;
     left: 473px;
     width: 24px;
     height: 24px;
     overflow: hidden;
-    cursor: pointer;
   }
-  .x-schliefunktion:hover {
-  color: #426b1f; 
-  filter: brightness(0.5);
-}
-  .menue {
+  .men-kasten {
     position: absolute;
     top: 53px;
     left: 65px;
     width: 108px;
     height: 32px;
     font-size: var(--font-size-11xl);
-    user-select: none;
   }
-
-  .menue-text {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    font-weight: 600;
-  }
-
-  
-  .sideboard-menu {
-    position: absolute;
-    top:0;
-    right:0;
+  .sideboard-loggedout {
+    position: relative;
     background-color: var(--color-darkolivegreen-200);
-    width: 587px;
+    width: 41.5%;
     height: 867px;
-    overflow: auto;
-    max-width: 100%;
-    max-height: 100%;
+    overflow: hidden;
     text-align: left;
     font-size: var(--font-size-2xl);
     color: var(--color-white);

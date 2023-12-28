@@ -1,6 +1,6 @@
 <template>
   
-  <div v-if="zeigeKomponente" class="sideboard-menu">
+  <div class="sideboard-menu">
     
     <div class="men-footer">
       <div class="footer-hintergrund" />
@@ -10,7 +10,7 @@
       <img
         class="de-flagge"
         alt=""
-        :src="getFlagPath()"
+        src="/png-de-flagge@2x.png"
         :onClick="openLanguage"
       />
       <img
@@ -39,7 +39,7 @@
       <div class="fahrzeuge-text">Fahrzeuge</div>
     </div>
     
-    <img 
+    <img
       class="x-schliefunktion" 
       alt=""
       src="/x-schliefunktion-men.svg"
@@ -51,10 +51,9 @@
   
   </div>
   
-
-  
   <div v-if="isLanguageOpen">
     <PortalPopup
+      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[pNGDEFlaggeIconRef]"
       :onOutsideClick="closeLanguage"
@@ -63,8 +62,6 @@
     </PortalPopup>
   </div>
 </template>
-
-
 <script>
   import { defineComponent } from "vue";
   import Language from "./Language.vue";
@@ -73,16 +70,13 @@
   export default defineComponent({
     name: "SideBoardMenu",
     data() {
-      return {zeigeKomponente: true, isLanguageOpen: false, currentLocale: "de", };
+      return { isLanguageOpen: false, };
     },
     components: { Language, PortalPopup },
     methods: {
-      getFlagPath(){
-        return `/png-${this.currentLocale}-flagge@2x.png`;
-      },
       closeSideboardMenu() {
-        this.zeigeKomponente = false;
-    },
+        this.isSideboardMenuOpen = false; 
+      },
       openLanguage() {
         this.isLanguageOpen = true;
       },
@@ -153,7 +147,6 @@
     width: 598px;
     height: 222px;
     font-size: var(--font-size-3xs);
-    user-select: none;
   }
   .logout-text {
     position: absolute;
@@ -237,7 +230,6 @@
     width: 24px;
     height: 24px;
     overflow: hidden;
-    cursor: pointer;
   }
   .x-schliefunktion:hover {
   color: #426b1f; 
@@ -250,7 +242,6 @@
     width: 108px;
     height: 32px;
     font-size: var(--font-size-11xl);
-    user-select: none;
   }
 
   .menue-text {
@@ -268,7 +259,7 @@
     background-color: var(--color-darkolivegreen-200);
     width: 587px;
     height: 867px;
-    overflow: auto;
+    overflow: hidden;
     max-width: 100%;
     max-height: 100%;
     text-align: left;

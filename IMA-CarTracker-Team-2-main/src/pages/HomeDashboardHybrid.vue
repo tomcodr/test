@@ -1,7 +1,6 @@
 <template>
   <div class="home-dashboard-hybrid">
-    
-    <div class="page-hintergrund">
+    <div class="page-hintergrund-hybrid">
       <div class="verdunklung-hintergrund-effekt" />
       <img class="png-af-it-logo-icon"  src="/png-afit-logo@2x.png" />
       <div class="af-it-logo-effekt" />
@@ -13,19 +12,19 @@
       <div class="gang">
     <div class="element-background" @click="onGangContainerClick"></div>
     <b class="gang-value"><GangAnzeige/></b>
-    <div class="element-titel">{{ $t('Gang') }}</div>
+    <div class="element-titel">Gang</div>
   </div>
       
       <div class="bremse">
           <div class="element-background" @click=" onBremseContainerClick"></div>
           <b class="bremse-value"><BremseAnzeige/></b>
-          <div class="element-titel">{{ $t('Bremsdruck') }}</div>
+          <div class="element-titel">Bremsdruck</div>
       </div>
       
       <div class="speed">
         <div class="element-background" @click="onSpeedContainerClick"></div>
         <b class="speed-value"><GeschwindigkeitAnzeige/></b>
-        <div class="element-titel">{{ $t('Geschwindigkeit') }}</div>
+        <div class="element-titel">Geschwindigkeit</div>
       </div>
       
       <div class="oel-wasser">
@@ -39,24 +38,23 @@
       <div class="drehzahl">
         <div class="element-background" @click="onDrehzahlContainerClick"></div>
         <b class="drehzahl-value"><DrehzahlAnzeige/></b>
-        <div class="element-titel">{{ $t('Drehzahl') }}</div>
-
+        <div class="element-titel">Drehzahl</div>
       </div>
    
     </div>
     
 
   
-    <div class="motorhaube-text">{{ $t('Motorhaube') }}</div>
+    <div class="motorhaube-text">Motorhaube</div>
     <div class="spoiler-closed"><SpoilerAnzeige/></div>
-    <div class="motorhaube-closed">{{ $t('Closed') }}</div>
-    <div class="spoiler-text">{{ $t('Spoiler') }}</div>
-    <div class="hupe-text">{{ $t('Hupe') }}</div>
+    <div class="motorhaube-closed">CLOSED</div>
+    <div class="spoiler-text">Spoiler</div>
+    <div class="hupe-text">Hupe</div>
     <div class="hupe-aktiv"><HupeAnzeige/></div>
-    <div class="abs-aktiv"><ABS/></div>
-    <div class="abs-text">{{ $t('ABS') }}</div>
-    <div class="bremse-text">{{ $t('Bremse') }}</div>
-    <div class="bremse-aktiv"><BremseJaNein/></div>
+    <div class="abs-aktiv">ACTIVE</div>
+    <div class="abs-text">ABS</div>
+    <div class="bremse-text">Bremse</div>
+    <div class="bremse-aktiv">ACTIVE</div>
   
 
 
@@ -109,7 +107,7 @@
         src="/profil-icon.svg"
         :onClick="onProfilIconClick"
       />
-      <div class="messwerte-textbox" :onClick="openMesswerteDropdown">{{ $t('Messwerte') }}</div>
+      <div class="messwerte-textbox" :onClick="openMesswerteDropdown">Messwerte</div>
       
       <img
         class="navigation-icon"
@@ -127,6 +125,7 @@
   </div>
   <div v-if="isSideBoardMenuOpen">
     <PortalPopup
+      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[menuIconRef]"
       :onOutsideClick="closeSideBoardMenu"
@@ -136,6 +135,7 @@
   </div>
   <div v-if="isMesswerteDropdownOpen">
     <PortalPopup
+      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[messwerteTextboxContainerRef]"
       :onOutsideClick="closeMesswerteDropdown"
@@ -145,6 +145,7 @@
   </div>
   <div v-if="isMesswerteDropdown1Open">
     <PortalPopup
+      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[navigationIconRef]"
       :onOutsideClick="closeMesswerteDropdown1"
@@ -174,8 +175,6 @@
   import WasserTemperaturAnzeige from "../components/WasserTemperaturAnzeige.vue"
   import SpoilerAnzeige from "../components/SpoilerAnzeige.vue"
   import HupeAnzeige from "../components/HupeAnzeige.vue"
-  import ABS from "../components/ABS.vue"
-  import BremseJaNein from "../components/BremseJaNein.vue"
   
 
 
@@ -190,7 +189,7 @@
         isMesswerteDropdown1Open: false,
       };
     },
-    components: { SideBoardMenu, PortalPopup, MesswerteDropdown, GangAnzeige, DrehzahlAnzeige, TankAnzeige, GeschwindigkeitAnzeige, OelTemperaturAnzeige, BremseAnzeige, WasserTemperaturAnzeige, SpoilerAnzeige, HupeAnzeige,ABS, BremseJaNein},
+    components: { SideBoardMenu, PortalPopup, MesswerteDropdown, GangAnzeige, DrehzahlAnzeige, TankAnzeige, GeschwindigkeitAnzeige, OelTemperaturAnzeige, BremseAnzeige, WasserTemperaturAnzeige, SpoilerAnzeige, HupeAnzeige},
     methods: {
       onGangContainerClick() {
         this.$router.push("/gang");
@@ -279,7 +278,40 @@
 
 
 <style scoped>
- 
+  .verdunklung-hintergrund-effekt {
+    position: absolute;
+    top: 0px;
+    left: 1440px;
+    background-color: var(--color-gray-100);
+    width: 1440px;
+    height: 810px;
+    transform: rotate(180deg);
+    transform-origin: 0 0;
+  }
+  .png-af-it-logo-icon {
+    position: absolute;
+    top: 165.7px;
+    left: 436px;
+    width: 569px;
+    height: 535.6px;
+    object-fit: cover;
+  }
+  .af-it-logo-effekt {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: var(--color-darkslategray-200);
+    backdrop-filter: blur(200px);
+    width: 1500px;
+    height: 810px;
+  }
+  .page-hintergrund-hybrid {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1400px;
+    height: 810px;
+  }
 
   .element-titel {
     position: absolute;
@@ -288,7 +320,7 @@
     font-size: var(--font-size-base);
     font-weight: 800;
     display: inline-block;
-    width: 136px;
+    width: 82px;
     height: 15.4px;
   }
   .gang {
@@ -572,7 +604,7 @@
   .motorhaube-text {
     position: absolute;
     height: 10px; 
-    width: 150px; 
+    width: 103px; 
     top: 244px; 
     left: 1229px; 
     font-weight: 300;
@@ -702,15 +734,4 @@
     color: var(--color-white);
     font-family: var(--font-poppins);
   }
-
-  .element-background:hover::after {
-  content: "details";
-  position: absolute;
-  top: 70%;
-  left: 70%;
-  transform: translate(-50%, -50%);
-  color: white;  /* Farbe des Texts */
-  font-size: 18px;  /* Schriftgröße des Texts */
-}
-
 </style>

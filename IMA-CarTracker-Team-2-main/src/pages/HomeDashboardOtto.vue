@@ -1,19 +1,17 @@
 <template>
-  <div class="page">
-
+  <div class="home-dashboard-otto">
     <div class="page-hintergrund">
       <div class="verdunklung-hintergrund-effekt" />
-      <img class="af-it-logo" alt="" src="/png-afit-logo@2x.png" />
+      <img class="png-af-it-logo-icon" alt="" src="/png-afit-logo@2x.png" />
       <div class="af-it-logo-effekt" />
     </div>
     
-    
-    <div class="home-elektrisch-elemente">
+    <div class="home-otto-elemente">
       
-      <div class="lenkung" @click="onLenkungContainerClick">
+      <div class="gang" @click="onGangContainerClick">
         <div class="element-background"></div>
-        <b class="lenkung-value">G</b>
-        <div class="element-titel">Lenkung</div>
+        <b class="gang-value">G</b>
+        <div class="element-titel">Gang</div>
       </div>
       
       <div class="bremse" @click="onBremseContainerClick">
@@ -22,49 +20,51 @@
         <div class="element-titel">Bremse</div>
       </div>
       
-      <div class="geschwindigkeit" @click="onGeschwindigkeitContainerClick">
+      <div class="speed" @click="onSpeedContainerClick">
         <div class="element-background"></div>
-        <b class="geschwindigkeit-value">G</b>
+        <b class="speed-value">G</b>
         <div class="element-titel">Geschwindigkeit</div>
       </div>
       
-      <div class="batterie" @click="onBatterieContainerClick">
-        <div class="element-background"></div> 
-        <b class="batteriestatus-value">G</b>
-        <div class="element-titel">Batteriestatus</div>
+      <div class="oel-wasser" @click="onLWasserContainerClick">
+        <div class="element-background"></div>
+        <img class="png-wasser-icon" alt="" src="/png-wasser-icon@2x.png" />
+        <img class="png-oel-icon" alt="" src="/png-l-icon@2x.png" />
+        <b class="wasser-value">G</b>
+        <b class="oel-value">G</b>
       </div>
       
-      <div class="trips" @click="onTripsContainerClick">
+      <div class="drehzahl" @click="onDrehzahlContainerClick">
         <div class="element-background"></div>
-        <b class="trips-value">G</b>
-        <div class="element-titel">Trips</div>
+        <b class="drehzahl-value">G</b>
+        <div class="element-titel">Drehzahl</div>
       </div>
     
     </div>
     
-    <div class="batterie-wert-elektrisch">80%</div>
+    
+    <div class="tank-wert-otto">77%</div>
+    
+    <img class="png-tank-icon-otto" alt="" src="/png-tank-icon-otto@2x.png" />
+    
     <img
-      class="png-batterie-icon-elektrisch"
-      alt=""
-      src="/png-batterie-icon-elektrisch@2x.png"
-    />
-    <img
-      class="batterie-balken-hintergrund-elektrisch"
+      class="tank-balken-hintergrund-otto"
       alt=""
       src="/batterie-balken-hintergrund-elektrisch.svg"
     />
+    
     <img
-      class="batterie-balken-aktuell-elektrisch"
+      class="tank-balken-aktuell-otto"
       alt=""
       src="/batterie-balken-aktuell-elektisch.svg"
     />
+    
     <img
       class="png-auto-dashboard"
       alt=""
       src="/png-auto-dashboard@2x.png"
     />
     <div class="auto-titel">Porsche 911</div>
-    
     
     
     <div class="spoiler-text">Spoiler</div>  
@@ -80,7 +80,8 @@
     <div class="hupe-value">Active</div>
     
     
-  <div class="home-header">
+    <div class="home-header">
+      
       <img
         class="menu-icon"
         alt=""
@@ -93,25 +94,26 @@
         src="/profil-icon.svg"
         @click="onProfilIconClick"
       />
-      <div class="messwerte-textbox" :onClick="openMesswerteDropdownElektrisch">Messwerte</div>
-      
+      <div class="messwerte-textbox"  :onClick="openMesswerteDropdown">Messwerte</div>
       <img
         class="navigation-icon"
         alt=""
         src="/navigation-icon.svg"
-        :onClick="openMesswerteDropdownElektrisch"
+        :onClick="openMesswerteDropdown1"
       />
       <img
         class="png-cartracker-logo"
         alt=""
         src="/png-cartracker-logo@2x.png"
       />
+    
     </div>
-  
+
   </div>
   
   <div v-if="isSideBoardMenuOpen">
     <PortalPopup
+      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[menuIconRef]"
       :onOutsideClick="closeSideBoardMenu"
@@ -119,50 +121,58 @@
       <SideBoardMenu :onClose="closeSideBoardMenu" />
     </PortalPopup>
   </div>
-  
-  <div v-if="isMesswerteDropdownElektrischOpen">
+  <div v-if="isMesswerteDropdownOpen">
     <PortalPopup
+      overlayColor="rgba(113, 113, 113, 0.3)"
       placement="Centered"
       :relativeLayerRef="$refs[messwerteTextboxContainerRef]"
-      :onOutsideClick="closeMesswerteDropdownElektrisch"
+      :onOutsideClick="closeMesswerteDropdown"
     >
-      <MesswerteDropdownElektrisch :onClose="closeMesswerteDropdownElektrisch" />
+      <MesswerteDropdown :onClose="closeMesswerteDropdown" />
     </PortalPopup>
   </div>
-  
+  <div v-if="isMesswerteDropdown1Open">
+    <PortalPopup
+      overlayColor="rgba(113, 113, 113, 0.3)"
+      placement="Centered"
+      :relativeLayerRef="$refs[navigationIconRef]"
+      :onOutsideClick="closeMesswerteDropdown1"
+    >
+      <MesswerteDropdown :onClose="closeMesswerteDropdown1" />
+    </PortalPopup>
+  </div>
 </template>
 <script>
   import { defineComponent } from "vue";
   import SideBoardMenu from "../components/SideBoardMenu.vue";
   import PortalPopup from "../components/PortalPopup.vue";
-  import MesswerteDropdownElektrisch from "../components/MesswerteDropdownElektrisch.vue"
+  import MesswerteDropdown from "../components/MesswerteDropdown.vue";
 
   export default defineComponent({
-    name: "HomeDashboardElektrisch",
+    name: "HomeDashboardOtto",
     data() {
       return {
         isSideBoardMenuOpen: false,
-        isMesswerteDropdownElektrischOpen: false,
-        
-        
+        isMesswerteDropdownOpen: false,
+        isMesswerteDropdown1Open: false,
       };
     },
-    components: { SideBoardMenu, PortalPopup, MesswerteDropdownElektrisch },
+    components: { SideBoardMenu, PortalPopup, MesswerteDropdown },
     methods: {
-      onLenkungContainerClick() {
-        this.$router.push("/lenkung");
+      onGangContainerClick() {
+        this.$router.push("/gang");
       },
       onBremseContainerClick() {
         this.$router.push("/bremsen");
       },
-      onGeschwindigkeitContainerClick() {
+      onSpeedContainerClick() {
         this.$router.push("/geschwindigkeit");
       },
-      onBatterieContainerClick() {
-        this.$router.push("/temperaturen"); /*DAFÜR MUSS NOCH EINE EXRA PAGE KOMMEN!*/
+      onLWasserContainerClick() {
+        this.$router.push("/temperaturen");
       },
-      onTripsContainerClick() {
-        this.$router.push("/trips");
+      onDrehzahlContainerClick() {
+        this.$router.push("/drehzahl");
       },
       openSideBoardMenu() {
         this.isSideBoardMenuOpen = true;
@@ -173,20 +183,56 @@
       onProfilIconClick() {
         this.$router.push("/profil");
       },
-      openMesswerteDropdownElektrisch() {
-        console.log("öffne ")
-        this.isMesswerteDropdownElektrischOpen = true;
+      openMesswerteDropdown() {
+        this.isMesswerteDropdownOpen = true;
       },
-      closeMesswerteDropdownElektrisch() {
-        console.log("schließe")
-        this.isMesswerteDropdownElektrischOpen = false;
+      closeMesswerteDropdown() {
+        this.isMesswerteDropdownOpen = false;
       },
-      
+      openMesswerteDropdown1() {
+        this.isMesswerteDropdown1Open = true;
+      },
+      closeMesswerteDropdown1() {
+        this.isMesswerteDropdown1Open = false;
+      },
     },
   });
 </script>
 <style scoped>
-  
+  .verdunklung-hintergrund-effekt {
+    position: absolute;
+    top: 0px;
+    left: 1440px;
+    background-color: var(--color-gray-100);
+    width: 1440px;
+    height: 867px;
+    transform: rotate(180deg);
+    transform-origin: 0 0;
+  }
+  .png-af-it-logo-icon{
+    position: absolute;
+    top: 165.7px;
+    left: 436px;
+    width: 569px;
+    height: 535.6px;
+    object-fit: cover;
+  }
+  .af-it-logo-effekt{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: var(--color-darkslategray-200);
+    backdrop-filter: blur(200px);
+    width: 1440px;
+    height: 867px;
+  }
+  .page-hintergrund {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1440px;
+    height: 867px;
+  }
   .element-background {
   width: 187.3px;
   height: 122.6px;
@@ -195,7 +241,16 @@
   opacity: 0.1;
   cursor:pointer;
 }
-.element-titel {
+
+  .gang-value {
+    position: absolute;
+    top: 80px;
+    left: 25.3px;
+    display: inline-block;
+    width: 43.6px;
+    height: 37.5px;
+  }
+  .element-titel {
     position: absolute;
     top: 20.3px;
     left: 25.7px;
@@ -205,8 +260,9 @@
     width: 82px;
     height: 15.4px;
   }
-  .lenkung {
+  .gang {
     position: absolute;
+    top: 0px;
     left: 880px;
     width: 187.3px;
     height: 122.6px;
@@ -214,6 +270,7 @@
   }
   .bremse {
     position: absolute;
+    top: 0px;
     left: 660px;
     width: 187.3px;
     height: 122.6px;
@@ -228,54 +285,75 @@
     width: 43.6px;
     height: 37.5px;
   }
-  .geschwindigkeit-value {
+ 
+  .speed {
     position: absolute;
-    top: 81px;
-    left: 26px;
-    display: inline-block;
-    width: 70px;
-    height: 30px;
-  }
-  .geschwindigkeit {
-    position: absolute;
+    top: 0px;
     left: 440px;
     width: 187.3px;
     height: 122.6px;
     cursor: pointer;
   }
-  .batteriestatus-value {
+
+  .speed-value {
+    position: absolute;
+    top: 80px;
+    left: 25.3px;
+    display: inline-block;
+    width: 43.6px;
+    height: 37.5px;
+  }
+  .png-wasser-icon {
+    position: absolute;
+    top: 8px;
+    left: 138px;
+    width: 28px;
+    height: 37px;
+    object-fit: cover;
+  }
+  .png-oel-icon {
+    position: absolute;
+    top: 7px;
+    left: 10px;
+    width: 52px;
+    height: 37px;
+    object-fit: cover;
+  }
+  .wasser-value {
     position: absolute;
     top: 81px;
-    left: 27px;
+    left: 144px;
     display: inline-block;
-    width: 70px;
-    height: 30px;
+    width: 43.6px;
+    height: 37.5px;
   }
- 
-  .batterie {
+  .oel-value {
     position: absolute;
+    top: 81px;
+    left: 28.3px;
+    display: inline-block;
+    width: 43.6px;
+    height: 37.5px;
+  }
+  .oel-wasser {
+    position: absolute;
+    top: 0px;
     left: 220px;
     width: 187.3px;
     height: 122.6px;
     cursor: pointer;
   }
-  .lenkung-value {
+  
+  .drehzahl {
     position: absolute;
-    top: 80px;
-    left: 25.3px;
-    display: inline-block;
-    width: 43.6px;
-    height: 37.5px;
-  }
-
-  .trips {
-    position: absolute;
-    width: 187.3px;
-    height: 122.6px;
+    top: 0px;
+    left: 0px;
+    width: 193px;
+    height: 125px;
     cursor: pointer;
   }
 
-  .trips-value {
+  .drehzahl-value {
     position: absolute;
     top: 80px;
     left: 25.3px;
@@ -283,7 +361,7 @@
     width: 43.6px;
     height: 37.5px;
   }
-  .home-elektrisch-elemente {
+  .home-otto-elemente {
     position: absolute;
     top: 550px;
     left: 186px;
@@ -292,8 +370,7 @@
     font-size: var(--font-size-xl);
     font-family: var(--font-manrope);
   }
-  
-  .batterie-wert-elektrisch{
+  .tank-wert-otto{
     position: absolute;
     top: 461px;
     left: 164px;
@@ -303,15 +380,15 @@
     color: var(--color-gray-300);
   }
  
-  .png-batterie-icon-elektrisch {
+  .png-tank-icon-otto {
     position: absolute;
     top: 462px;
     left: 124px;
-    width: 34px;
-    height: 27px;
+    width: 29px;
+    height: 25px;
     object-fit: cover;
   }
-  .batterie-balken-hintergrund-elektrisch {
+  .tank-balken-hintergrund-otto {
     position: absolute;
     top: 411px;
     left: 120px;
@@ -319,7 +396,7 @@
     width: 1193px;
     height: 46px;
   }
-  .batterie-balken-aktuell-elektrisch {
+  .tank-balken-aktuell-otto {
     position: absolute;
     top: 415px;
     left: 124px;
@@ -327,7 +404,7 @@
     width: 843px;
     height: 39px;
   }
-  .png-auto-dashboard {
+  .png-auto-dashboard{
     position: absolute;
     top: 103px;
     left: 385px;
@@ -338,11 +415,10 @@
   }
   .auto-titel {
     position: absolute;
-    top: 82px;
-    left: 652px;
-    width: 108px;
-    height: 27px;
+    top: 9.46%;
+    left: 45.28%;
     font-size: var(--font-size-lg);
+    font-weight: 600;
   }
   .menu-icon {
     position: absolute;
@@ -380,8 +456,10 @@
     overflow: hidden;
     cursor: pointer;
   }
-  .png-cartracker-logo{
+  .png-cartracker-logo {
     position: absolute;
+    top: 0px;
+    left: 0px;
     width: 85px;
     height: 67px;
     object-fit: cover;
@@ -393,7 +471,16 @@
     width: 1064px;
     height: 67px;
   }
-
+  .home-dashboard-otto {
+    position: relative;
+    background-color: var(--color-darkslategray-100);
+    width: 100%;
+    height: 867px;
+    text-align: left;
+    font-size: var(--font-size-2xl);
+    color: var(--color-white);
+    font-family: var(--font-poppins);
+  }
 
   .spoiler-text{
     position: absolute;

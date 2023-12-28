@@ -1,53 +1,28 @@
 <template>
-  
   <div class="language">
+    
     <div class="background-green" />
     <div class="text-espanol">
-      <p class="espanol" @click.prevent = "setLocale('es')">Español</p>
+      <p class="espanol">Español</p>
     </div>
-    <div class="text-english" @click.prevent = "setLocale('en')">English</div>
-    <div class="text-deutsch" @click.prevent = "setLocale('de')">Deutsch</div>
-    <img class="png-es-flagge-icon" alt="" src="/png-es-flagge@2x.png" 
-    @click.prevent = "setLocale('es')"/>
-    <img class="png-en-flagge-icon" alt="" src="/png-en-flagge@2x.png" 
-    @click.prevent = "setLocale('en')"/>
-    <img class="png-de-flagge-icon2" alt="" src="/png-de-flagge1@2x.png" 
-    @click.prevent = "setLocale('de')"/>
+    <div class="text-english">English</div>
+    <div class="text-deutsch">Deutsch</div>
+    <img class="png-es-flagge-icon" alt="" src="/png-es-flagge@2x.png" />
+    <img class="png-en-flagge-icon" alt="" src="/png-en-flagge@2x.png" />
+    <img class="png-de-flagge-icon2" alt="" src="/png-de-flagge1@2x.png" />
     <img
       class="x-schliefunktion-sprachen-icon"
       alt=""
       src="/x-schliefunktion-sprachen.svg"
-      @click="schließeLanguage"
     />
   </div>
 </template>
-
 <script>
-import { defineComponent } from "vue";
+  import { defineComponent } from "vue";
 
-export default defineComponent({
-  name: "Language",
-  methods: {
-    schließeLanguage() {
-      this.$emit("close");
-    },
-    setLocale(locale){
-      this.$i18n.locale = locale
-      switch (locale) {
-        case "en":
-          this.$router.push("/en");
-          break;
-        case "de":
-          this.$router.push("/de");
-          break;
-        case "es":
-          this.$router.push("/es");
-          break;
-
-      }
-    },
-  },
-});
+  export default defineComponent({
+    name: "Language",
+  });
 </script>
 <style scoped>
   .background-green {
@@ -70,7 +45,6 @@ export default defineComponent({
     top: 49.16%;
     left: 36.45%;
     display: inline-block;
-    cursor: pointer;
   }
   .text-english {
     position: absolute;
@@ -79,7 +53,6 @@ export default defineComponent({
     top: 30.24%;
     left: 36.39%;
     display: inline-block;
-    cursor: pointer;
   }
   .text-deutsch {
     position: absolute;
@@ -88,7 +61,6 @@ export default defineComponent({
     top: 12.45%;
     left: 36.39%;
     display: inline-block;
-    cursor: pointer;
   }
   .png-es-flagge-icon {
     position: absolute;
@@ -97,7 +69,6 @@ export default defineComponent({
     width: 10px;
     height: 7px;
     object-fit: cover;
-    cursor: pointer;
   }
   .png-en-flagge-icon {
     position: absolute;
@@ -106,7 +77,6 @@ export default defineComponent({
     width: 10px;
     height: 7px;
     object-fit: cover;
-    cursor: pointer;
   }
   .png-de-flagge-icon2 {
     position: absolute;
@@ -115,7 +85,6 @@ export default defineComponent({
     width: 10px;
     height: 7px;
     object-fit: cover;
-    cursor: pointer;
   }
   .x-schliefunktion-sprachen-icon {
     position: absolute;
@@ -124,12 +93,9 @@ export default defineComponent({
     width: 14px;
     height: 13.6px;
     overflow: hidden;
-    cursor: pointer;
   }
   .language {
-    position: absolute;
-    top: 520px;
-    right: 150px;
+    position: relative;
     width: 349px;
     height: 249px;
     max-width: 100%;
