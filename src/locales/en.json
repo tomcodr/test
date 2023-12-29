@@ -16,6 +16,7 @@
   "Hilfe": "Help",
   "Logout": "LogOut",
   "Temperaturen": "Oil/Watertemperature",
+  "Bremstemperaturen": "Braketemperatures",
   "Trips": "Trips",
   "Motor": "Engine",
   "Höhe": "Altitude",
@@ -33,5 +34,10 @@
   "Modell": "Model",
   "Farbe": "Color",
   "Erstzulassung": "First registration date",
-  "Fahrgestellnummer eingeben": "Enter chassis number"
+  "Fahrgestellnummer eingeben": "Enter chassis number",
+  "Benutzername": "Username",
+  "E-Mail": "E-Mail",
+  "Straße": "Street",
+  "PLZ": "Postal Code",
+  "Stadt": "City"
 }

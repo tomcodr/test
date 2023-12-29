@@ -15,6 +15,7 @@
     "Hilfe": "Ayuda",
     "LogOut": "cerrar sesión",
     "Temperaturen": "Temperatura de aceite/agua",
+    "Bremstemperaturen": "Temperaturas de freno",
     "Trips": "Viajes",
     "Motor": "Motor",
     "Höhe": "Altitud",
@@ -32,5 +33,10 @@
     "Modell": "Modelo",
     "Farbe": "Color",
     "Erstzulassung": "Fecha de primera matriculación",
-    "Fahrgestellnummer eingeben": "Introducir número de chasis"
+    "Fahrgestellnummer eingeben": "Introducir número de chasis",
+    "Benutzername": "Nombre de usuario",
+    "E-Mail": "Correo electrónico",
+    "Straße": "Calle",
+    "PLZ": "Código postal",
+    "Stadt": "Ciudad"
 }

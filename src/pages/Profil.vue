@@ -9,17 +9,17 @@
     </div>
     
     <div class="userStadt">Ulm</div>
-    <div class="stadt">Stadt</div>
+    <div class="stadt">{{ $t('Stadt') }}</div>
     <div class="userPLZ">01010</div>
-    <div class="PLZ">PLZ</div>
+    <div class="PLZ">{{ $t('PLZ') }}</div>
     <div class="userStrasze">teststraße14</div>
-    <div class="strasze">Straße</div>
+    <div class="strasze">{{ $t('Straße') }}</div>
     <a class="userMail" href="mailto:driver01@gmail.com" target="_blank"
       >driver01@gmail.com</a
     >
-    <div class="email">Email</div>
+    <div class="email">{{ $t('E-Mail') }}</div>
     <div class="userName">Driver01</div>
-    <div class="benutzername">Benutzername</div>
+    <div class="benutzername">{{ $t('Benutzername') }}</div>
     <div class="userFullName">Faruk Mercan</div>
     <img class="person-icon" alt="" src="/png-person-icon@2x.png" />
     

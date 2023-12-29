@@ -5,7 +5,7 @@
   "Gang": "Gang",
   "Hupe": "Hupe",
   "Motorhaube": "Motorhaube",
-  "Geschlossen": "G",
+  "Geschlossen": "Geschlossen",
   "Spoiler": "Spoiler",
   "ABS": "ABS",
   "Bremse": "Bremse",
@@ -15,6 +15,7 @@
   "Hilfe": "Hilfe",
   "LogOut": "Ausloggen",
   "Temperaturen": "Öl/Wassertemperatur",
+  "Bremstemperaturen": "Bremstemperaturen",
   "Trips": "Trips",
   "Motor": "Motor",
   "Höhe": "Höhe",
@@ -32,5 +33,10 @@
   "Modell": "Modell",
   "Farbe": "Farbe",
   "Erstzulassung": "Erstzulassung",
-  "Fahrgestellnummer eingeben": "Fahrgestellnummer eingeben"
+  "Fahrgestellnummer eingeben": "Fahrgestellnummer eingeben",
+  "Benutzername": "Benutzername",
+  "E-Mail": "E-Mail",
+  "Straße": "Straße",
+  "PLZ": "PLZ",
+  "Stadt": "Stadt"
 }
