@@ -1,6 +1,8 @@
 import { createApp } from "vue";
 import { createRouter, createWebHistory, RouterView } from "vue-router"; // Füge RouterView hinzu
 import App from "./App.vue";
+import store from "./store/store";
+
 
 import HomeDashboardHybrid from "./pages/HomeDashboardHybrid.vue";
 import Fahrzeuge from "./pages/Fahrzeuge.vue";
@@ -23,6 +25,7 @@ import Trips from "./pages/Trips.vue";
 import Bremsen from "./pages/Bremsen.vue";
 import Motor from "./pages/Motor.vue";
 import Hoehe from "./pages/Hoehe.vue";
+import NotFound from "./pages/NotFound.vue";
 
 
 
@@ -187,7 +190,14 @@ const routes = [
       meta: {
         title: "Höhe"
       },
-
+    },
+    {
+      path: "/404",
+      name: "notfound",
+      component: NotFound,
+      meta: {
+        title: "404 error"
+      },
     },
 
 
@@ -201,12 +211,9 @@ const router = createRouter({
   routes,
 });
 
-
-
-
-// Setze die ausgewählte Sprache in der Anwendung
 router.beforeEach((toRoute, fromRoute, next) => {
-  const lang = toRoute.params.lang || 'de'; // Standardmäßig auf Deutsch
+  const lang = toRoute.params.lang || store.getters.getSelectedLanguage || 'de';
+  store.dispatch('updateSelectedLanguage', lang);
   i18n.global.locale.value = lang;
 
   const documentTitle =
@@ -215,6 +222,7 @@ router.beforeEach((toRoute, fromRoute, next) => {
   if (toRoute?.meta?.description) {
     addMetaTag(toRoute?.meta?.description);
   }
+
   next();
 });
 
@@ -229,8 +237,9 @@ const addMetaTag = (value) => {
   }
 };
 
+const selectedLanguage = store.getters.getSelectedLanguage || 'de';
+store.dispatch('updateSelectedLanguage', selectedLanguage);
+
 createApp(App).use(i18n).use(router).mount("#app");
 
 export default router;
-
-

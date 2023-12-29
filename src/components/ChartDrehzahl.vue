@@ -1,9 +1,9 @@
 <template>
   <div>
-    <label for="startDate">Start:</label>
+    <label for="startDate">{{ $t('Start') }}</label>
     <input type="date" v-model="startDate" @change="updateChart" id="startDate">
 
-    <label for="endDate">Ende:</label>
+    <label for="endDate">{{ $t('Ende') }}</label>
     <input type="date" v-model="endDate" @change="updateChart" id="endDate">
 
     <div class="loading" v-if="loading">Lädt...</div>

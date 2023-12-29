@@ -31,19 +31,22 @@ export default defineComponent({
     schließeLanguage() {
       this.$emit("close");
     },
-    setLocale(locale){
-      this.$i18n.locale = locale
+    setLocale(locale) {
+      this.$i18n.locale = locale;
+
+      // Überprüfe, ob die aktuelle Route Parameter hat
+      const params = this.$route.params;
+
       switch (locale) {
         case "en":
-          this.$router.push("/en");
+          this.$router.push({ name: this.$route.name, params: { ...params, lang: "en" } });
           break;
         case "de":
-          this.$router.push("/de");
+          this.$router.push({ name: this.$route.name, params: { ...params, lang: "de" } });
           break;
         case "es":
-          this.$router.push("/es");
+          this.$router.push({ name: this.$route.name, params: { ...params, lang: "es" } });
           break;
-
       }
     },
   },

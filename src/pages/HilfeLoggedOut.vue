@@ -19,7 +19,7 @@
       src="/profil-icon.svg"
       @click="onPROFILEIconClick"
     />
-    <div class="hilfe-text">Hilfe</div>
+    <div class="hilfe-text">{{ $t('Hilfe') }}</div>
   </div>
 </template>
 <script>

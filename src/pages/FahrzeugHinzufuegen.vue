@@ -11,7 +11,7 @@
     <textarea
       v-model="fahrgestellnummerValue"
       class="fahrgestellnummer-input"
-      placeholder="Fahrgestellnummer eingeben"
+      :placeholder="$t('Fahrgestellnummer eingeben')"
       rows="1"
       @input="onFahrgestellnummerInput"
       @blur="onFahrgestellnummerBlur"
@@ -38,17 +38,17 @@
       :onClick="openArt"
     />
     /* AUF LISTEN ÖFFNEN SCHAUEN WIR BEIM EINFÜGEN DER FUNKTIONALITÄT HINZU */
-    <div class="art" :onClick="openArt1">Erstzulassung</div>
+    <div class="art" :onClick="openArt1">{{ $t('Erstzulassung') }}</div>
     <img class="farbe-linie-icon" alt="" src="/leistung-linie.svg" />
-    <div class="farbe">Farbe</div>
+    <div class="farbe">{{ $t('Farbe') }}</div>
    
     /* LINIEN GEHEN GLAUB NICHT WEIL LOCOFY DIE BILDER NICHT IN DIE DATEI EINGEFÜGT HAT, BITTE ÜBERPRÜFEN */
-    <div class="fahrgestellnummer">Fahrgestellnummer</div>
+    <div class="fahrgestellnummer">{{ $t('Fahrgestellnummer') }}</div>
     <img class="modell-linie-icon" alt="" src="/leistung-linie.svg" />
-    <div class="modell">Modell</div>
+    <div class="modell">{{ $t('Modell') }}</div>
     <img class="marke-linie-icon" alt="" src="/leistung-linie.svg" />
-    <div class="marke" :onClick="openMarken">Marke</div>
-    <div class="fahrzeug-hinzufuegen-titel">Fahrzeug hinzufügen</div>
+    <div class="marke" :onClick="openMarken">{{ $t('Marke') }}</div>
+    <div class="fahrzeug-hinzufuegen-titel">{{ $t('Fahrzeuge Hinzufügen') }}</div>
     <img class="header-icon" alt="" src="/header.svg" />
   </div>
   <div v-if="isArtOpen">

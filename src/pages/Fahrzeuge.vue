@@ -9,7 +9,7 @@
     
     <img class="plus-icon" alt="" src="/plus.svg" @click="onPlusClick" />
     
-    <div class="fahrzeug-hinzufuegen-text">Fahrzeug hinzufügen</div>
+    <div class="fahrzeug-hinzufuegen-text">{{ $t('Fahrzeuge Hinzufügen') }}</div>
    
 <CarouselExample/>
 
@@ -28,7 +28,7 @@
         src="/profil-icon.svg"
         @click="onProfilIconClick"
       />
-     <div class="messwerte-textbox" :onClick="openMesswerteDropdown">Messwerte</div>
+     <div class="messwerte-textbox" :onClick="openMesswerteDropdown">{{ $t('Messwerte') }}</div>
       <img
         class="navigation-icon"
         alt=""

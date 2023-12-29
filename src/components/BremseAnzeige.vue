@@ -1,6 +1,6 @@
 <template>
   <div class="brake-container">
-    <b class="brake-value">{{ brakeInputValue !== null ? brakeInputValue : 'N/A' }}</b>
+    <b class="brake-value">{{ brakeInputValue !== null ? brakeInputValue : $t('N/A') }}</b>
   </div>
 </template>
 

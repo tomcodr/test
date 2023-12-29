@@ -1,5 +1,5 @@
 <template>
-    <div class="brake-light-status">{{ brakeLightStatus !== null ? brakeLightStatus : 'N/A' }}</div>
+    <div class="brake-light-status">{{ brakeLightStatus !== null ? brakeLightStatus : $t('N/A') }}</div>
   </template>
   
   <script>

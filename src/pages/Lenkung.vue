@@ -32,7 +32,7 @@
         @click="onProfilIconClick"
       />
       
-      <div class="messwerte-textbox" :onClick="openMesswerteDropdown">Messwerte</div>
+      <div class="messwerte-textbox" :onClick="openMesswerteDropdown">{{ $t('Messwerte') }}</div>
       
       <img
         class="navigation-icon"

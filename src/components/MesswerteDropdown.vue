@@ -1,17 +1,17 @@
 <template>
   <div class="messwerte-dropdown">
    
-    <div class="trips-text" @click="onTripsTextClick">Trips</div>
-    <div class="motor-text" @click="onMotorTextClick">Motor</div>
-    <div class="lenkung-text" @click="onLenkungTextClick">Lenkung</div>
-    <div class="tank-text" @click="onTankTextClick">Tank</div>
-    <div class="gang-text" @click="onGangTextClick">Gang</div>
-    <div class="bremsen-text" @click="onBremsenTextClick">Bremstemperaturen</div>
-    <div class="geschwindigkeit-text" @click="onGeschwindigkeitTextClick"> Geschwindigkeit</div>
-    <div class="oelwasser-text" @click="onOeLWasserTextClick"> Öl/Wasser Temperatur </div>
+    <div class="trips-text" @click="onTripsTextClick">{{ $t('Trips') }}</div>
+    <div class="motor-text" @click="onMotorTextClick">{{ $t('Motor') }}</div>
+    <div class="lenkung-text" @click="onLenkungTextClick">{{ $t('Lenkung') }}</div>
+    <div class="tank-text" @click="onTankTextClick">{{ $t('Tank') }}</div>
+    <div class="gang-text" @click="onGangTextClick">{{ $t('Gang') }}</div>
+    <div class="bremsen-text" @click="onBremsenTextClick">{{ $t('Bremstemperaturen') }}</div>
+    <div class="geschwindigkeit-text" @click="onGeschwindigkeitTextClick">{{ $t('Geschwindigkeit') }}</div>
+    <div class="oelwasser-text" @click="onOeLWasserTextClick">{{ $t('Temperaturen') }}</div>
     
-    <div class="drehzahl-text" @click="onDrehzahlTextClick">Drehzahl</div>
-    <div class="hoehe-text" @click="onHoeheTextClick">Höhe</div>
+    <div class="drehzahl-text" @click="onDrehzahlTextClick">{{ $t('Drehzahl') }}</div>
+    <div class="hoehe-text" @click="onHoeheTextClick">{{ $t('Höhe') }}</div>
   
   </div>
 

@@ -1,6 +1,6 @@
 <template>
     <div class="brake-surface-temperature-container">
-      <b :class="{ 'red-text': isValueOver90 }">{{ brakeSurfaceTemperatureValue !== null ? brakeSurfaceTemperatureValue : 'N/A' }}°C</b>
+      <b :class="{ 'red-text': isValueOver90 }">{{ brakeSurfaceTemperatureValue !== null ? brakeSurfaceTemperatureValue : $t('N/A') }}°C</b>
     </div>
   </template>
   

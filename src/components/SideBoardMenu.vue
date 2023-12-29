@@ -23,20 +23,20 @@
     </div>
     
     <div class="logout" @click="onLogOutContainerClick">
-      <div class="logout-text">LogOut</div>
+      <div class="logout-text">{{ $t('LogOut') }}</div>
     </div>
     
     <div class="hilfe" @click="onHilfeContainerClick">
-      <div class="hilfe-text">Hilfe</div>
+      <div class="hilfe-text">{{ $t('Hilfe') }}</div>
     </div>
     
     <div class="layout" @click="onLayoutKastenContainerClick">
-      <div class="layout-text">Layout</div>
+      <div class="layout-text">{{ $t('Layout') }}</div>
     
     </div>
     
     <div class="fahrzeuge" @click="onFahrzeugeKastenContainerClick">
-      <div class="fahrzeuge-text">Fahrzeuge</div>
+      <div class="fahrzeuge-text">{{ $t('Fahrzeuge') }}</div>
     </div>
     
     <img 
@@ -46,7 +46,7 @@
       @click="closeSideboardMenu"
     />
     <div class="menue">
-      <b class="menue-text">Menü</b>
+      <b class="menue-text">{{ $t('Menü') }}</b>
     </div>
   
   </div>

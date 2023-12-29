@@ -21,7 +21,7 @@ async function loadLocaleMessages() {
 
 export default createI18n({
   legacy: false,
-  locale: 'en',
+  locale: 'de',
   fallbackLocale: 'en',
   messages: await loadLocaleMessages(),
 });

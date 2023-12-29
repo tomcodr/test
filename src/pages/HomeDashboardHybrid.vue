@@ -1,3 +1,7 @@
+//Test
+
+
+
 <template>
   <div class="home-dashboard-hybrid">
     
@@ -49,7 +53,7 @@
   
     <div class="motorhaube-text">{{ $t('Motorhaube') }}</div>
     <div class="spoiler-closed"><SpoilerAnzeige/></div>
-    <div class="motorhaube-closed">{{ $t('Closed') }}</div>
+    <div class="motorhaube-closed">{{ $t('Geschlossen') }}</div>
     <div class="spoiler-text">{{ $t('Spoiler') }}</div>
     <div class="hupe-text">{{ $t('Hupe') }}</div>
     <div class="hupe-aktiv"><HupeAnzeige/></div>
