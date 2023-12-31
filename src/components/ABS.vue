@@ -13,7 +13,7 @@
     methods: {
       async fetchAbsStatus() {
         try {
-          const response = await fetch("https://cartrackerapi.onrender.com/api/v1/fahrzeuge/1/messwerte?type=isabsbrakeactive");
+          const response = await fetch("https://cartrackerapi.onrender.com/api/v1/fahrzeuge/67c012ef-39f7-48c1-8d7a-092fcad45c08/messwerte?type=isabsbrakeactive");
   
           // Überprüfe, ob die Anfrage erfolgreich war (Statuscode 200)
           if (!response.ok) {

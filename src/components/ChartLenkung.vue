@@ -34,7 +34,7 @@ export default {
     async fetchSteeringData() {
       try {
         this.loading = true; // Ladeanzeige aktivieren
-        const response = await fetch('https://cartrackerapi.onrender.com/api/v1/fahrzeuge/1/messwerte?type=steering');
+        const response = await fetch('https://cartrackerapi.onrender.com/api/v1/fahrzeuge/67c012ef-39f7-48c1-8d7a-092fcad45c08/messwerte?type=steering');
         const data = await response.json();
 
         this.steeringData = data.messwerte;

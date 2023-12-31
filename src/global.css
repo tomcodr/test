@@ -13,27 +13,28 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
+  background-color: #404040;
   /* Hintergrundfarbe anpassen */
 }
 
 .global-container {
-  width: 100%;
+  width: var(--max-page-width);
 
   /* Maximale Breite der Seite anpassen */
   margin: 0 auto;
   /* Zentrierung der Seite */
 }
 
-/* Media Query für kleinere Bildschirme (z.B. Tablets) */
-@media screen and (max-width: 768px) {
-  .global-container {
-    max-width: 100%;
-    /* Auf volle Breite für kleinere Bildschirme gehen */
-  }
-}
+
 
 :root {
+
+  --max-page-width: 100%;
+  /* Maximale Breite der Seite */
+  --max-page-height: 1000px;
+  /* Maximale Höhe der Seite */
+
+
   /* fonts */
   --font-poppins: Poppins;
   --font-manrope: Manrope;
@@ -57,9 +58,13 @@ body {
 
   /* Colors */
   --color-darkslategray-100: #454343;
+
   --color-darkslategray-200: rgba(53, 53, 53, 0.6);
+
   --color-white: #fff;
+
   --color-gray-100: #2a2a2a;
+
   --color-gray-200: #0b0b0b;
   --color-gray-300: rgba(255, 255, 255, 0.5);
   --color-gray-400: rgba(255, 255, 255, 0);
@@ -74,11 +79,18 @@ body {
   --br-21xl: 40px;
   --br-9xs: 4px;
 
+
+
+
   .page {
+    margin: 0;
+    padding: 0;
     position: relative;
     background-color: var(--color-darkslategray-100);
-    width: 100%;
-    height: 867px;
+    width: var(--max-page-width);
+    /* Anpassung auf maximale Breite */
+    height: var(--max-page-height);
+    /* Anpassung auf maximale Höhe */
     overflow: hidden;
     text-align: left;
     font-size: var(--font-size-11xl);
@@ -91,14 +103,14 @@ body {
     top: 0px;
     left: 1440px;
     background-color: var(--color-gray-100);
-    width: 1440px;
-    height: 810px;
+    width: var(--max-page-width);
+    height: var(--max-page-height);
     transform: rotate(180deg);
     transform-origin: 0 0;
   }
 
   .png-af-it-logo-icon {
-    position: absolute;
+    position: relative;
     top: 165.7px;
     left: 436px;
     width: 569px;
@@ -112,15 +124,25 @@ body {
     left: 0px;
     background-color: var(--color-darkslategray-200);
     backdrop-filter: blur(200px);
-    width: 1500px;
-    height: 867px;
+    width: var(--max-page-width);
+    height: var(--max-page-height);
   }
 
   .page-hintergrund {
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 1400px;
-    height: 867px;
+    width: var(--max-page-width);
+    height: var(--max-page-height);
   }
+
+  /* Ihre allgemeinen Stile */
+  /* Für den Dark Mode: */
+  .white-mode {
+    /* Ändern Sie die Farben oder das Styling für den Dark Mode */
+    /* Beispiel: */
+    background-color: #fdfdfd;
+    color: #ffffff;
+  }
+
 }

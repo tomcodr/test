@@ -34,7 +34,7 @@ export default {
       try {
         this.loading = true;
 
-        const response = await fetch('https://cartrackerapi.onrender.com/api/v1/fahrzeuge/1/messwerte?type=rpm');
+        const response = await fetch('https://cartrackerapi.onrender.com/api/v1/fahrzeuge/67c012ef-39f7-48c1-8d7a-092fcad45c08/messwerte?type=rpm');
         const data = await response.json();
 
         this.rpmData = data.messwerte;
@@ -126,12 +126,12 @@ export default {
   font-weight: 100;
 }
 input[type="date"] {
-  height: 30px; /* Passen Sie die gewünschte Höhe an */
+  height: 30px; 
   margin-right: 100px;
-  background-color: #4BC0C0; /* Ändern Sie die Hintergrundfarbe nach Bedarf */
-  color: #FFFFFF; /* Ändern Sie die Textfarbe nach Bedarf */
-  border: 1px solid #4BC0C0; /* Ändern Sie die Randfarbe nach Bedarf */
-  border-radius: 5px; /* Ändern Sie die Randradius nach Bedarf */
-  user-select: none; /* Deaktivieren Sie die Textauswahl */
+  background-color: #4BC0C0; 
+  color: #FFFFFF; 
+  border: 1px solid #4BC0C0; 
+  border-radius: 5px; 
+  user-select: none;
 }
 </style>

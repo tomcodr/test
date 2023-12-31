@@ -12,7 +12,7 @@
     methods: {
       async fetchAltitude() {
         try {
-          const response = await fetch("https://cartrackerapi.onrender.com/api/v1/fahrzeuge/1/messwerte?type=altitude");
+          const response = await fetch("https://cartrackerapi.onrender.com/api/v1/fahrzeuge/67c012ef-39f7-48c1-8d7a-092fcad45c08/messwerte?type=altitude");
           const data = await response.json();
   
           const altitudeValue = parseFloat(data.messwerte[0]?.altitude);

@@ -24,18 +24,18 @@ export default {
     async fetchBrakeTemperatureData() {
       try {
         this.loading = true; // Ladeanzeige aktivieren
-        const response = await fetch('https://cartrackerapi.onrender.com/api/v1/fahrzeuge/1/messwerte');
+        const response = await fetch('https://cartrackerapi.onrender.com/api/v1/fahrzeuge/67c012ef-39f7-48c1-8d7a-092fcad45c08/messwerte');
         const data = await response.json();
 
         this.brakeTemperatureData = data.messwerte
-          .filter(entry => entry.hasOwnProperty('brakesurfacetemperaturefl') && entry.hasOwnProperty('brakesurfacetemperaturefr') && entry.hasOwnProperty('brakesurfacetemperaturerl') && entry.hasOwnProperty('brakesurfacetemperaturerr'))
+          .filter(entry => entry.hasOwnProperty('brakeSurfaceTemperaturefl') && entry.hasOwnProperty('brakeSurfaceTemperaturefr') && entry.hasOwnProperty('brakeSurfaceTemperaturerl') && entry.hasOwnProperty('brakesurfacetemperaturerr'))
           .map(entry => {
             return {
               timestamp: entry.timestamp,
-              brakesurfacetemperaturefl: entry.brakesurfacetemperaturefl,
-              brakesurfacetemperaturefr: entry.brakesurfacetemperaturefr,
-              brakesurfacetemperaturerl: entry.brakesurfacetemperaturerl,
-              brakesurfacetemperaturerr: entry.brakesurfacetemperaturerr,
+              brakeSurfaceTemperaturefr: entry.brakeSurfaceTemperaturefr,
+              brakeSurfaceTemperaturefl: entry.brakeSurfaceTemperaturefl,
+              brakeSurfaceTemperaturerl: entry.brakeSurfaceTemperaturerl,
+              brakeSurfaceTemperaturerr: entry.brakeSurfaceTemperaturerr,
             };
           });
 
@@ -55,28 +55,28 @@ export default {
           datasets: [
             {
               label: 'VL',
-              data: data.map(entry => entry.brakesurfacetemperaturefl),
+              data: data.map(entry => entry.brakeSurfaceTemperaturefl),
               borderColor: 'rgba(255, 99, 132, 1)',
               borderWidth: 1,
               fill: false,
             },
             {
               label: 'VR',
-              data: data.map(entry => entry.brakesurfacetemperaturefr),
+              data: data.map(entry => entry.brakeSurfaceTemperaturefr),
               borderColor: 'rgba(75, 192, 192, 1)',
               borderWidth: 1,
               fill: false,
             },
             {
               label: 'HL',
-              data: data.map(entry => entry.brakesurfacetemperaturerl),
+              data: data.map(entry => entry.brakeSurfaceTemperaturerl),
               borderColor: 'rgba(255, 205, 86, 1)',
               borderWidth: 1,
               fill: false,
             },
             {
               label: 'HR',
-              data: data.map(entry => entry.brakesurfacetemperaturerr),
+              data: data.map(entry => entry.brakeSurfaceTemperaturerr),
               borderColor: 'rgba(54, 162, 235, 1)',
               borderWidth: 1,
               fill: false,

@@ -42,7 +42,7 @@
         src="/profil-icon.svg"
         @click="onProfilIconClick"
       />
-      <div class="messwerte-textbox" :onClick="openMesswerteDropdown">{{ $t('Messwerte') }}</div>
+      <div class="messwerte-textbox" :onClick="openMesswerteDropdown">Messwerte</div>
       
       <img
         class="navigation-icon"

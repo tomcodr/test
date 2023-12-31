@@ -225,5 +225,6 @@
     left: 550px;
     max-width: 100%; 
     max-height: 100%;
+    z-index: 4;
   }
 </style>

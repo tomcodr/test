@@ -1,58 +1,59 @@
 <template>
-    <div class="brake-surface-temperature-container">
-      <b :class="{ 'red-text': isValueOver90 }">{{ brakeSurfaceTemperatureValue !== null ? brakeSurfaceTemperatureValue : $t('N/A') }}°C</b>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        brakeSurfaceTemperatureValue: null,
-      };
-    },
-    computed: {
-      isValueOver90() {
-        return this.brakeSurfaceTemperatureValue !== null && parseFloat(this.brakeSurfaceTemperatureValue) > 90;
-      },
-    },
-    methods: {
-      async fetchData() {
-        try {
-          const response = await fetch("https://cartrackerapi.onrender.com/api/v1/fahrzeuge/1/messwerte");
-          const data = await response.json();
-  
-          if (data.messwerte && data.messwerte.length > 0) {
-            const brakeSurfaceTemperatureFR = data.messwerte.find(item => item.hasOwnProperty('brakesurfacetemperaturefr'))?.brakesurfacetemperaturefr;
-            if (brakeSurfaceTemperatureFR !== undefined && brakeSurfaceTemperatureFR !== null) {
-              // Runde auf ganze Zahl und konvertiere zu String
-              this.brakeSurfaceTemperatureValue = Math.round(brakeSurfaceTemperatureFR).toString();
-            } else {
-              console.error("Ungültiger oder fehlender Wert für brakesurfacetemperaturefr:", brakeSurfaceTemperatureFR);
-              // Setze brakeSurfaceTemperatureValue auf null, um "N/A" anzuzeigen
-              this.brakeSurfaceTemperatureValue = null;
-            }
+  <b :class="{ 'brake-temperature-value': true, 'yellow-text': brakeTemperatureValue >= 300 && brakeTemperatureValue < 400, 'red-text': brakeTemperatureValue >= 400 }">{{ brakeTemperatureValue !== null ? `${brakeTemperatureValue}°` : $t('N/A') }}</b>
+</template>
+
+
+<script>
+export default {
+  data() {
+    return {
+      brakeTemperatureValue: null,
+    };
+  },
+  methods: {
+    async fetchBrakeTemperatureValue() {
+      try {
+        const response = await fetch("https://cartrackerapi.onrender.com/api/v1/fahrzeuge/67c012ef-39f7-48c1-8d7a-092fcad45c08/messwerte?type=brakeSurfaceTemperaturefr");
+        const data = await response.json();
+
+        console.log("API Response:", data);
+
+        if (Array.isArray(data.messwerte) && data.messwerte.length > 0) {
+          const brakeTemperature = Math.round(data.messwerte[0]?.brakeSurfaceTemperaturefr);
+
+          if (brakeTemperature !== undefined && brakeTemperature !== null) {
+            this.brakeTemperatureValue = brakeTemperature.toString();
           } else {
-            console.error("Leere oder ungültige Daten für brakesurfacetemperaturefr:", data.messwerte);
-            // Setze brakeSurfaceTemperatureValue auf null, um "N/A" anzuzeigen
-            this.brakeSurfaceTemperatureValue = null;
+            console.error("Ungültiger oder fehlender Wert für Bremsflächentemperatur:", brakeTemperature);
+            this.brakeTemperatureValue = null;
           }
-        } catch (error) {
-          console.error("Fehler beim Laden der Messwerte:", error);
-          // Setze brakeSurfaceTemperatureValue auf null, um "N/A" anzuzeigen
-          this.brakeSurfaceTemperatureValue = null;
+        } else {
+          console.error("Ungültige oder leere Daten für Bremsflächentemperatur Daten:", data.messwerte);
+          this.brakeTemperatureValue = null;
         }
-      },
+      } catch (error) {
+        console.error("Fehler beim Laden der Bremsflächentemperatur Daten:", error);
+        this.brakeTemperatureValue = null;
+      }
     },
-    mounted() {
-      this.fetchData();
-    },
-  };
-  </script>
-  
-  <style scoped>
-  .red-text {
-    color: red;
-  }
-  </style>
-  
+  },
+  mounted() {
+    setInterval(() => {
+      this.fetchBrakeTemperatureValue();
+    }, 5000);
+
+    this.fetchBrakeTemperatureValue();
+  },
+};
+</script>
+
+
+<style>
+.yellow-text {
+  color: yellow;
+}
+
+.red-text {
+  color: red;
+}
+</style>
