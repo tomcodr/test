@@ -53,7 +53,14 @@
   
     <div class="motorhaube-text">{{ $t('Motorhaube') }}</div>
     <div class="spoiler-closed"><SpoilerAnzeige/></div>
-    <div class="motorhaube-closed">{{ $t('Geschlossen') }}</div>
+    <div class="motorhaube-closed" v-if="currentLocale === 'de'" :style="{ left: '1060px' }">
+      {{ $t('Geschlossen') }}
+    </div>
+
+    <div class="motorhaube-closed" v-else :style="{ left: '1131px' }">
+      {{ $t('Closed') }}
+    </div>
+    <div class="motorhaube-closed" v-else>{{ $t('Geschlossen') }}</div>
     <div class="spoiler-text">{{ $t('Spoiler') }}</div>
     <div class="hupe-text">{{ $t('Hupe') }}</div>
     <div class="hupe-aktiv"><HupeAnzeige/></div>
@@ -190,6 +197,7 @@
     name: "HomeDashboardHybrid",
     data() {
       return {
+        currentLocale: this.$i18n.locale,
         isSideBoardMenuOpen: false,
         isMesswerteDropdownOpen: false,
         isMesswerteDropdown1Open: false,
@@ -285,7 +293,6 @@
 
 <style scoped>
 
-@media only screen and (max-width: 3840px) {
   .element-titel {
     position: absolute;
     top: 20.3px;
@@ -295,6 +302,8 @@
     display: inline-block;
     width: 136px;
     height: 15.4px;
+    cursor: pointer;
+    user-select: none;
   }
   .gang {
   position: absolute;
@@ -304,6 +313,8 @@
   right: 0%;
   bottom: 0%;
   left: 880px;
+  cursor: pointer;
+  user-select: none;
   } 
 
   .gang-value {
@@ -313,6 +324,8 @@
     display: inline-block;
     width: 43.6px;
     height: 37.5px;
+    cursor: pointer;
+    user-select: none;
   }
   
   
@@ -323,6 +336,7 @@
   background-color: var(--color-darkolivegreen-100);
   opacity: 0.1;
   cursor:pointer;
+  user-select: none;
 }
 
 
@@ -332,7 +346,8 @@
     left: 660px;
     width: 187.3px;
     height: 122.6px;
-    
+    cursor: pointer;
+    user-select: none;
   }
   
 
@@ -343,6 +358,8 @@
     display: inline-block;
     width: 43.6px;
     height: 37.5px;
+    cursor: pointer;
+    user-select: none;
   }
 
   .speed {
@@ -351,6 +368,8 @@
     left: 440px;
     width: 187.3px;
     height: 122.6px;
+    cursor: pointer;
+    user-select: none;
   }
 
   .speed-value {
@@ -360,6 +379,8 @@
     display: inline-block;
     width: 130px;
     height: 37.5px;
+    cursor: pointer;
+    user-select: none;
   }
   .png-wasser-icon {
     position: absolute;
@@ -368,6 +389,8 @@
     width: 28px;
     height: 37px;
     object-fit: cover;
+    cursor: pointer;
+    user-select: none;
   }
   .png-oel-icon {
     position: absolute;
@@ -376,6 +399,8 @@
     width: 52px;
     height: 37px;
     object-fit: cover;
+    cursor: pointer;
+    user-select: none;
   }
   .wasser-value {
     position: absolute;
@@ -384,6 +409,8 @@
     display: inline-block;
     width: 43.6px;
     height: 37.5px;
+    cursor: pointer;
+    user-select: none;
   }
   .oel-value {
     position: absolute;
@@ -392,6 +419,8 @@
     display: inline-block;
     width: 43.6px;
     height: 37.5px;
+    cursor: pointer;
+    user-select: none;
   }
   .oel-wasser {
     position: absolute;
@@ -399,6 +428,8 @@
     left: 220px;
     width: 187.3px;
     height: 122.6px;
+    cursor: pointer;
+    user-select: none;
   }
 
   .drehzahl {
@@ -407,6 +438,8 @@
     left: 0px;
     width: 193px;
     height: 125px;
+    cursor: pointer;
+    user-select: none;
   }
 
   .drehzahl-value {
@@ -416,6 +449,8 @@
     display: inline-block;
     width: 150px;
     height: 37.5px;
+    cursor: pointer;
+    user-select: none;
   }
   .home-otto-elemente {
     position: absolute;
@@ -425,6 +460,7 @@
     height: 125px;
     font-size: var(--font-size-xl);
     font-family: var(--font-manrope);
+    user-select: none;
   }
   .batterie-Wert-Hybrid {
     position: absolute;
@@ -434,6 +470,7 @@
     width: 118px;
     height: 32px;
     color: var(--color-gray-300);
+    user-select: none;
   }
   .png-batterie-icon {
     position: absolute;
@@ -442,6 +479,7 @@
     width: 34px;
     height: 27px;
     object-fit: cover;
+    user-select: none;
   }
   .batterie-balken-hintergrund-hybrid {
     position: absolute;
@@ -450,6 +488,7 @@
     border-radius: var(--br-37xl);
     width: 207px;
     height: 32px;
+    user-select: none;
   }
   .batterie-balken-aktuell-hybrid {
     position: absolute;
@@ -458,6 +497,7 @@
     border-radius: var(--br-37xl);
     width: 168px;
     height: 28px;
+    user-select: none;
   }
   
   .tank-wert-hybrid{
@@ -468,6 +508,7 @@
     width: 118px;
     height: 32px;
     color: var(--color-gray-300);
+    user-select: none;
   }
 
   .tank-volumen{
@@ -478,6 +519,7 @@
     width: 118px;
     height: 32px;
     color: var(--color-gray-300);
+    user-select: none;
   }
 
 
@@ -488,6 +530,7 @@
     width: 29px;
     height: 25px;
     object-fit: cover;
+    user-select: none;
   }
   .tank-balken-hintergrund-hybrid {
     position: absolute;
@@ -496,6 +539,7 @@
     border-radius: var(--br-37xl);
     width: 1193px;
     height: 46px;
+    user-select: none;
   }
   .tank-balken-aktuell-hybrid{
     position: absolute;
@@ -507,6 +551,7 @@
     transition: transform 1s ease;
     width: 1183px;
     height: 39px;
+    user-select: none;
   }
   .png-auto-dashboard {
     position: absolute;
@@ -516,6 +561,7 @@
     height: 287px;
     object-fit: cover;
     opacity: 0.7;
+    user-select: none;
   }
   
   .auto-titel {
@@ -525,6 +571,7 @@
     width: 108px;
     height: 27px;
     font-size: var(--font-size-lg);
+    user-select: none;
   }
   .menu-icon {
     position: absolute;
@@ -534,6 +581,7 @@
     height: 24px;
     overflow: hidden;
     cursor: pointer;
+    user-select: none;
   }
   .menu-icon:hover {
   color: #426b1f; 
@@ -546,6 +594,7 @@
     height: 24px;
     overflow: hidden;
     cursor: pointer;
+    user-select: none;
   }
   
   .messwerte-textbox {
@@ -556,6 +605,7 @@
     height: 32px;
     cursor: pointer;
     font-weight: 500;
+    user-select: none;
   }
   .messwerte-textbox:hover {
   color: #426b1f; 
@@ -569,6 +619,7 @@
     height: 24px;
     overflow: hidden;
     cursor: pointer;
+    user-select: none;
   }
   .png-cartracker-logo-icon {
     position: absolute;
@@ -577,6 +628,7 @@
     width: 85px;
     height: 67px;
     object-fit: cover;
+    user-select: none;
   }
   .home-header {
     position: absolute;
@@ -594,6 +646,7 @@
     left: 1229px; 
     font-weight: 300;
     display: inline-block;
+    user-select: none;
 }
 
 .spoiler-closed {
@@ -606,6 +659,7 @@
     color: var(--color-darkolivegreen-100);
     text-align: center;
     display: inline-block;
+    user-select: none;
 }
 
 .motorhaube-closed {
@@ -618,6 +672,7 @@
     color: var(--color-darkolivegreen-100);
     text-align: center;
     display: inline-block;
+    user-select: none;
 }
 
 .spoiler-text {
@@ -628,6 +683,7 @@
     left: 1229px; 
     font-weight: 300;
     display: inline-block;
+    user-select: none;
 }
 
 .hupe-text {
@@ -638,6 +694,7 @@
     left: 124px; 
     font-weight: 300;
     display: inline-block;
+    user-select: none;
 }
 
 .hupe-aktiv {
@@ -650,6 +707,7 @@
     color: var(--color-darkolivegreen-100);
     text-align: center;
     display: inline-block;
+    user-select: none;
 }
 
 .abs-aktiv {
@@ -662,6 +720,7 @@
     color: var(--color-darkolivegreen-100);
     text-align: center;
     display: inline-block;
+    user-select: none;
 }
 
 .abs-text {
@@ -672,6 +731,7 @@
     left: 124px; 
     font-weight: 300;
     display: inline-block;
+    user-select: none;
 }
 .bremse-aktiv {
     position: absolute;
@@ -683,6 +743,7 @@
     color: var(--color-darkolivegreen-100);
     text-align: center;
     display: inline-block;
+    user-select: none;
 }
 
 .bremse-text {
@@ -693,6 +754,7 @@
     left: 124px; 
     font-weight: 300;
     display: inline-block;
+    user-select: none;
 }
 
 .element-background:hover {
@@ -720,449 +782,6 @@
     font-family: var(--font-poppins);
   }
 
-  .element-background:hover::after {
-  content: "details";
-  position: absolute;
-  top: 70%;
-  left: 70%;
-  transform: translate(-50%, -50%);
-  color: white;  /* Farbe des Texts */
-  font-size: 18px;  /* Schriftgröße des Texts */
-}
- }
  
- @media only screen and (max-width: 1000px) {
-  .element-titel {
-    position: absolute;
-    top: 20.3px;
-    left: 25.7px;
-    font-size: var(--font-size-base);
-    font-weight: 800;
-    display: inline-block;
-    width: 136px;
-    height: 15.4px;
-  }
-  .gang {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0%;
-  right: 0%;
-  bottom: 0%;
-  left: 880px;
-  } 
-
-  .gang-value {
-    position: absolute;
-    top: 40px;
-    left: 15px;
-    display: inline-block;
-    width: 43.6px;
-    height: 37.5px;
-  }
-  
-  
-.element-background {
-  width: 187.3px;
-  height: 122.6px;
-  border-radius: var(--br-xl);
-  background-color: var(--color-darkolivegreen-100);
-  opacity: 0.1;
-  cursor:pointer;
-}
-
-
-  .bremse {
-    position: absolute;
-    top: 0px;
-    left: 660px;
-    width: 187.3px;
-    height: 122.6px;
-    
-  }
-  
-
-.bremse-value {
-    position: absolute;
-    top: 80px;
-    left: 25.3px;
-    display: inline-block;
-    width: 43.6px;
-    height: 37.5px;
-  }
-
-  .speed {
-    position: absolute;
-    top: 0px;
-    left: 440px;
-    width: 187.3px;
-    height: 122.6px;
-  }
-
-  .speed-value {
-    position: absolute;
-    top: 80px;
-    left: 25.3px;
-    display: inline-block;
-    width: 130px;
-    height: 37.5px;
-  }
-  .png-wasser-icon {
-    position: absolute;
-    top: 8px;
-    left: 138px;
-    width: 28px;
-    height: 37px;
-    object-fit: cover;
-  }
-  .png-oel-icon {
-    position: absolute;
-    top: 7px;
-    left: 10px;
-    width: 52px;
-    height: 37px;
-    object-fit: cover;
-  }
-  .wasser-value {
-    position: absolute;
-    top: 81px;
-    left: 135px;
-    display: inline-block;
-    width: 43.6px;
-    height: 37.5px;
-  }
-  .oel-value {
-    position: absolute;
-    top: 40px;
-    left: 10px;
-    display: inline-block;
-    width: 43.6px;
-    height: 37.5px;
-  }
-  .oel-wasser {
-    position: absolute;
-    top: 0px;
-    left: 220px;
-    width: 187.3px;
-    height: 122.6px;
-  }
-
-  .drehzahl {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 193px;
-    height: 125px;
-  }
-
-  .drehzahl-value {
-    position: absolute;
-    top: 40px;
-    left: 15px;
-    display: inline-block;
-    width: 150px;
-    height: 37.5px;
-  }
-  .home-otto-elemente {
-    position: absolute;
-    top: 550px;
-    left: 186px;
-    width: 50%;
-    height: 50%;
-    font-size: var(--font-size-xl);
-    font-family: var(--font-manrope);
-  }
-  .batterie-Wert-Hybrid {
-    position: absolute;
-    top: 480px;
-    left: 1271px;
-    background-color: var(--color-gray-400);
-    width: 118px;
-    height: 32px;
-    color: var(--color-gray-300);
-  }
-  .png-batterie-icon {
-    position: absolute;
-    top: 485px;
-    left: 1226px;
-    width: 34px;
-    height: 27px;
-    object-fit: cover;
-  }
-  .batterie-balken-hintergrund-hybrid {
-    position: absolute;
-    top: 480px;
-    left: 1008px;
-    border-radius: var(--br-37xl);
-    width: 207px;
-    height: 32px;
-  }
-  .batterie-balken-aktuell-hybrid {
-    position: absolute;
-    top: 482px;
-    left: 1011px;
-    border-radius: var(--br-37xl);
-    width: 168px;
-    height: 28px;
-  }
-  
-  .tank-wert-hybrid{
-    position: absolute;
-    top: 461px;
-    left: 164px;
-    background-color: var(--color-gray-400);
-    width: 118px;
-    height: 32px;
-    color: var(--color-gray-300);
-  }
-  .png-tank-icon-hybrid {
-    position: absolute;
-    top: 462px;
-    left: 124px;
-    width: 29px;
-    height: 25px;
-    object-fit: cover;
-  }
-  .tank-balken-hintergrund-hybrid {
-    position: absolute;
-    top: 411px;
-    left: 120px;
-    border-radius: var(--br-37xl);
-    width: 1193px;
-    height: 46px;
-  }
-  .tank-balken-aktuell-hybrid{
-    position: absolute;
-    top: 415px;
-    left: 124px;
-    border-radius: var(--br-37xl);
-    transform-origin: top left;
-    transform: scaleX(0);
-    transition: transform 1s ease;
-    width: 1183px;
-    height: 39px;
-  }
-  .png-auto-dashboard {
-    position: absolute;
-    top: 103px;
-    left: 385px;
-    width: 670px;
-    height: 287px;
-    object-fit: cover;
-    opacity: 0.7;
-  }
-  
-  .auto-titel {
-    position: absolute;
-    top: 82px;
-    left: 652px;
-    width: 108px;
-    height: 27px;
-    font-size: var(--font-size-lg);
-  }
-  .menu-icon {
-    position: absolute;
-    top: 21px;
-    left: 1040px;
-    width: 24px;
-    height: 24px;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .menu-icon:hover {
-  color: #426b1f; 
-}
-  .profil-icon {
-    position: absolute;
-    top: 21px;
-    left: 988px;
-    width: 24px;
-    height: 24px;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  
-  .messwerte-textbox {
-    position: absolute;
-    top: 17px;
-    left: 846px;
-    width: 108px;
-    height: 32px;
-    cursor: pointer;
-    font-weight: 500;
-  }
-  .messwerte-textbox:hover {
-  color: #426b1f; 
-  filter: brightness(0.9);
-}
-  .navigation-icon {
-    position: absolute;
-    top: 21px;
-    left: 957px;
-    width: 24px;
-    height: 24px;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .png-cartracker-logo-icon {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 85px;
-    height: 67px;
-    object-fit: cover;
-  }
-  .home-header {
-    position: absolute;
-    top: 62px;
-    left: 174px;
-    width: 1064px;
-    height: 67px;
-  }
-
-  .motorhaube-text {
-    position: absolute;
-    height: 10px; 
-    width: 150px; 
-    top: 244px; 
-    left: 1229px; 
-    font-weight: 300;
-    display: inline-block;
-}
-
-.spoiler-closed {
-    position: absolute;
-    height: 10px; 
-    width: 65px; 
-    top: 270px; 
-    left: 1131px; 
-    font-weight: 300;
-    color: var(--color-darkolivegreen-100);
-    text-align: center;
-    display: inline-block;
-}
-
-.motorhaube-closed {
-    position: absolute;
-    height: 10px; 
-    width: 71px; 
-    top: 244px; 
-    left: 1131px; 
-    font-weight: 300;
-    color: var(--color-darkolivegreen-100);
-    text-align: center;
-    display: inline-block;
-}
-
-.spoiler-text {
-    position: absolute;
-    height: 10px; 
-    width: 57px; 
-    top: 270px; 
-    left: 1229px; 
-    font-weight: 300;
-    display: inline-block;
-}
-
-.hupe-text {
-    position: absolute;
-    height: 10px; 
-    width: 50px; 
-    top: 244px; 
-    left: 124px; 
-    font-weight: 300;
-    display: inline-block;
-}
-
-.hupe-aktiv {
-    position: absolute;
-    height: 10px; 
-    width: 43px; 
-    top: 244px; 
-    left: 210px; 
-    font-weight: 300;
-    color: var(--color-darkolivegreen-100);
-    text-align: center;
-    display: inline-block;
-}
-
-.abs-aktiv {
-    position: absolute;
-    height: 10px;
-    width: 43px; 
-    top: 270px; 
-    left: 210px; 
-    font-weight: 300;
-    color: var(--color-darkolivegreen-100);
-    text-align: center;
-    display: inline-block;
-}
-
-.abs-text {
-    position: absolute;
-    height: 10px; 
-    width: 32px; 
-    top: 270px; 
-    left: 124px; 
-    font-weight: 300;
-    display: inline-block;
-}
-.bremse-aktiv {
-    position: absolute;
-    height: 10px;
-    width: 43px; 
-    top: 296px; 
-    left: 210px; 
-    font-weight: 300;
-    color: var(--color-darkolivegreen-100);
-    text-align: center;
-    display: inline-block;
-}
-
-.bremse-text {
-    position: absolute;
-    height: 10px; 
-    width: 32px; 
-    top: 296px; 
-    left: 124px; 
-    font-weight: 300;
-    display: inline-block;
-}
-
-.element-background:hover {
-    background-color: var(--color-darkolivegreen-200);
-  }
-
-  /* Du kannst dies für andere Container wiederholen, indem du die entsprechenden Klassen hinzufügst */
-  .bremse:hover .element-background,
-  .speed:hover .element-background,
-  .oel-wasser:hover .element-background,
-  .drehzahl:hover .element-background,
-  .gang:hover .element-background {
-    background-color: var(--color-darkolivegreen-200);
-  }
-
-  .home-dashboard-hybrid {
-    position: relative;
-    background-color: var(--color-darkslategray-100);
-    width: 100%;
-    height: 810px;
-    overflow: hidden;
-    text-align: left;
-    font-size: var(--font-size-2xl);
-    color: var(--color-white);
-    font-family: var(--font-poppins);
-  }
-
-  .element-background:hover::after {
-  content: "details";
-  position: absolute;
-  top: 70%;
-  left: 70%;
-  transform: translate(-50%, -50%);
-  color: white;  /* Farbe des Texts */
-  font-size: 18px;  /* Schriftgröße des Texts */
-}
- }
-
+ 
 </style>

@@ -20,13 +20,13 @@ export default {
         console.log("API Response:", data);
 
         if (Array.isArray(data.messwerte) && data.messwerte.length > 0) {
-          const temperatureValue = data.messwerte[0]?.oil_temperature;
+          const temperatureValue = data.messwerte[0]?.water_temperature;
 
           if (!isNaN(temperatureValue)) {
             const waterTemperature = Math.round(temperatureValue) + "°";
             this.waterTemperature = waterTemperature.toString();
           } else {
-            console.error("Ungültiger Wert für oil_temperature:", temperatureValue);
+            console.error("Ungültiger Wert für water_temperature:", temperatureValue);
             // Setze waterTemperature auf null, um "N/A" anzuzeigen
             this.waterTemperature = null;
           }
