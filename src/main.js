@@ -192,7 +192,7 @@ const routes = [
       },
     },
     {
-      path: "/404",
+      path: "/:pathName(.*)*",
       name: "notfound",
       component: NotFound,
       meta: {

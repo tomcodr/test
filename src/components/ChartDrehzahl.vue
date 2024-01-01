@@ -126,12 +126,12 @@ export default {
   font-weight: 100;
 }
 input[type="date"] {
-  height: 30px; 
+  height: 30px; /* Passen Sie die gewünschte Höhe an */
   margin-right: 100px;
-  background-color: #4BC0C0; 
-  color: #FFFFFF; 
-  border: 1px solid #4BC0C0; 
-  border-radius: 5px; 
-  user-select: none;
+  background-color: #4BC0C0; /* Ändern Sie die Hintergrundfarbe nach Bedarf */
+  color: #FFFFFF; /* Ändern Sie die Textfarbe nach Bedarf */
+  border: 1px solid #4BC0C0; /* Ändern Sie die Randfarbe nach Bedarf */
+  border-radius: 5px; /* Ändern Sie die Randradius nach Bedarf */
+  user-select: none; /* Deaktivieren Sie die Textauswahl */
 }
 </style>

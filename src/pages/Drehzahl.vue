@@ -221,10 +221,10 @@
 
   .chart-drehzahl {
     position: absolute;
-    top: 410px;
+    top: 510px;
     left: 550px;
     max-width: 100%; 
     max-height: 100%;
-    z-index: 4;
+    z-index: 3;
   }
 </style>

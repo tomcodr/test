@@ -83,8 +83,8 @@ export default {
           scales: {
             y: {
               beginAtZero: false,
-              min: -45,
-              max: 45,
+              min: -150,
+              max: 150,
             },
           },
           plugins: {

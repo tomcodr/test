@@ -11,7 +11,7 @@
       <div class="af-it-logo-effekt" />
     </div>
 
-    /* diese Klasse ist die Struktur für die Items */
+    
     <div class="home-otto-elemente">
       
       <div class="gang">
@@ -82,6 +82,7 @@
       src="/batterie-balken-aktuell-hybrid.svg"
     />
     <div><TankAnzeige/></div>
+    <div><TankvolumenAnzeige/></div>
     <img class="png-tank-icon-hybrid"  src="/png-tank-icon-otto@2x.png" />
     <img
       class="tank-balken-hintergrund-hybrid"
@@ -180,7 +181,7 @@
   import HupeAnzeige from "../components/HupeAnzeige.vue"
   import ABS from "../components/ABS.vue"
   import BremseJaNein from "../components/BremseJaNein.vue"
-  
+  import TankvolumenAnzeige from "../components/TankvolumenAnzeige.vue"
 
 
 
@@ -194,7 +195,7 @@
         isMesswerteDropdown1Open: false,
       };
     },
-    components: { SideBoardMenu, PortalPopup, MesswerteDropdown, GangAnzeige, DrehzahlAnzeige, TankAnzeige, GeschwindigkeitAnzeige, OelTemperaturAnzeige, BremseAnzeige, WasserTemperaturAnzeige, SpoilerAnzeige, HupeAnzeige,ABS, BremseJaNein},
+    components: { SideBoardMenu, PortalPopup, MesswerteDropdown, GangAnzeige, DrehzahlAnzeige, TankAnzeige, GeschwindigkeitAnzeige, OelTemperaturAnzeige, BremseAnzeige, WasserTemperaturAnzeige, SpoilerAnzeige, HupeAnzeige,ABS, BremseJaNein, TankvolumenAnzeige},
     methods: {
       onGangContainerClick() {
         this.$router.push("/gang");
@@ -468,6 +469,18 @@
     height: 32px;
     color: var(--color-gray-300);
   }
+
+  .tank-volumen{
+    position: absolute;
+    top: 461px;
+    left: 220px;
+    background-color: var(--color-gray-400);
+    width: 118px;
+    height: 32px;
+    color: var(--color-gray-300);
+  }
+
+
   .png-tank-icon-hybrid {
     position: absolute;
     top: 462px;
