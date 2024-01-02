@@ -19,7 +19,7 @@
     </div>
     <transition name="mobile-nav">
         <ul v-show="mobileNav" class="dropdown-nav">
-            <li><router-link class= "link" :to="{name: 'HomeDashboardHybrid'}">Dashboard</router-link></li>
+        <li><router-link class= "link" :to="{name: 'HomeDashboardHybrid'}">Dashboard</router-link></li>
         <li><router-link class= "link" :to="{name: 'Fahrzeuge'}">Fahrzeuge</router-link></li>
         <li><router-link class= "link" :to="{name: 'Layout'}">Layout</router-link></li>
         <li><router-link class= "link" :to="{name: 'HilfeLoggedIn'}">Hilfe</router-link></li>
