@@ -2,17 +2,17 @@
   <header :class="{'scrolled-nav': scrolledNav }">
 
     <nav>
-<div class="branding">
+<div class="branding" @click="onLogoClick">
 <img src="/png-cartracker-logo@2x.png" alt="">
 </div>
 <ul v-show="!mobile" class="navigation">
         <li><router-link class= "link" :to="{name: 'HomeDashboardHybrid'}">Dashboard</router-link></li>
-        <li>Messwerte <i class="fas fa-angle-down"></i></li>
-        <li><i class="fa-regular fa-user"></i></li>
+        <li class="messwerte"><MesswerteDropdown/></li>
         <li><router-link class= "link" :to="{name: 'Fahrzeuge'}">Fahrzeuge</router-link></li>
         <li><router-link class= "link" :to="{name: 'Layout'}">Layout</router-link></li>
         <li><router-link class= "link" :to="{name: 'HilfeLoggedIn'}">Hilfe</router-link></li>
-        <li><router-link class= "link" :to="{name: 'LoggedOut'}">Ausloggen</router-link></li>
+        <li><router-link class= "link" :to="{name: 'Profil'}"><i class="fa-regular fa-user"></i></router-link></li>
+        <li><router-link class= "link" :to="{name: 'LoggedOut'}"><i class="fa-solid fa-arrow-right-from-bracket"></i></router-link></li>
     </ul>
     <div class="icon">
         <i @click="toggleMobileNav" v-show="mobile" class="fas fa-bars" :class="{'icon-active' : mobileNav}"></i>
@@ -29,13 +29,17 @@
     </nav>
 </header>
 
+
+
 </template>
 
 <script>
 import HomeDashboardHybrid from '../pages/HomeDashboardHybrid.vue';
+import MesswerteDropdown from "../components/MesswerteDropdown.vue"
 
 export default {
 name: "navigation",
+components: {MesswerteDropdown},
 data(){
     return{
         scrolledNav: null,
@@ -52,6 +56,16 @@ mounted(){
     window.addEventListener('scroll', this.updateScroll);
 },
 methods: {
+    onLogoClick() {
+     
+       this.$router.push({ name: 'HomeDashboardHybrid' });
+    },
+    openMesswerteDropdown() {
+        this.isMesswerteDropdownOpen = true;
+      },
+      closeMesswerteDropdown() {
+        this.isMesswerteDropdownOpen = false;
+      },
     toggleMobileNav(){
         this.mobileNav = !this.mobileNav;
     },
@@ -81,9 +95,15 @@ if (scrollPosition > 50){
 
 <style lang="scss">
 
+.messwerte{
+    position: relative;
+    top: -55px;
+    height: 10px;
+}
+
 header{
     font-family: 'Manrope';
-    background-color: rgba(53, 53, 53, 0.6);;
+    background-color: rgba(53, 53, 53, 0.9);;
     z-index: 99;
     width: 100%;
     position: fixed;
@@ -94,7 +114,7 @@ header{
         position: relative;
         display: flex;
         flex-direction: row;
-        padding: 12px 0;
+        padding: 8px 0;
         transition: .5s easy all;
         width: 90%;
         margin: 0 auto;
@@ -112,8 +132,8 @@ header{
 
         li{
             
-            padding: 16px;
-            margin-left: 16px;
+            padding: 8px;
+            margin-left: 8px;
         }
 
         .link{
@@ -130,6 +150,7 @@ header{
         .branding{
             display: flex;
             align-items: center;
+            cursor: pointer;
 
             img{
                 width: 90px;
@@ -156,7 +177,7 @@ header{
 
             i {
                 cursor: pointer;
-                font-size: 24px;
+                font-size: 30px;
                 transition: 0.8s ease all;
             }
 
@@ -218,7 +239,5 @@ header{
     }
 }
 
-
-
-
 </style>
+

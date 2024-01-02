@@ -10,7 +10,6 @@
       <img class="png-af-it-logo-icon"  src="/png-afit-logo@2x.png" />
       <div class="af-it-logo-effekt" />
     </div>
-
     
     <div class="home-otto-elemente">
       
@@ -107,35 +106,9 @@
     />
     <div class="auto-titel">Porsche 911</div>
 
-    <div class="home-header">
-      <img
-        class="menu-icon"
-        alt=""
-        src="/menu-icon.svg"
-        :onClick="openSideBoardMenu"
-      />
-      <img
-        class="profil-icon"
-        alt=""
-        src="/profil-icon.svg"
-        :onClick="onProfilIconClick"
-      />
-      <div class="messwerte-textbox" :onClick="openMesswerteDropdown">{{ $t('Messwerte') }}</div>
-      
-      <img
-        class="navigation-icon"
-        alt=""
-        src="/navigation-icon.svg"
-        :onClick="openMesswerteDropdown1"
-      />
-      <img
-        class="png-cartracker-logo-icon"
-        alt=""
-        src="/png-cartracker-logo@2x.png"
-      />
     </div>
   
-  </div>
+  
   <div v-if="isSideBoardMenuOpen">
     <PortalPopup
       placement="Centered"
@@ -291,6 +264,7 @@
 
 
 <style scoped>
+
 
   .element-titel {
     position: absolute;
@@ -770,7 +744,7 @@
   }
 
   .home-dashboard-hybrid {
-    position: relative;
+    position: absolute;
     background-color: var(--color-darkslategray-100);
     width: 100%;
     height: 810px;

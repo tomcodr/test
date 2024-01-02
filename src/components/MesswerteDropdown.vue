@@ -1,184 +1,148 @@
 <template>
-  <div class="messwerte-dropdown">
-   
-    <div class="trips-text" @click="onTripsTextClick">{{ $t('Trips') }}</div>
-    <div class="motor-text" @click="onMotorTextClick">{{ $t('Motor') }}</div>
-    <div class="lenkung-text" @click="onLenkungTextClick">{{ $t('Lenkung') }}</div>
-    <div class="tank-text" @click="onTankTextClick">{{ $t('Tank') }}</div>
-    <div class="gang-text" @click="onGangTextClick">{{ $t('Gang') }}</div>
-    <div class="bremsen-text" @click="onBremsenTextClick">{{ $t('Bremstemperaturen') }}</div>
-    <div class="geschwindigkeit-text" @click="onGeschwindigkeitTextClick">{{ $t('Geschwindigkeit') }}</div>
-    <div class="oelwasser-text" @click="onOeLWasserTextClick">{{ $t('Temperaturen') }}</div>
-    
-    <div class="drehzahl-text" @click="onDrehzahlTextClick">{{ $t('Drehzahl') }}</div>
-    <div class="hoehe-text" @click="onHoeheTextClick">{{ $t('Höhe') }}</div>
-  
+  <div>
+    <div class="dropdown" v-for="(options, selectedIndex) in dropdownOptions" :key="selectedIndex">
+      <div class="select" @click="toggleDropdown(selectedIndex)">
+        <!-- Setze 'Messwerte' als Standardwert -->
+        <span class="selected">{{ selectedIndex === 0 ? 'Messwerte' : options[selectedDropdownIndex[selectedIndex]] }}</span>
+        <div class="caret" :class="{ 'caret-rotate': isDropdownOpen[selectedIndex] }"></div>
+      </div>
+      <ul class="menu" :class="{ 'menu-open': isDropdownOpen[selectedIndex] }">
+        <li v-for="(option, index) in options" :key="index" @click="selectOption(selectedIndex, index)"
+          :class="{ 'active': index === selectedDropdownIndex[selectedIndex] }">
+          {{ option }}
+        </li>
+      </ul>
+    </div>
   </div>
-
 </template>
+
 <script>
-  import { defineComponent } from "vue";
-
-  export default defineComponent({
-    name: "MesswerteDropdown",
-    methods: {
-      onHoeheTextClick() {
-        this.$router.push("/hoehe");
-      },
-      onTripsTextClick() {
-        this.$router.push("/trips");
-      },
-      onRderTextClick() {
-        this.$router.push("/bremsen");
-      },
-      onMotorTextClick() {
-        this.$router.push("/motor");
-      },
-      onLenkungTextClick() {
-        this.$router.push("/lenkung");
-      },
-      onTankTextClick() {
-        this.$router.push("/tank");
-      },
-      onGangTextClick() {
-        this.$router.push("/gang");
-      },
-      onBremsenTextClick() {
-        this.$router.push("/bremsen");
-      },
-      onGeschwindigkeitTextClick() {
-        this.$router.push("/geschwindigkeit");
-      },
-      onOeLWasserTextClick() {
-        this.$router.push("/temperaturen");
-      },
-      onDrehzahlTextClick() {
-        this.$router.push("/drehzahl");
-      },
+export default {
+  data() {
+    return {
+      dropdownOptions: [
+        ['Drehzahl', 'Gang', 'Öl/Wassertemperaturen', 'Bremstemperaturen', 'Trips']
+        // Add more dropdown options if needed
+      ],
+      selectedDropdownIndex: [0], // Initial selected indexes for each dropdown
+      isDropdownOpen: [false] // Track if each dropdown is open or closed
+    };
+  },
+  methods: {
+    toggleDropdown(index) {
+      this.isDropdownOpen[index] = !this.isDropdownOpen[index];
     },
-  });
+    selectOption(dropdownIndex, optionIndex) {
+      // Hier füge die Logik ein, um den Router auf die gewünschte Seite zu lenken
+      const selectedOption = this.dropdownOptions[dropdownIndex][optionIndex];
+      if (selectedOption === 'Drehzahl') {
+        this.$router.push({ name: 'Drehzahl' });
+      } else if (selectedOption === 'Gang') {
+        this.$router.push({ name: 'Gang' });
+      }
+
+      // Aktualisiere den Index für das Dropdown
+      this.selectedDropdownIndex[dropdownIndex] = optionIndex;
+      this.isDropdownOpen[dropdownIndex] = false;
+    }
+  }
+};
 </script>
+
 <style scoped>
- .hoehe-text {
-    position: absolute;
-    height: 7%;
-    width: 25%;
-    top: 90.29%;
-    left: 7.5%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .trips-text {
-    position: absolute;
-    height: 7%;
-    width: 25%;
-    top: 80.29%;
-    left: 7.5%;
-    display: inline-block;
-    cursor: pointer;
-  }
 
-  .motor-text {
-    position: absolute;
-    height: 6.77%;
-    width: 30.36%;
-    top: 70.65%;
-    left: 7.5%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .lenkung-text {
-    position: absolute;
-    height: 7%;
-    width: 34.29%;
-    top: 60.72%;
-    left: 6.79%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .tank-text {
-    position: absolute;
-    height: 6.77%;
-    width: 27.5%;
-    top: 51.02%;
-    left: 6.43%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .gang-text {
-    position: absolute;
-    height: 6.77%;
-    width: 27.5%;
-    top: 41.31%;
-    left: 6.07%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .bremsen-text {
-    position: absolute;
-    height: 7%;
-    width: 38.21%;
-    top: 31.38%;
-    left: 6.79%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .geschwindigkeit-text {
-    position: absolute;
-    height: 6.77%;
-    width: 63.93%;
-    top: 21.67%;
-    left: 6.79%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .oelwasser-text {
-    position: absolute;
-    height: 7%;
-    width: 90%;
-    top: 11.74%;
-    left: 6.79%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .drehzahl-text {
-    position: absolute;
-    height: 7%;
-    width: 47.5%;
-    top: 2.26%;
-    left: 6.79%;
-    display: inline-block;
-    cursor: pointer;
-  }
+body {
+    font-family: Helvetica, sans-serif;
+    background: #23242a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
 
-  .trips-text:hover,
-.rder-text:hover,
-.motor-text:hover,
-.lenkung-text:hover,
-.tank-text:hover,
-.gang-text:hover,
-.bremsen-text:hover,
-.geschwindigkeit-text:hover,
-.oelwasser-text:hover,
-.drehzahl-text:hover {
-  color: #426b1f; 
-  filter: brightness(0.9);
+.dropdown {
+    min-width: 15em;
+    position: relative;
+    margin: 2em;
+}
+
+.dropdown * {
+    box-sizing: border-box;
+}
+
+.select {
+    background: #2a2f3b;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px #2a2f3b solid;
+    border-radius: 0.5em;
+    padding: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
 
-  .messwerte-dropdown {
-    position: fixed;
-    background-color: var(--color-gray-100);
-    top: 110px;
-    left: 1000px;
-    width: 280px;
-    height: 443px;
-    overflow: auto;
-    max-width: 100%;
-    max-height: 100%;
-    text-align: left;
-    font-size: var(--font-size-2xl);
-    color: var(--color-white);
-    font-family: var(--font-poppins);
-  }
+
+.select:hover {
+    background: #323741;
+}
+
+.caret {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #fff;
+    transition: 0.3s;
+}
+
+.caret-rotate {
+    transform: rotate(180deg);
+}
+
+.menu {
+    list-style: none;
+    padding: 0.2em 0.5em;
+    background: #323741;
+    border: 1px n#363a43 solid;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
+    color: #9fa5b5;
+    position: absolute;
+    top: 3em;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+    transition: 0.2s;
+    z-index: 1;
+}
+
+.menu li {
+    padding: 0.7em 0.5em;
+    margin: 0.3em 0;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.menu li:hover {
+    background: #2a2d35;
+
+}
+
+
+.active {
+    background: #23242a;
+}
+
+
+
+.menu-open {
+    display: block;
+    opacity: 1;
+}
 </style>
