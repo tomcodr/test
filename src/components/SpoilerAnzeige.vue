@@ -1,5 +1,5 @@
 <template>
-  <div class="spoiler-status">{{ spoilerStatus !== null ? spoilerStatus : 'N/A' }}</div>
+  <div>{{ spoilerStatus !== null ? spoilerStatus : $t('N/A') }}</div>
 </template>
 
 <script>
@@ -14,28 +14,21 @@ export default {
     async fetchSpoilerStatus() {
       try {
         const response = await fetch("https://cartrackerapi.onrender.com/api/v1/fahrzeuge/67c012ef-39f7-48c1-8d7a-092fcad45c08/messwerte?type=spoilerR");
-
-        // Überprüfe, ob die Anfrage erfolgreich war (Statuscode 200)
-        if (!response.ok) {
-          console.error("Fehlerhafte Antwort von der API. Statuscode:", response.status);
-          return;
-        }
-
         const data = await response.json();
 
-        const spoilerValue = parseFloat(data.messwerte[0]?.spoilerr);
+        const spoilerValue = parseFloat(data.messwerte[0]?.spoilerR);
 
         if (!isNaN(spoilerValue)) {
           this.spoilerValue = spoilerValue;
-          this.spoilerStatus = spoilerValue === 0.0 ? "CLOSED" : "OPEN";
+          this.spoilerStatus = spoilerValue === 0.0 ? "EINGEFAHREN" : "AUSGEFAHREN";
         } else {
-          console.error("Ungültiger Wert für Spoiler:", data.messwerte[0]?.spoilerr);
-          // Setze spoilerStatus auf null, um "N/A" anzuzeigen
+          console.error("Invalid value for spoiler:", data.messwerte[0]?.spoilerR);
+          // Set spoilerStatus to null to display "N/A"
           this.spoilerStatus = null;
         }
       } catch (error) {
-        console.error("Fehler beim Laden der Spoiler-Daten:", error);
-        // Setze spoilerStatus auf null, um "N/A" anzuzeigen
+        console.error("Error loading spoiler data:", error);
+        // Set spoilerStatus to null to display "N/A"
         this.spoilerStatus = null;
       }
     },

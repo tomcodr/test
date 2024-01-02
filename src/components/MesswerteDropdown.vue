@@ -167,7 +167,7 @@
 
 
   .messwerte-dropdown {
-    position: absolute;
+    position: fixed;
     background-color: var(--color-gray-100);
     top: 110px;
     left: 1000px;

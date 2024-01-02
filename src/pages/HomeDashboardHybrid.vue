@@ -60,7 +60,6 @@
     <div class="motorhaube-closed" v-else :style="{ left: '1131px' }">
       {{ $t('Closed') }}
     </div>
-    <div class="motorhaube-closed" v-else>{{ $t('Geschlossen') }}</div>
     <div class="spoiler-text">{{ $t('Spoiler') }}</div>
     <div class="hupe-text">{{ $t('Hupe') }}</div>
     <div class="hupe-aktiv"><HupeAnzeige/></div>
@@ -566,11 +565,11 @@
   
   .auto-titel {
     position: absolute;
-    top: 82px;
+    top: 130px;
     left: 652px;
-    width: 108px;
+    width: 200px;
     height: 27px;
-    font-size: var(--font-size-lg);
+    font-size: 20px;
     user-select: none;
   }
   .menu-icon {
@@ -654,7 +653,7 @@
     height: 10px; 
     width: 65px; 
     top: 270px; 
-    left: 1131px; 
+    left: 1062px; 
     font-weight: 300;
     color: var(--color-darkolivegreen-100);
     text-align: center;

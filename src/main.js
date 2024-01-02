@@ -2,6 +2,9 @@ import { createApp } from "vue";
 import { createRouter, createWebHistory, RouterView } from "vue-router"; // Füge RouterView hinzu
 import App from "./App.vue";
 import store from "./store/store";
+import '@fortawesome/fontawesome-free/css/all.css';
+
+
 
 
 import HomeDashboardHybrid from "./pages/HomeDashboardHybrid.vue";
