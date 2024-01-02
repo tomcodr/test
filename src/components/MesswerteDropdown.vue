@@ -78,11 +78,13 @@ body {
     justify-content: space-between;
     align-items: center;
     border: 2px #2a2f3b solid;
-    border-radius: 0.5em;
-    padding: 1em;
+    border-radius: 0.3em; /* Reduziere die Border-Radius-Größe */
+    padding: 0.5em; /* Reduziere die Padding-Größe weiter */
     cursor: pointer;
     transition: background 0.3s;
+    width: 8em;
 }
+
 
 
 
@@ -93,9 +95,9 @@ body {
 .caret {
     width: 0;
     height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 6px solid #fff;
+    border-left: 4px solid transparent; /* Reduziere die Größe des Caret weiter */
+    border-right: 4px solid transparent;
+    border-top: 4px solid #fff; /* Reduziere die Größe des Caret weiter */
     transition: 0.3s;
 }
 
@@ -123,11 +125,12 @@ body {
 }
 
 .menu li {
-    padding: 0.7em 0.5em;
-    margin: 0.3em 0;
-    border-radius: 0.5em;
+    padding: 0.5em 0.3em; /* Reduziere die Padding-Größe weiter */
+    margin: 0.2em 0;
+    border-radius: 0.3em;
     cursor: pointer;
 }
+
 
 .menu li:hover {
     background: #2a2d35;

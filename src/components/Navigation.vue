@@ -6,8 +6,9 @@
 <img src="/png-cartracker-logo@2x.png" alt="">
 </div>
 <ul v-show="!mobile" class="navigation">
-        <li><router-link class= "link" :to="{name: 'HomeDashboardHybrid'}">Dashboard</router-link></li>
-        <li class="messwerte"><MesswerteDropdown/></li>
+    <li class="messwerte"><MesswerteDropdown/></li>  
+    <li><router-link class= "link" :to="{name: 'HomeDashboardHybrid'}">Dashboard</router-link></li>
+    
         <li><router-link class= "link" :to="{name: 'Fahrzeuge'}">Fahrzeuge</router-link></li>
         <li><router-link class= "link" :to="{name: 'Layout'}">Layout</router-link></li>
         <li><router-link class= "link" :to="{name: 'HilfeLoggedIn'}">Hilfe</router-link></li>
@@ -95,11 +96,7 @@ if (scrollPosition > 50){
 
 <style lang="scss">
 
-.messwerte{
-    position: relative;
-    top: -55px;
-    height: 10px;
-}
+
 
 header{
     font-family: 'Manrope';
@@ -116,9 +113,9 @@ header{
         flex-direction: row;
         padding: 8px 0;
         transition: .5s easy all;
-        width: 90%;
+        width: 100%;
         margin: 0 auto;
-        @media(mind-width: 1140px){
+        @media(min-width: 1140px){
             max-width: 1140px;
         }
 
@@ -137,7 +134,7 @@ header{
         }
 
         .link{
-            font-size: 14px;
+            font-size: 16px;
             transition: .5s;
             padding-bottom: 4px;
             border-bottom: 1px solid transparent;
@@ -163,6 +160,8 @@ header{
     align-items: center;
     flex: 1;
     justify-content: flex-end;
+    max-height: 30px;
+    margin-left: auto; 
 }
 
 
@@ -193,7 +192,7 @@ header{
             width: 100%;
             max-width: 250px;
             height: 110%;
-            background-color: #fff;
+            background-color: #424242;
             top: 0;
             left: 0;
 
@@ -201,7 +200,7 @@ header{
             li{
             margin-left: 0;
             .link{
-                color: #000;
+                color: #fff;
             }
             }
 
@@ -237,6 +236,10 @@ header{
             }
         }
     }
+}
+.messwerte{
+    position: relative;
+    left: 100px; 
 }
 
 </style>

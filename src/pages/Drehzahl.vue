@@ -21,7 +21,7 @@
     
     <div class="auto-titel">Porsche 911</div>
     
-    <div class="drehzahl-header">
+    
       
       <img
         class="menu-icon"
@@ -53,7 +53,7 @@
     
     </div>
   
-  </div>
+ 
   
   <div v-if="isSideBoardMenuOpen">
     <PortalPopup
@@ -131,6 +131,8 @@
     },
   });
 </script>
+
+
 <style scoped>
   .rpm-text {
     position: absolute;
@@ -208,15 +210,7 @@
     object-fit: cover;
     cursor: pointer;
   }
-  .drehzahl-header {
-    position: absolute;
-    top: 62px;
-    left: 174px;
-    width: 1064px;
-    height: 67px;
-    font-size: var(--font-size-2xl);
-    font-family: var(--font-poppins);
-  }
+  
  
 
   .chart-drehzahl {

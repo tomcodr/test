@@ -546,71 +546,6 @@
     font-size: 20px;
     user-select: none;
   }
-  .menu-icon {
-    position: absolute;
-    top: 21px;
-    left: 1040px;
-    width: 24px;
-    height: 24px;
-    overflow: hidden;
-    cursor: pointer;
-    user-select: none;
-  }
-  .menu-icon:hover {
-  color: #426b1f; 
-}
-  .profil-icon {
-    position: absolute;
-    top: 21px;
-    left: 988px;
-    width: 24px;
-    height: 24px;
-    overflow: hidden;
-    cursor: pointer;
-    user-select: none;
-  }
-  
-  .messwerte-textbox {
-    position: absolute;
-    top: 17px;
-    left: 846px;
-    width: 108px;
-    height: 32px;
-    cursor: pointer;
-    font-weight: 500;
-    user-select: none;
-  }
-  .messwerte-textbox:hover {
-  color: #426b1f; 
-  filter: brightness(0.9);
-}
-  .navigation-icon {
-    position: absolute;
-    top: 21px;
-    left: 957px;
-    width: 24px;
-    height: 24px;
-    overflow: hidden;
-    cursor: pointer;
-    user-select: none;
-  }
-  .png-cartracker-logo-icon {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 85px;
-    height: 67px;
-    object-fit: cover;
-    user-select: none;
-  }
-  .home-header {
-    position: absolute;
-    top: 62px;
-    left: 174px;
-    width: 1064px;
-    height: 67px;
-  }
-
   .motorhaube-text {
     position: absolute;
     height: 10px; 
@@ -744,7 +679,7 @@
   }
 
   .home-dashboard-hybrid {
-    position: absolute;
+    position: fixed;
     background-color: var(--color-darkslategray-100);
     width: 100%;
     height: 810px;
