@@ -1,184 +1,56 @@
 <template>
-  <div class="messwerte-dropdown">
-   
-    <div class="trips-text" @click="onTripsTextClick">{{ $t('Trips') }}</div>
-    <div class="motor-text" @click="onMotorTextClick">{{ $t('Motor') }}</div>
-    <div class="lenkung-text" @click="onLenkungTextClick">{{ $t('Lenkung') }}</div>
-    <div class="tank-text" @click="onTankTextClick">{{ $t('Tank') }}</div>
-    <div class="gang-text" @click="onGangTextClick">{{ $t('Gang') }}</div>
-    <div class="bremsen-text" @click="onBremsenTextClick">{{ $t('Bremstemperaturen') }}</div>
-    <div class="geschwindigkeit-text" @click="onGeschwindigkeitTextClick">{{ $t('Geschwindigkeit') }}</div>
-    <div class="oelwasser-text" @click="onOeLWasserTextClick">{{ $t('Temperaturen') }}</div>
-    
-    <div class="drehzahl-text" @click="onDrehzahlTextClick">{{ $t('Drehzahl') }}</div>
-    <div class="hoehe-text" @click="onHoeheTextClick">{{ $t('Höhe') }}</div>
-  
+  <div class="menu-item" @click="isOpen = !isOpen">
+    <a href="#">
+      {{ title }}
+    </a>
+    <svg viewBox="0 0 1030 638" width="10">
+      <path d="M1017 68L541 626q-11 12-26 12t-26-12L13 68Q-3 49 6 24.5T39 0h952q24 0 33 24.5t-7 43.5z" fill="#FFF"></path>
+    </svg>
+    <transition name="fade" appear>
+      <div class="sub-menu" v-if="isOpen">
+        <div v-for="(item, i) in items" :key="i" class="menu-item">
+          <a :href="item.link">{{ item.title }}</a>
+        </div>
+      </div>
+    </transition>
   </div>
-
 </template>
+
 <script>
-  import { defineComponent } from "vue";
-
-  export default defineComponent({
-    name: "MesswerteDropdown",
-    methods: {
-      onHoeheTextClick() {
-        this.$router.push("/hoehe");
-      },
-      onTripsTextClick() {
-        this.$router.push("/trips");
-      },
-      onRderTextClick() {
-        this.$router.push("/bremsen");
-      },
-      onMotorTextClick() {
-        this.$router.push("/motor");
-      },
-      onLenkungTextClick() {
-        this.$router.push("/lenkung");
-      },
-      onTankTextClick() {
-        this.$router.push("/tank");
-      },
-      onGangTextClick() {
-        this.$router.push("/gang");
-      },
-      onBremsenTextClick() {
-        this.$router.push("/bremsen");
-      },
-      onGeschwindigkeitTextClick() {
-        this.$router.push("/geschwindigkeit");
-      },
-      onOeLWasserTextClick() {
-        this.$router.push("/temperaturen");
-      },
-      onDrehzahlTextClick() {
-        this.$router.push("/drehzahl");
-      },
-    },
-  });
+export default {
+  name: 'dropdown',
+  props: ['title', 'items'],
+  data () {
+    return {
+      isOpen: false
+    }
+  }
+}
 </script>
-<style scoped>
- .hoehe-text {
-    position: absolute;
-    height: 7%;
-    width: 25%;
-    top: 90.29%;
-    left: 7.5%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .trips-text {
-    position: absolute;
-    height: 7%;
-    width: 25%;
-    top: 80.29%;
-    left: 7.5%;
-    display: inline-block;
-    cursor: pointer;
-  }
 
-  .motor-text {
-    position: absolute;
-    height: 6.77%;
-    width: 30.36%;
-    top: 70.65%;
-    left: 7.5%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .lenkung-text {
-    position: absolute;
-    height: 7%;
-    width: 34.29%;
-    top: 60.72%;
-    left: 6.79%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .tank-text {
-    position: absolute;
-    height: 6.77%;
-    width: 27.5%;
-    top: 51.02%;
-    left: 6.43%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .gang-text {
-    position: absolute;
-    height: 6.77%;
-    width: 27.5%;
-    top: 41.31%;
-    left: 6.07%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .bremsen-text {
-    position: absolute;
-    height: 7%;
-    width: 38.21%;
-    top: 31.38%;
-    left: 6.79%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .geschwindigkeit-text {
-    position: absolute;
-    height: 6.77%;
-    width: 63.93%;
-    top: 21.67%;
-    left: 6.79%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .oelwasser-text {
-    position: absolute;
-    height: 7%;
-    width: 90%;
-    top: 11.74%;
-    left: 6.79%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .drehzahl-text {
-    position: absolute;
-    height: 7%;
-    width: 47.5%;
-    top: 2.26%;
-    left: 6.79%;
-    display: inline-block;
-    cursor: pointer;
-  }
-
-  .trips-text:hover,
-.rder-text:hover,
-.motor-text:hover,
-.lenkung-text:hover,
-.tank-text:hover,
-.gang-text:hover,
-.bremsen-text:hover,
-.geschwindigkeit-text:hover,
-.oelwasser-text:hover,
-.drehzahl-text:hover {
-  color: #426b1f; 
-  filter: brightness(0.9);
+<style>
+nav .menu-item svg {
+  width: 10px;
+  margin-left: 10px;
 }
 
+nav .menu-item .sub-menu {
+  position: absolute;
+  background-color: #222;
+  top: calc(100% + 18px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  border-radius: 0px 0px 16px 16px;
+}
 
-  .messwerte-dropdown {
-    position: fixed;
-    background-color: var(--color-gray-100);
-    top: 110px;
-    left: 1000px;
-    width: 280px;
-    height: 443px;
-    overflow: auto;
-    max-width: 100%;
-    max-height: 100%;
-    text-align: left;
-    font-size: var(--font-size-2xl);
-    color: var(--color-white);
-    font-family: var(--font-poppins);
-  }
+.fade-enter-active,
+.fade-leave-active {
+  transition: all .5s ease-out;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
