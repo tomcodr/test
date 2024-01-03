@@ -1,134 +1,178 @@
 <template>
-  
-  <div class="page">
-    
-    <div class="page-hintergrund">
-      <div class="verdunklung-hintergrund-effekt" />
-      <img class="png-af-it-logo-icon"  src="/png-afit-logo@2x.png" />
-      <div class="af-it-logo-effekt" />
-    </div>
-    
-    <img
-      class="pfeil-icon"
-      alt=""
-      src="/register-pfeil.svg"
-      @click="onPfeilIconClick"
-    />
-    
-    <img class="passwort-linie" alt="" src="/leistung-linie.svg" />
-    
-    <div class="passwort-text">Passwort</div>
-    
-    <img class="e-mail-linie" alt="" src="/leistung-linie.svg" />
-    
-    <div class="e-mail-text">E-Mail</div>
-    
-    <b class="hier" @click="onHierTextClick">hier.</b>
-    
-    <div class="noch-keinen-account-text">Noch keinen Account? Registriere dich</div>
-    
-    <div class="einloggen-text">Einloggen</div>
-    
-    <img class="sideboard-opener" alt="" src="/menu-icon.svg" />
-    
-    <img
-      class="cartracker-logo"
-      alt=""
-      src="/png-cartracker-logo@2x.png"
-    />
-  
-  </div>
+  <div>
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE-edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Login Form in HTML and CSS</title>
+      <link rel="stylesheet" href="style.css">
+    </head>
 
+    <body>
+      <div class="wrapper">
+        <form @submit.prevent="login">
+          <h1>Login</h1>
+          <div class="input-box">
+            <i class="fas fa-user"></i>
+            <input v-model="username" type="text" placeholder="Username" required>
+            
+          </div>
+          <div class="input-box">
+            <i class="fas fa-lock"></i>
+            <input v-model="password" type="password" placeholder="Password" required>
+            
+          </div>
+          <div class="remember-forgot">
+            <label><input type="checkbox" v-model="rememberMe"> Remember me</label>
+            <a href="#">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn">Login</button>
+          <div class="register-link">
+            <p>Don't have an account? <a href="#">Register</a></p>
+          </div>
+        </form>
+      </div>
+    </body>
+  </div>
 </template>
 
 <script>
-  import { defineComponent } from "vue";
-
-  export default defineComponent({
-    name: "LogIn",
-    methods: {
-      onPfeilIconClick() {
-        this.$router.push("/");
-      },
-      onHierTextClick() {
-        this.$router.push("/register");
-      },
-    },
-  });
+export default {
+  data() {
+    return {
+      username: '',
+      password: '',
+      rememberMe: false
+    };
+  },
+  methods: {
+    login() {
+      // Handle login logic here
+      console.log('Logging in with:', this.username, this.password, 'Remember me:', this.rememberMe);
+    }
+  }
+};
 </script>
+
 <style scoped>
 
-  .pfeil-icon {
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Manrope", sans-serif;
+
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('/login-hintergrund.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.wrapper {
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+.wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+.wrapper .input-box {
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+}
+
+.input-box input::placeholder {
+    color: #fff;
+}
+
+.input-box i {
     position: absolute;
-    top: 490.6px;
-    left: 1106px;
-    width: 25px;
-    height: 14.7px;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.wrapper .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+}
+
+.remember-forgot label input {
+    accent-color: #fff;
+    margin-right: 3px;
+}
+
+.remember-forgot a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.wrapper .btn {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     cursor: pointer;
-  }
-  .passwort-linie {
-    position: absolute;
-    top: 497.8px;
-    left: 778.8px;
-    width: 285px;
-    height: 0.5px;
-  }
-  .passwort-text {
-    position: absolute;
-    top: 470px;
-    left: 779px;
-    font-weight: 300;
-  }
-  .e-mail-linie {
-    position: absolute;
-    top: 497.8px;
-    left: 395.8px;
-    width: 285px;
-    height: 0.5px;
-  }
-  .e-mail-text {
-    position: absolute;
-    top: 470px;
-    left: 396px;
-    font-weight: 300;
-  }
-  .hier {
-    position: absolute;
-    top: 363px;
-    left: 790px;
-    font-size: var(--font-size-mini);
-    font-weight: 300;
-    cursor: pointer;
-  }
-  .noch-keinen-account-text {
-    position: absolute;
-    top: 363px;
-    left: 545px;
-    font-size: var(--font-size-mini);
-    font-weight: 300;
-  }
-  .einloggen-text {
-    position: absolute;
-    top: 308px;
-    left: 590px;
-    font-size: var(--font-size-21xl);
-    font-weight: 300;
-  }
-  .sideboard-opener {
-    position: absolute;
-    top: 83px;
-    left: 1214px;
-    width: 24px;
-    height: 24px;
-    overflow: hidden;
-  }
-  .cartracker-logo {
-    position: absolute;
-    top: 62px;
-    left: 174px;
-    width: 85px;
-    height: 67px;
-    object-fit: cover;
-  }
-  
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+
+}
+
+.wrapper .register-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+
+}
+
+.register-link p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link p a:hover {
+    text-decoration: underline;
+}
 </style>

@@ -679,7 +679,7 @@
   }
 
   .home-dashboard-hybrid {
-    position: fixed;
+    position: absolute;
     background-color: var(--color-darkslategray-100);
     width: 100%;
     height: 810px;

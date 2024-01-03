@@ -2,8 +2,7 @@ import { createApp } from "vue";
 import { createRouter, createWebHistory, RouterView } from "vue-router"; // Füge RouterView hinzu
 import App from "./App.vue";
 import store from "./store/store";
-import '@fortawesome/fontawesome-free/css/all.css';
-
+import 'boxicons/css/boxicons.min.css';
 
 
 

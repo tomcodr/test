@@ -1,246 +1,230 @@
 <template>
-  <header :class="{'scrolled-nav': scrolledNav }">
-
-    <nav>
-<div class="branding" @click="onLogoClick">
-<img src="/png-cartracker-logo@2x.png" alt="">
-</div>
-<ul v-show="!mobile" class="navigation">
-    <li class="messwerte"><MesswerteDropdown/></li>  
-    <li><router-link class= "link" :to="{name: 'HomeDashboardHybrid'}">Dashboard</router-link></li>
-    
-        <li><router-link class= "link" :to="{name: 'Fahrzeuge'}">Fahrzeuge</router-link></li>
-        <li><router-link class= "link" :to="{name: 'Layout'}">Layout</router-link></li>
-        <li><router-link class= "link" :to="{name: 'HilfeLoggedIn'}">Hilfe</router-link></li>
-        <li><router-link class= "link" :to="{name: 'Profil'}"><i class="fa-regular fa-user"></i></router-link></li>
-        <li><router-link class= "link" :to="{name: 'LoggedOut'}"><i class="fa-solid fa-arrow-right-from-bracket"></i></router-link></li>
-    </ul>
-    <div class="icon">
-        <i @click="toggleMobileNav" v-show="mobile" class="fas fa-bars" :class="{'icon-active' : mobileNav}"></i>
+    <div>
+      <header class="header">
+        <a href="#" class="logo"></a>
+  
+        <input type="checkbox" id="check" v-model="menuOpen">
+        <label for="check" class="icons">
+          <i v-if="!menuOpen" class='bx bx-menu' id="menu-icon"></i>
+          <i v-if="menuOpen" class='bx bx-x' id="close-icon"></i>
+        </label>
+  
+        <nav class="navbar">
+          <a href="#" style="--i:0; order: 1;"><span>Dashboard</span><i class='bx bxs-dashboard bx-flip-horizontal' ></i></a>
+  
+          <!-- New Dropdown for "Messwerte" -->
+          <div class="dropdown">
+            <a href="#" style="--i:1; order: 2;"><span>Messwerte</span><i class='bx bx-caret-down' ></i></a>
+            <div class="dropdown-content">
+              <div class="text">Drehzahl</div><br>
+              <div class="text">Öl/Wassertemperaturen</div><br>
+              <div class="text">Geschwindigkeit</div><br>
+              <div class="text">Bremstemperaturen</div><br>
+              <div class="text">Gang</div><br>
+              <div class="text">Tank</div><br>
+              <div class="text">Lenkung</div><br>
+              <div class="text">Motor</div><br>
+              <div class="text">Trips</div><br>
+              <div class="text">Höhe</div><br>
+            </div>
+          </div>
+  
+          <a href="#" style="--i:3; order: 4;"><span>Fahrzeuge</span><i class='bx bx-car' ></i></a>
+          <a href="#" style="--i:4; order: 5;"><span>Layout</span><i class='bx bx-layout' ></i></a>
+          <a href="#" style="--i:2; order: 3;"><i class='bx bx-user bx-flip-horizontal' ></i></a>
+          <a href="#" style="--i:5; order: 6;"><i class='bx bx-help-circle' ></i></a>
+          <a href="#" style="--i:6; order: 7;"><i class='bx bx-exit' ></i></a>
+        </nav>
+      </header>
     </div>
-    <transition name="mobile-nav">
-        <ul v-show="mobileNav" class="dropdown-nav">
-        <li><router-link class= "link" :to="{name: 'HomeDashboardHybrid'}">Dashboard</router-link></li>
-        <li><router-link class= "link" :to="{name: 'Fahrzeuge'}">Fahrzeuge</router-link></li>
-        <li><router-link class= "link" :to="{name: 'Layout'}">Layout</router-link></li>
-        <li><router-link class= "link" :to="{name: 'HilfeLoggedIn'}">Hilfe</router-link></li>
-        <li><router-link class= "link" :to="{name: 'LoggedOut'}">Ausloggen</router-link></li>
-    </ul>
-    </transition>
-    </nav>
-</header>
-
-
-
-</template>
-
-<script>
-import HomeDashboardHybrid from '../pages/HomeDashboardHybrid.vue';
-import MesswerteDropdown from "../components/MesswerteDropdown.vue"
-
-export default {
-name: "navigation",
-components: {MesswerteDropdown},
-data(){
-    return{
-        scrolledNav: null,
-        mobile: true,
-        mobileNav: null,
-        windowWidth: null,
-    };
-},
-created(){
-    window.addEventListener("resize", this.checkScreen);
-    this.checkScreen();
-},
-mounted(){
-    window.addEventListener('scroll', this.updateScroll);
-},
-methods: {
-    onLogoClick() {
-     
-       this.$router.push({ name: 'HomeDashboardHybrid' });
+  </template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        menuOpen: false,
+      };
     },
-    openMesswerteDropdown() {
-        this.isMesswerteDropdownOpen = true;
-      },
-      closeMesswerteDropdown() {
-        this.isMesswerteDropdownOpen = false;
-      },
-    toggleMobileNav(){
-        this.mobileNav = !this.mobileNav;
-    },
+  };
+  </script>
+  
+  <style scoped>
+  @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&display=swap");
 
-    updateScroll(){
-        const scrollPosition = window.scrollY;
-if (scrollPosition > 50){
-    this.scrolledNav = false;
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Manrope', sans-serif;
 }
-    },
 
-    checkScreen(){
-        this.windowWidth = window.innerWidth;
-        if (this.windowWidth <= 750){
-            this.mobile = true;
-            return;
-        }
-        this.mobile = false;
-        this.mobileNav = false;
-        return;
-    }
+.dropdown {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 1px; /* Hinzugefügt: Anpassen Sie den Wert nach Bedarf */
 }
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropdown-content div {
+    padding: 0.1px; /* Reduziere den Abstand zwischen den Elementen hier */
+}
+
+/* Hinzugefügt: Anpassungen für das Aussehen des Dropdown-Inhalts beim Hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+  text-align: left;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, .1);
+  backdrop-filter: blur(10px); /* Adjusted blur effect */
+  padding: 10px; /* Hinzugefügt: Anpassen Sie den Wert nach Bedarf */
+}
+
+/* Textstil */
+.text {
+  font-size: 16px; /* Adjusted font size */
+  color: #fff;
+  cursor: pointer;
+  padding: 5px; /* Hinzugefügt: Anpassen Sie den Wert nach Bedarf */
+  margin-bottom: 0.1px 0;
 
 }
 
-</script>
+/* Verbessertes Hover-Effekt für den Text */
+.text:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #193300;
+}
 
-<style lang="scss">
+body {
+    min-height: 100vh;
+    background: url('login-hintergrund.png') no-repeat;
+    background-size: cover;
+    background-position: center;
 
+}
 
-
-header{
-    font-family: 'Manrope';
-    background-color: rgba(53, 53, 53, 0.9);;
-    z-index: 99;
-    width: 100%;
+.header {
     position: fixed;
-    transition: .5s ease all;
-    color: #fff;
-
-    nav {
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        padding: 8px 0;
-        transition: .5s easy all;
-        width: 100%;
-        margin: 0 auto;
-        @media(min-width: 1140px){
-            max-width: 1140px;
-        }
-
-        ul,
-        .link{
-            font-weight: 500;
-            color: #fff;
-            list-style: none;
-            text-decoration: none;
-        }
-
-        li{
-            
-            padding: 8px;
-            margin-left: 8px;
-        }
-
-        .link{
-            font-size: 16px;
-            transition: .5s;
-            padding-bottom: 4px;
-            border-bottom: 1px solid transparent;
-
-            &:hover{
-                color: #426b1f;
-                border-color: #426b1f;
-            }
-        }
-        .branding{
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-
-            img{
-                width: 90px;
-                transition: .5s ease all;
-            }
-        }
-
-.navigation{
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.3rem 10%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    flex: 1;
-    justify-content: flex-end;
-    max-height: 30px;
-    margin-left: auto; 
+    z-index: 100;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(50px);
+    z-index: -1;
 }
 
 
-        .icon{
-            display: flex;
-            align-items: center;
-            position: absolute;
-            top: 0;
-            right: 24px;
-            height: 100%;
 
 
-            i {
-                cursor: pointer;
-                font-size: 30px;
-                transition: 0.8s ease all;
-            }
+.logo {
+  display: inline-block;
+  width: 100px; 
+  height: 60px; 
+  background-image: url('/png-cartracker-logo@2x.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 
-        }
-        .icon-active{
-            transform: rotate(180deg);
-        }
+.navbar a {
+    font-size: 1.15rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5rem;
+}
 
-        .dropdown-nav{
-            display: flex;
-            flex-direction: column;
-            position: fixed;
-            width: 100%;
-            max-width: 250px;
-            height: 110%;
-            background-color: #424242;
-            top: 0;
-            left: 0;
+#check {
+    display: none;
+}
 
+.icons {
+    position: absolute;
+    right: 5%;
+    font-size: 2.8rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
 
-            li{
-            margin-left: 0;
-            .link{
-                color: #fff;
-            }
-            }
+/*BREAKPOINTS*/
 
-        }
-
-        .mobile-nav-enter-active,
-        .mobile-nav-leave-active{
-            transition: 1s ease all;
-        }
-
-        .mobile-nav-enter-from,
-        .mobile-nav-leave-to{
-            transform: translateX(-250px);
-        }
-
-        .mobile-nav-enter-to{
-            transform: translateX(0);
-        }
+@media (max-width: 992px) {
+    .header {
+        padding: 1.3rem 5%;
     }
 }
 
-.scrolled-nav {
-    background-color: #000;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+@media (max-width: 768px) {
+    .icons {
+        display: block;
+    }
 
-    nav {
-        padding: 8px 0;
+    #check:checked~.icons #menu-icon {
+        display: none;
+    }
 
-        .branding{
-            img{
-                width: 40 px;
-                box-shadow: 0 4px 6px -1px rgba(0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-            }
-        }
+    .icons #close-icon {
+        display: none;
+    }
+
+    #check:checked~.icons #close-icon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: rgba(0, 0, 0, .1);
+        backdrop-filter: blur(50px);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        overflow: hidden;
+        transition: .3s ease;
+    }
+
+    #check:checked~.navbar {
+        height: 17.7rem;
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 1.1rem;
+        margin: 1.5rem 0;
+        text-align: center;
+        transform: translateY(-50px);
+        opacity: 0;
+        transition: .3s ease;
+    }
+
+    #check:checked~.navbar a {
+        transform: translateY(0);
+        transition-delay: calc(.15s * var(--i));
+        opacity: 1;
     }
 }
-.messwerte{
-    position: relative;
-    left: 100px; 
-}
-
-</style>
-
+  </style>
+  
