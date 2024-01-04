@@ -12,7 +12,7 @@ import Profil from "./pages/Profil.vue";
 import FahrzeugHinzufuegen from "./pages/FahrzeugHinzufuegen.vue";
 import LogIn from "./pages/LogIn.vue";
 import Register from "./pages/Register.vue";
-import HilfeLoggedIn from "./pages/HilfeLoggedIn.vue";
+import Hilfe from "./pages/Hilfe.vue";
 import Layout from "./pages/Layout.vue";
 import Gang from "./pages/Gang.vue";
 import Lenkung from "./pages/Lenkung.vue";
@@ -80,9 +80,9 @@ const routes = [
       component: Register,
     },
     {
-      path: "hilfe-logged-in",
-      name: "HilfeLoggedIn",
-      component: HilfeLoggedIn,
+      path: "hilfe",
+      name: "Hilfe",
+      component: Hilfe,
     },
     {
       path: "layout",

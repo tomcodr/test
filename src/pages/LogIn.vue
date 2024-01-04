@@ -13,14 +13,12 @@
         <form @submit.prevent="login">
           <h1>Login</h1>
           <div class="input-box">
-            <i class="fas fa-user"></i>
             <input v-model="username" type="text" placeholder="Username" required>
-            
+            <i class='bx bxs-user'></i>
           </div>
           <div class="input-box">
-            <i class="fas fa-lock"></i>
             <input v-model="password" type="password" placeholder="Password" required>
-            
+            <i class='bx bxs-lock-alt' ></i>
           </div>
           <div class="remember-forgot">
             <label><input type="checkbox" v-model="rememberMe"> Remember me</label>

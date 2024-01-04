@@ -1,682 +1,190 @@
-
 <template>
-  
-    
-    <img
-      class="registrieren-arrow"
-      alt=""
-      src="/register-pfeil.svg"
-      @click="onRegistrierenClick"
-    />
-    
-    
-    
-    <div class="land">Land</div>
-   
-    <input type="text" 
-      v-model="land"
-      class="land-textbox"
-      placeholder="Land:"
-      @input="validateLand"/>
-   
-    <div v-if="isLandInvalid" class="error-message-land">Kein valides Land</div>
-    
-    
-    
-    <div class="stadt">Stadt</div>
-    
-    <input type="text" 
-      v-model="stadt"
-      class="stadt-textbox"
-      placeholder="Stadt:"
-      @input="validateStadt"/>
-    
-    <div v-if="isStadtInvalid" class="error-message-stadt">Richtigen Stadtnamen eingeben</div>
-    
-    
-    
-    <div class="plz">PLZ</div>
-   
-    <input type="tel" 
-      v-model="plz"
-      class="plz-textbox"
-      placeholder="PLZ:"
-      @keydown.space.prevent=""
-      @input="validatePLZ"/>
-    
-    <div v-if="isPLZInvalid" class="error-message-PLZ">PLZ nicht korrekt</div>
-    
-    
-    
-    <div class="hausnr">Hausnr.</div>
-    
-    <input type="tel" 
-      v-model="hausnr"
-      class="hausnr-textbox"
-      placeholder="Hausnummer:"
-      @input="validateHausnr"/>
-    
-    <div v-if="isHausnrInvalid" class="error-message-hausnr">valide Hausnummer eingeben</div>
-    
-    
-    
-    
-    <div class="strasze">Straße</div>
-    
-    <input type="text" 
-      v-model="strasze"
-      class="strasze-textbox"
-      placeholder="Straße:"
-      @input="validateStrasze"/>
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE-edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Login Form in HTML and CSS</title>
+      <link rel="stylesheet" href="style.css">
+    </head>
 
-      <div v-if="isStraszeInvalid" class="error-message-strasze">validen Straßennamen eingeben</div>
-    
-    
-    
-    
-    <div class="passwort-bestaetigen">Passwort bestätigen</div>
+    <body>
+  <div class="wrapper">
+    <form @submit.prevent="submitForm">
+      <h1>Registration</h1>
 
-    <input
-    type="password"
-    v-model="bestaetigen"
-    class="bestaetigen-textbox"
-    placeholder="Passwort bestätigen:"
-    :disabled="passwort === ''"
-    @keydown.space.prevent=""
-    @input="repeatPasswort"
-    />
+      <div class="input-box">
+        <div class="input-field">
+          <input type="text" v-model="fullName" placeholder="Full Name" required>
+          <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-field">
+          <input type="text" v-model="username" placeholder="Username" required>
+          <i class='bx bxs-user'></i>
+        </div>
+      </div>
 
-    <div v-if="PasswortIsNotSame" class="error-message-passwort-wiederholung">Die Passwörter stimmen nicht überein.</div>
-    
-    
-    
-  
-    <div class="passwort">Passwort</div>
-    
-    <input type="password" 
-      v-model="passwort"
-      class="passwort-textbox"
-      placeholder="mind 8 Zeichen:"
-      @keydown.space.prevent=""
-      @input="validatePasswort"/>
+      <div class="input-box">
+        <div class="input-field">
+          <input type="email" v-model="email" placeholder="Email" required>
+          <i class='bx bxs-envelope'></i>
+        </div>
+        <div class="input-field">
+          <input type="number" v-model="phoneNumber" placeholder="Phone Number" required>
+          <i class='bx bxs-phone'></i>
+        </div>
+      </div>
 
-    <div v-if="isPasswortInvalid" class="error-message-passwort">Bitte ein passendes Passwort</div>
-    
-    
-    
-    
-    <div class="name">Name</div>
-   
-    <input type="text" 
-      v-model="name"
-      class="name-textbox"
-      placeholder="Dein Name:"
-      @input="validateName"/>
-    
-    <div v-if="isNameInvalid" class="error-message-name">Name ist falsch</div>
-    
-    
-    
-    
-    <div class="vorname">Vorname</div>
+      <div class="input-box">
+        <div class="input-field">
+          <input type="password" v-model="password" placeholder="Password" required>
+          <i class='bx bxs-lock-alt' ></i>
+        </div>
+        <div class="input-field">
+          <input type="password" v-model="confirmPassword" placeholder="Confirm Password" required>
+          <i class='bx bxs-lock-alt' ></i>
+        </div>
+      </div>
 
-    <input type="text" 
-      v-model="vorname"
-      class="vorname-textbox"
-      placeholder="Dein Vorname:"
-      @input="validateVorname"
-      />
-    
-    <div v-if="isVornameInvalid" class="error-message-vorname">Vorname ist falsch</div>
-    
-    
-    
-    
-    <div class="e-mail">E-Mail</div>
-    
-    <input type="text" 
-      v-model="email"
-      class="e-mail-textbox"
-      placeholder="Deine Email:"
-      @input="validateEmail"
-      />
-    
-    <div v-if="isEmailInvalid" class="error-message-email">Bitte Korrekt eingeben</div>
-    
-
-    
-    <div class="registrieren">Registrieren</div>
-    
-    <img
-      class="cartracker-logo-icon"
-      alt=""
-      src="/png-cartracker-logo@2x.png"
-    />
-    
-    
-
+      <label>
+        <input type="checkbox" v-model="declaration">I hereby declare that the above provided information is true and correct
+      </label>
+      <button type="submit" class="btn">Register</button>
+    </form>
+  </div>
+</body>
 </template>
+
 <script>
-  import { defineComponent } from "vue";
-  import SideBoardRegister from "../components/SideBoardRegister.vue";
-  import PortalPopup from "../components/PortalPopup.vue";
-
-  export default defineComponent({
-    name: "Register",
-    data() {
-      return { isSideBoardRegisterOpen: false,
-                email:"",
-                vorname:"",
-                name:"",
-                passwort:"",
-                bestaetigen:"",
-                strasze:"",
-                hausnr:"",
-                plz:"",
-                stadt:"",
-                land:"",
-                isEmailInvalid:false,
-                isVornameInvalid:false,
-                isNameInvalid:false,
-                isPasswortInvalid:false,
-                PasswortIsNotSame:false,
-                isStraszeInvalid:false,
-                isHausnrInvalid:false,
-                isPLZInvalid:false,
-                isStadtInvalid:false,
-                isLandInvalid:false,
-                gespeicherteDaten: [],
-              };
-    
-    },
-    components: { SideBoardRegister, PortalPopup },
-    methods: {
-      
-      validateEmail() {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      
-      if (!emailRegex.test(
-this.email
-)) {
-        this.isEmailInvalid = true;
-      } else {
-        this.isEmailInvalid = false;
-      }
-    },
-      
-      validateVorname(){
-        const containsNumber = /\d/.test(this.vorname);
-
-        this.isVornameInvalid=containsNumber;
-
-        if(this.isVornameInvalid){
-          this.isVornameInvalid=true;
-        } else{
-          this.isVornameInvalid=false;
-        }
-      },
-
-      validateName(){
-        const containsNumber = /\d/.test(
-this.name
-);
-
-        this.isNameInvalid = containsNumber;
-
-        if(this.isNameInvalid){
-          this.isNameInvalid=true;
-        } else{
-          this.isNameInvalid=false;
-        }
-      },
-
-      validatePasswort(){
-        const goodIdea= /^[^\s]{8,}$/;
-
-        this.isPasswortInvalid= !goodIdea.test(this.passwort)
-
-        if(this.isPasswortInvalid){
-          this.isPasswortInvalid=true;
-        } else{
-          this.isPasswortInvalid=false;
-        }
-      },
-
-      repeatPasswort() {
-      if (this.bestaetigen === this.passwort) {
-        this.PasswortIsNotSame = false;
-      } else {
-        this.PasswortIsNotSame = true;
-      }
-      },
-
-      validateStrasze(){
-        const validName = /^[a-zA-Z\s\-_'ßäöüÄÖÜ.]{3,}$/.test(this.strasze);
-
-        this.isStraszeInvalid=!validName;
-
-        if(this.isStraszeInvalid){
-          this.isStraszeInvalid=true;
-        } else{
-          this.isStraszeInvalid=false;
-        }
-      },
-
-      validateHausnr(){
-        const validHausnr = /^(?=.*\d)[a-zA-Z0-9\s\-_]+(?:[\/\s]+[a-zA-Z0-9\s\-_]+)*$/.test(this.hausnr);
-        
-        this.isHausnrInvalid=!validHausnr;
-
-        if(this.isHausnrInvalid){
-          this.isHausnrInvalid=true;
-        } else{
-          this.isHausnrInvalid=false;
-        }
-      },
-
-      validatePLZ(){
-        const validPLZ= /^\d{5}$/.test(this.plz);
-
-        this.isPLZInvalid=!validPLZ;
-
-        if(this.isPLZInvalid){
-          this.isPLZInvalid=true;
-        } else{
-          this.isPLZInvalid=false;
-        }
-      },
-
-      validateStadt() {
-        const valideStadt = /^[a-zA-Z\s\-]+$/.test(this.stadt);
-
-        this.isStadtInvalid = !valideStadt;
-
-        if (this.isStadtInvalid) {
-        this.isStadtInvalid = true;
-        } else {
-        this.isStadtInvalid = false;
-        }
-      },
-      
-      validateLand(){
-        const validLand = /^[a-zA-Z\s\-]+$/.test(
-this.land
-);
-
-        this.isLandInvalid=!validLand;
-
-        if(this.isLandInvalid){
-          this.isLandInvalid=true;
-        } else{
-          this.isLandInvalid=false;
-        }
-      },
-
-      onRegistrierenClick() {
-    
-      if (
-        this.email.trim() === "" ||
-        this.vorname.trim() === "" ||
-        this.name.trim() === "" ||
-        this.passwort.trim() === "" ||
-        this.bestaetigen.trim() === "" ||
-        this.strasze.trim() === "" ||
-        this.hausnr.trim() === "" ||
-        this.plz.trim() === "" ||
-        this.stadt.trim() === "" ||
-        this.land.trim() === "") {
-      
-        alert("Bitte fülle die Felder aus.");} 
-          
-        else if (
-        !this.isEmailInvalid &&
-        !this.isVornameInvalid &&
-        !this.isNameInvalid &&
-        !this.isPasswortInvalid &&
-        !this.PasswortIsNotSame &&
-        !this.isStraszeInvalid &&
-        !this.isHausnrInvalid &&
-        !this.isPLZInvalid &&
-        !this.isStadtInvalid &&
-        !this.isLandInvalid) 
-        
-        {
-        this.$router.push("/fahrzeughinzufuegen");
-          
-        const neuePerson= {
-        email: 
-this.email
-,
-        vorname: this.vorname,
-        name: 
-this.name
-,
-        stadt: this.stadt,
-        passwort: this.passwort,
-        plz: this.plz,
-        strasze:this.strasze,
-        hausnr:this.hausnr,
-        land:this.land,
-        bestaetigen:this.bestaetigen,
-      }
-      this.gespeicherteDaten.push(neuePerson);
-    } 
-      else {
-      alert("Bitte überprüfe deine Eingaben und korrigiere Fehler.");
-    }
+export default {
+  data() {
+    return {
+      fullName: '',
+      username: '',
+      email: '',
+      phoneNumber: '',
+      password: '',
+      confirmPassword: '',
+      declaration: false,
+    };
   },
-      
-      openSideBoardRegister() {
-        this.isSideBoardRegisterOpen = true;
-      },
-      
-      closeSideBoardRegister() {
-        this.isSideBoardRegisterOpen = false;
-      },
+  methods: {
+    submitForm() {
+      // Handle form submission logic here
+      console.log('Form submitted!');
+      // You can access form data using this.fullName, this.username, etc.
     },
-  });
+  },
+};
 </script>
+
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&display=swap");
 
-  .registrieren-arrow {
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Manrope', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('/login-hintergrund.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+.wrapper {
+    width: 750px;
+    background: rgba(255, 255, 255, .1);
+    border: 2px solid rgba(255, 255, 255, .2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    backdrop-filter: blur(50px);
+    border-radius: 10px;
+    color: #fff;
+    padding: 40px 35px 55px;
+    margin: 0 10px;
+}
+
+.wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.wrapper .input-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.input-box .input-field {
+    position: relative;
+    width: 48%;
+    width: 50%;
+    margin: 13px 0;
+}
+
+.input-box .input-field input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    outline: none;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 6px;
+    padding: 15px 15px 15px 40px;
+}
+
+.input-box .input-field input::placeholder {
+    color: #fff;
+}
+
+.input-box .input-field i {
     position: absolute;
-    top: 806.6px;
-    left: 1083px;
-    width: 25px;
-    height: 14.7px;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.wrapper label {
+    display: inline-block;
+    font-size: 14.5px;
+    margin: 10px 0 23px;
+}
+
+.wrapper label input {
+    accent-color: #fff;
+    margin-right: 5px;
+}
+
+
+.wrapper .btn {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     cursor: pointer;
-    user-select: none;
-  }
- 
-  .land {
-    position: absolute;
-    top: 786px;
-    left: 373px;
-    font-weight: 300;
-    user-select: none;
-  }
-
-  .land-textbox{
-    position: absolute;
-    top: 790px;
-    left: 460px;
-    font-weight: 300;
-    background-color: transparent;
-    border: none; 
-    color: #fff;
-    padding: 5px; 
-    resize: none;
-  }
-  .stadt {
-    position: absolute;
-    top: 671px;
-    left: 748px;
-    font-weight: 300;
-    user-select: none;
-  }
-
-  .stadt-textbox{
-    position: absolute;
-    top: 675px;
-    left: 850px;
-    font-weight: 300;
-    background-color: transparent;
-    border: none; 
-    color: #fff;
-    padding: 5px; 
-    resize: none;
-  }
-  .plz {
-    position: absolute;
-    top: 671px;
-    left: 373px;
-    font-weight: 300;
-    user-select: none;
-  }
-
-  .plz-textbox{
-    position: absolute;
-    top: 675px;
-    left: 450px;
-    font-weight: 300;
-    background-color: transparent;
-    border: none; 
-    color: #fff;
-    padding: 5px; 
-    resize: none;
-  }
-  
-  .hausnr {
-    position: absolute;
-    top: 557px;
-    left: 756px;
-    font-weight: 300;
-    user-select: none;
-  }
-  .hausnr-textbox{
-    position: absolute;
-    top: 560px;
-    left: 875px;
-    font-weight: 300;
-    background-color: transparent;
-    border: none; 
-    color: #fff;
-    padding: 5px; 
-    resize: none;
-  }
-  .strasze {
-    position: absolute;
-    top: 557px;
-    left: 373px;
-    font-weight: 300;
-    user-select: none;
-  }
-
-  .strasze-textbox{
-    position: absolute;
-    top: 560px;
-    left: 475px;
-    font-weight: 300;
-    background-color: transparent;
-    border: none; 
-    color: #fff;
-    padding: 5px; 
-    resize: none;
-  }
-  .passwort-bestaetigen {
-    position: absolute;
-    top: 446px;
-    left: 748px;
-    font-weight: 300;
-    user-select: none;
-  }
-
-  .bestaetigen-textbox{
-    position: absolute;
-    top: 450px;
-    left: 1000px;
-    font-weight: 300;
-    background-color: transparent;
-    border: none; 
-    color: #fff;
-    padding: 5px; 
-    resize: none;
-  }
-
-  .passwort {
-    position: absolute;
-    top: 446px;
-    left: 373px;
-    font-weight: 300;
-    user-select: none;
-  }
- 
-  .passwort-textbox{
-    position: absolute;
-    top: 450px;
-    left: 500px;
-    font-weight: 300;
-    background-color: transparent;
-    border: none; 
-    color: #fff;
-    padding: 5px; 
-    resize: none;
-  }
-  .name {
-    position: absolute;
-    top: 336px;
-    left: 748px;
-    font-weight: 300;
-    user-select: none;
-  }
-
-  .name-textbox{
-    position: absolute;
-    top: 340px;
-    left: 850px;
-    font-weight: 300;
-    background-color: transparent;
-    border: none; 
-    color: #fff;
-    padding: 5px; 
-    resize: none;
-  }
-  
-  .vorname {
-    position: absolute;
-    top: 336px;
-    left: 373px;
-    font-weight: 300;
-    user-select: none;
-  }
-
-  .vorname-textbox{
-    position: absolute;
-    top: 340px;
-    left: 500px;
-    font-weight: 300;
-    background-color: transparent;
-    border: none; 
-    color: #fff;
-    padding: 5px; 
-    resize: none;
-  }
-  
-  .e-mail {
-    position: absolute;
-    top: 236px;
-    left: 574px;
-    font-weight: 300;
-    user-select: none;
-  }
-
-  .e-mail-textbox{
-    position: absolute;
-    top: 240px;
-    left: 680px;
-    font-weight: 300;
-    background-color: transparent;
-    border: none; 
-    color: #fff;
-    padding: 5px; 
-    resize: none; /* Verhindert die Größenänderung */
-  }
-  .registrieren {
-    position: absolute;
-    top: 127px;
-    left: 614px;
-    font-size: var(--font-size-21xl);
-    font-weight: 300;
-    user-select: none;
-  }
-  .cartracker-logo-icon {
-    position: absolute;
-    top: 62px;
-    left: 174px;
-    width: 85px;
-    height: 67px;
-    object-fit: cover;
-  }
- 
-
-
-    .error-message-email {
-    position: absolute;
-    top: 243px;
-    left: 860px;
-    color: red;
-    font-size: 18px;
+    color: #333;
+    font-weight: 600;
 }
 
-.error-message-vorname {
-    position: absolute;
-    top: 315px;
-    left: 500px;
-    color: red;
-    font-size: 18px;
-}
 
-.error-message-name {
-    position: absolute;
-    top: 315px;
-    left: 848px;
-    color: red;
-    font-size: 18px;
+@media(max-width: 576px) {
+    .input-box .input-field {
+        width: 100%;
+        margin: 10px 0;
+    }
 }
-
-.error-message-passwort {
-    position: absolute;
-    top: 415px;
-    left: 500px;
-    color: red;
-    font-size: 18px;
-}
-
-.error-message-passwort-wiederholung {
-    position: absolute;
-    top: 415px;
-    left: 998px;
-    color: red;
-    font-size: 18px;
-}
-
-.error-message-strasze{
-    position: absolute;
-    top: 535px;
-    left: 475px;
-    color: red;
-    font-size: 18px;
-}
-
-.error-message-hausnr{
-    position: absolute;
-    top: 535px;
-    left: 870px;
-    color: red;
-    font-size: 18px;
-}
-
-.error-message-PLZ{
-    position: absolute;
-    top: 650px;
-    left: 450px;
-    color: red;
-    font-size: 18px;
-}
-
-.error-message-stadt{
-    position: absolute;
-    top: 650px;
-    left: 847px;
-    color: red;
-    font-size: 18px;
-}
-
-.error-message-land{
-    position: absolute;
-    top: 765px;
-    left: 458px;
-    color: red;
-    font-size: 18px;
-}
-</style> 
+</style>

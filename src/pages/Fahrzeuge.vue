@@ -1,8 +1,8 @@
 <template>    
     
   
+   <div @click="onPlusClick" class="plus-icon"> <i class='bx bx-plus' ></i></div>
     
-    <img class="plus-icon" alt="" src="/plus.svg" @click="onPlusClick" />
     
     <div class="fahrzeug-hinzufuegen-text">{{ $t('Fahrzeuge Hinzufügen') }}</div>
    
@@ -32,6 +32,8 @@
     height: 85.5px;
     overflow: hidden;
     cursor: pointer;
+    color: #fff;
+    font-size: 50px;
   }
   .fahrzeug-hinzufuegen-text {
     position: absolute;
