@@ -8,9 +8,6 @@
    
 <CarouselExample/>
 
-
-
-  
 </template>
 <script>
   import { defineComponent } from "vue";

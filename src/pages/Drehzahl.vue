@@ -17,48 +17,12 @@
 
 <script>
   import { defineComponent } from "vue";
-  import SideBoardMenu from "../components/SideBoardMenu.vue";
-  import PortalPopup from "../components/PortalPopup.vue";
-  import MesswerteDropdown from "../components/MesswerteDropdown.vue";
   import DrehzahlAnzeige from "../components/DrehzahlAnzeige.vue";
   import ChartDrehzahl from "../components/ChartDrehzahl.vue";
 
   export default defineComponent({
     name: "Drehzahl",
-    data() {
-      return {
-        isSideBoardMenuOpen: false,
-        isMesswerteDropdownOpen: false,
-        isMesswerteDropdown1Open: false,
-      };
-    },
-    components: { SideBoardMenu, PortalPopup, MesswerteDropdown, DrehzahlAnzeige, ChartDrehzahl },
-    methods: {
-      openSideBoardMenu() {
-        this.isSideBoardMenuOpen = true;
-      },
-      closeSideBoardMenu() {
-        this.isSideBoardMenuOpen = false;
-      },
-      onProfilIconClick() {
-        this.$router.push("/profil");
-      },
-      openMesswerteDropdown() {
-        this.isMesswerteDropdownOpen = true;
-      },
-      closeMesswerteDropdown() {
-        this.isMesswerteDropdownOpen = false;
-      },
-      openMesswerteDropdown1() {
-        this.isMesswerteDropdown1Open = true;
-      },
-      closeMesswerteDropdown1() {
-        this.isMesswerteDropdown1Open = false;
-      },
-      onPNGCartrackerLogoImageClick() {
-        this.$router.push("/");
-      },
-    },
+    components: { DrehzahlAnzeige, ChartDrehzahl },
   });
 </script>
 

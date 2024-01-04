@@ -1,6 +1,5 @@
 <template>
   
-    
     <container class = "chart-bremstemperaturen"><ChartBremstemperaturen/></container>
     <div class="auto-titel">Porsche 911</div>
     
