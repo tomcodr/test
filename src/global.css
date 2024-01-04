@@ -10,20 +10,51 @@
 
 /* global.css */
 
-body {
+
+/* Reset für Margin und Padding aller Elemente */
+* {
   margin: 0;
   padding: 0;
-  background-color: #404040;
-  /* Hintergrundfarbe anpassen */
+  box-sizing: border-box;
+  /* Besser: Box-Sizing für konsistentes Verhalten von Breite und Höhe */
 }
 
-.global-container {
-  width: var(--max-page-width);
+/* Grundlegende Stile für den Body */
+/* Grundlegende Stile für den Body */
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Manrope', sans-serif;
+  color: #fff;
+  line-height: 1.6;
+  color: #333;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
 
-  /* Maximale Breite der Seite anpassen */
-  margin: 0 auto;
-  /* Zentrierung der Seite */
+  /* Stelle sicher, dass der Body die volle Höhe des Viewports einnimmt */
 }
+
+/* Stelle sicher, dass .page die volle Höhe des Viewports einnimmt */
+.page {
+  height: 100vh;
+  overflow: hidden;
+
+}
+
+html {
+  color: #fff;
+  /* Textfarbe auf Weiß setzen */
+  background-color: #333;
+}
+
+
+/* Der Rest deiner Styles bleibt unverändert */
+
+
+
+
 
 
 
@@ -82,67 +113,6 @@ body {
 
 
 
-  .page {
-    margin: 0;
-    padding: 0;
-    position: relative;
-    background-color: var(--color-darkslategray-100);
-    width: var(--max-page-width);
-    /* Anpassung auf maximale Breite */
-    height: var(--max-page-height);
-    /* Anpassung auf maximale Höhe */
-    overflow: hidden;
-    text-align: left;
-    font-size: var(--font-size-11xl);
-    color: var(--color-white);
-    font-family: var(--font-sansation-light);
-  }
 
-  .verdunklung-hintergrund-effekt {
-    position: absolute;
-    top: 0px;
-    left: 1440px;
-    background-color: var(--color-gray-100);
-    width: var(--max-page-width);
-    height: var(--max-page-height);
-    transform: rotate(180deg);
-    transform-origin: 0 0;
-  }
-
-  .png-af-it-logo-icon {
-    position: relative;
-    top: 165.7px;
-    left: 436px;
-    width: 569px;
-    height: 535.6px;
-    object-fit: cover;
-  }
-
-  .af-it-logo-effekt {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: var(--color-darkslategray-200);
-    backdrop-filter: blur(200px);
-    width: var(--max-page-width);
-    height: var(--max-page-height);
-  }
-
-  .page-hintergrund {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: var(--max-page-width);
-    height: var(--max-page-height);
-  }
-
-  /* Ihre allgemeinen Stile */
-  /* Für den Dark Mode: */
-  .white-mode {
-    /* Ändern Sie die Farben oder das Styling für den Dark Mode */
-    /* Beispiel: */
-    background-color: #fdfdfd;
-    color: #ffffff;
-  }
 
 }

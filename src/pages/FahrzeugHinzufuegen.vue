@@ -1,12 +1,6 @@
 <template>
 
-  <div class="page">
-    
-    <div class="page-hintergrund">
-      <div class="verdunklung-hintergrund-effekt" />
-      <img class="png-af-it-logo-icon"  src="/png-afit-logo@2x.png" />
-      <div class="af-it-logo-effekt" />
-    </div>
+  
     
     <textarea
       v-model="fahrgestellnummerValue"
@@ -50,34 +44,9 @@
     <div class="marke" :onClick="openMarken">{{ $t('Marke') }}</div>
     <div class="fahrzeug-hinzufuegen-titel">{{ $t('Fahrzeuge Hinzufügen') }}</div>
     <img class="header-icon" alt="" src="/header.svg" />
-  </div>
-  <div v-if="isArtOpen">
-    <PortalPopup
-      placement="Centered"
-      :relativeLayerRef="$refs[artLinieRef]"
-      :onOutsideClick="closeArt"
-    >
-      <Art :onClose="closeArt" />
-    </PortalPopup>
-  </div>
-  <div v-if="isArt1Open">
-    <PortalPopup
-      placement="Centered"
-      :relativeLayerRef="$refs[artTextRef]"
-      :onOutsideClick="closeArt1"
-    >
-      <Art :onClose="closeArt1" />
-    </PortalPopup>
-  </div>
-  <div v-if="isMarkenOpen">
-    <PortalPopup
-      placement="Centered"
-      :relativeLayerRef="$refs[markeTextRef]"
-      :onOutsideClick="closeMarken"
-    >
-      <Marken :onClose="closeMarken" />
-    </PortalPopup>
-  </div>
+  
+
+
 </template>
 <script>
   import { defineComponent } from "vue";

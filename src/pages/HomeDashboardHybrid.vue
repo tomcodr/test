@@ -5,11 +5,6 @@
 <template>
   <div class="home-dashboard-hybrid">
     
-    <div class="page-hintergrund">
-      <div class="verdunklung-hintergrund-effekt" />
-      <img class="png-af-it-logo-icon"  src="/png-afit-logo@2x.png" />
-      <div class="af-it-logo-effekt" />
-    </div>
     
     <div class="home-otto-elemente">
       
@@ -682,7 +677,7 @@
     position: absolute;
     background-color: var(--color-darkslategray-100);
     width: 100%;
-    height: 810px;
+    height: 100%;
     overflow: hidden;
     text-align: left;
     font-size: var(--font-size-2xl);

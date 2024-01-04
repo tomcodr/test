@@ -10,12 +10,9 @@ import HomeDashboardHybrid from "./pages/HomeDashboardHybrid.vue";
 import Fahrzeuge from "./pages/Fahrzeuge.vue";
 import Profil from "./pages/Profil.vue";
 import FahrzeugHinzufuegen from "./pages/FahrzeugHinzufuegen.vue";
-import LoggedOut from "./pages/LoggedOut.vue";
-import SideBoardLoggedOut from "./pages/SideBoardLoggedOut.vue";
 import LogIn from "./pages/LogIn.vue";
 import Register from "./pages/Register.vue";
 import HilfeLoggedIn from "./pages/HilfeLoggedIn.vue";
-import HilfeLoggedOut from "./pages/HilfeLoggedOut.vue";
 import Layout from "./pages/Layout.vue";
 import Gang from "./pages/Gang.vue";
 import Lenkung from "./pages/Lenkung.vue";
@@ -73,19 +70,6 @@ const routes = [
       },
     },
     {
-      path: "loggedout",
-      name: "LoggedOut",
-      component: LoggedOut,
-      meta: {
-        title: "Ausgeloggt"
-      },
-    },
-    {
-      path: "sideboard-loggedout",
-      name: "SideBoardLoggedOut",
-      component: SideBoardLoggedOut,
-    },
-    {
       path: "login",
       name: "LogIn",
       component: LogIn,
@@ -99,11 +83,6 @@ const routes = [
       path: "hilfe-logged-in",
       name: "HilfeLoggedIn",
       component: HilfeLoggedIn,
-    },
-    {
-      path: "hilfe-logged-out",
-      name: "HilfeLoggedOut",
-      component: HilfeLoggedOut,
     },
     {
       path: "layout",

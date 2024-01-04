@@ -1,33 +1,4 @@
 <template>
-  <div class="layout">
-    <div class="background" />
-    <div class="af-it-logo-effekt" />
-    <img
-      class="af-it-backgorund-logo"
-      alt=""
-      src="/afit-backgorund-logo@2x.png"
-    />
-    <div class="cover-logo" />
-    <img
-      class="cartracker-logo-icon5"
-      alt=""
-      src="/png-cartracker-logo@2x.png"
-      @click="onCARTRACKERLOGOImageClick"
-    />
-    <img
-      class="sideboard-opener-icon4"
-      alt=""
-      src="/menu-icon.svg"
-      :onClick="openSideBoardMenu"
-    />
-    <img
-      class="profile-icon2"
-      alt=""
-      src="/profil-icon.svg"
-      @click="onPROFILEIconClick"
-    />
-    
-   
     <div class="layout-green" />
     <div class="layout-white" />
     <div class="layout-blue" />
@@ -38,107 +9,21 @@
     <div class="weiß-text">{{ $t('Weiß') }}</div>
     <div class="frozen-text">Frozen</div>
   </div>
-</div>
-  <div v-if="isSideBoardMenuOpen">
-    <PortalPopup
-      placement="Centered"
-      :relativeLayerRef="$refs[sIDEBOARDOPENERIconRef]"
-      :onOutsideClick="closeSideBoardMenu"
-    >
-      <SideBoardMenu :onClose="closeSideBoardMenu" />
-    </PortalPopup>
-  </div>
 </template>
 <script>
   import { defineComponent } from "vue";
-  import SideBoardMenu from "../components/SideBoardMenu.vue";
-  import PortalPopup from "../components/PortalPopup.vue";
+
   
   
 
 
   export default defineComponent({
     name: "Layout",
-    data() {
-      return { isSideBoardMenuOpen: false };
-    },
-    components: { SideBoardMenu, PortalPopup },
-    computed: {
-    isDark() {
-      return this.$data.isDark;
-    },
-  },
-    methods: {
-      onCARTRACKERLOGOImageClick() {
-        this.$router.push("/");
-      },
-      openSideBoardMenu() {
-        this.isSideBoardMenuOpen = true;
-      },
-      closeSideBoardMenu() {
-        this.isSideBoardMenuOpen = false;
-      },
-      onPROFILEIconClick() {
-        this.$router.push("/profil");
-      },
-    },
   });
 </script>
-<style scoped>
 
-  .af-it-logo-effekt {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: var(--color-darkslategray-200);
-    backdrop-filter: blur(200px);
-    width: 1500px;
-    height: 867px;
-  }
-  .af-it-backgorund-logo {
-    position: absolute;
-    top: 172px;
-    left: 436px;
-    width: 569px;
-    height: 556px;
-    object-fit: cover;
-  }
-  .cover-logo {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: var(--color-darkslategray-200);
-    backdrop-filter: blur(200px);
-    width: 1500px;
-    height: 867px;
-  }
-  .cartracker-logo-icon5 {
-    position: absolute;
-    top: 62px;
-    left: 174px;
-    width: 85px;
-    height: 67px;
-    object-fit: cover;
-    cursor: pointer;
-  }
-  .sideboard-opener-icon4 {
-    position: absolute;
-    top: 83px;
-    left: 1214px;
-    width: 24px;
-    height: 24px;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .profile-icon2 {
-    position: absolute;
-    top: 83px;
-    left: 1162px;
-    width: 24px;
-    height: 24px;
-    overflow: hidden;
-    cursor: pointer;
-  }
+
+<style scoped>
   .layout-white {
     position: absolute;
     top: 301px;
@@ -193,6 +78,7 @@
   left: 400px;
   font-weight: 800;
   display: inline-block;
+  color: #fff;
 }
 
 .weiß-text {
@@ -203,6 +89,7 @@
   left: 700px;
   font-weight: 800;
   display: inline-block;
+  color: #fff;
 }
 
 .frozen-text {
@@ -213,6 +100,7 @@
   left: 1000px;
   font-weight: 800;
   display: inline-block;
+  color: #fff;
 }
  
   .darkmode-text {
@@ -225,14 +113,4 @@
     height: 15.4px;
   }
  
-  .layout {
-    position: relative;
-    background-color: var(--color-darkslategray-100);
-    width: 100%;
-    height: 867px;
-    text-align: left;
-    font-size: var(--font-size-base);
-    color: #808080;
-    font-family: var(--font-manrope);
-  }
 </style>

@@ -1,13 +1,6 @@
 
 <template>
   
-  <div class="register">
-    
-    <div class="page-hintergrund">
-      <div class="verdunklung-hintergrund-effekt" />
-      <img class="png-af-it-logo-icon"  src="/png-afit-logo@2x.png" />
-      <div class="af-it-logo-effekt" />
-    </div>
     
     <img
       class="registrieren-arrow"
@@ -161,23 +154,7 @@
     />
     
     
-    
-    <img
-      class="sideboard-opener"
-      alt=""
-      src="/menu-icon.svg"
-      OnClick="openSideBoardRegister"
-    />
-  </div>
-  <div v-if="isSideBoardRegisterOpen">
-    <PortalPopup
-      placement="Centered"
-      :relativeLayerRef="$refs[sIDEBOARDOPENERIconRef]"
-      OnOutsideClick="closeSideBoardRegister"
-    >
-      <SideBoardRegister OnClose="closeSideBoardRegister" />
-    </PortalPopup>
-  </div>
+
 </template>
 <script>
   import { defineComponent } from "vue";
@@ -620,27 +597,7 @@ this.name
     height: 67px;
     object-fit: cover;
   }
-  .sideboard-opener {
-    position: absolute;
-    top: 83px;
-    left: 1214px;
-    width: 24px;
-    height: 24px;
-    overflow: hidden;
-    cursor: pointer;
-    user-select: none;
-  }
-  .register {
-    position: relative;
-    background-color: var(--color-darkslategray-100);
-    width: 100%;
-    height: 866px;
-    overflow: hidden;
-    text-align: left;
-    font-size: var(--font-size-6xl);
-    color: var(--color-white);
-    font-family: var(--font-sansation-light);
-  }
+ 
 
 
     .error-message-email {
