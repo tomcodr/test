@@ -63,11 +63,15 @@
   }
   
   .chart-drehzahl {
-    position: absolute;
-    top: 510px;
-    left: 550px;
-    max-width: 100%; 
-    max-height: 100%;
-    z-index: 3;
-  }
+  position: absolute;
+  top: 510px;
+  left: 550px;
+  width: 100%; /* Breite auf 100% setzen */
+  height: 100%; /* Höhe auf 100% setzen */
+  max-width: none; /* Maximale Breite entfernen */
+  max-height: none; /* Maximale Höhe entfernen */
+  z-index: 3;
+  overflow: hidden; /* Overflow auf hidden setzen, um mögliche Scrollprobleme zu vermeiden */
+}
+
 </style>

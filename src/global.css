@@ -51,6 +51,10 @@ html {
 
 
 /* Der Rest deiner Styles bleibt unverändert */
+/* Fügen Sie dies zu Ihren vorhandenen Stilen hinzu */
+canvas {
+  touch-action: none;
+}
 
 
 
@@ -59,12 +63,6 @@ html {
 
 
 :root {
-
-  --max-page-width: 100%;
-  /* Maximale Breite der Seite */
-  --max-page-height: 1000px;
-  /* Maximale Höhe der Seite */
-
 
   /* fonts */
   --font-poppins: Poppins;

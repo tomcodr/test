@@ -25,13 +25,13 @@
 
       <div class="input-box">
         <div class="input-field">
-          <input type="email" v-model="email" placeholder="VIN Nummer" required>
+          <input type="number" v-model="phoneNumber" placeholder="VIN Nummer" required>
           <i class='bx bxs-key'></i>
 
 
         </div>
         <div class="input-field">
-          <input type="date" v-model="phoneNumber" placeholder="Erstzulassung" required>
+          <input type="number" v-model="phoneNumber" placeholder="Erstzulassung" required>
           <i class='bx bx-calendar'></i>
         </div>
       </div>

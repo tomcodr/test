@@ -17,11 +17,3 @@ export default {
 
 </script>
 
-<style lang="scss">
-
-.app{
-  min-height: 100vh;
-  position: relative;
-}
-
-</style>

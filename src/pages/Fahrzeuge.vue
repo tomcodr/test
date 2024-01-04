@@ -1,7 +1,7 @@
 <template>    
     
   
-   <div @click="onPlusClick" class="plus-icon"> <i class='bx bx-plus' ></i></div>
+   <div  @click="onPlusClick" class="plus-icon"> <i class='bx bx-plus' ></i></div>
     
     
     <div class="fahrzeug-hinzufuegen-text">{{ $t('Fahrzeuge Hinzufügen') }}</div>
@@ -26,8 +26,8 @@
 <style scoped>
   .plus-icon {
     position: absolute;
-    top: 56%;
-    left: 1174px;
+    top: 57%;
+    left: 90%;
     width: 85.5px;
     height: 85.5px;
     overflow: hidden;

@@ -10,15 +10,18 @@
       alt=""
       src="/png-auto-dashboard@2x.png"
     />
+
+
+    <gps/>
      
 </template>
 <script>
   import { defineComponent } from "vue";
-  import MesswerteDropdown from "../components/MesswerteDropdown.vue";
+  import gps from "../components/gps.vue";
 
   export default defineComponent({
     name: "Motor",
-    components: { MesswerteDropdown },
+    components: { gps },
   });
 </script>
 <style scoped>
